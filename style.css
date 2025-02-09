@@ -2,8 +2,70 @@
     margin: 0;
     padding: 0;
 }
+body{
+    background-color: var(--accent-color);
+}
+/* header SECTION */
+.navbar-custom {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--primary-bg) !important;
+    color: var(--primary-text) !important;
+}
 
-.container{
-    display:flex;
-    justify-content: space-between;
+.navbar-custom .nav-link {
+    color: var(--primary-text) !important;
+}
+
+.navbar-custom .navbar-brand {
+    color: var(--btn-color) !important;
+}
+
+.btn-subscribe {
+    background-color: var(--btn-color) !important;
+    border-color: var(--btn-color) !important;
+    color: #fff;
+}
+.btn-subscribe:hover {
+    background-color: var(--btn-hover) !important;
+    border-color: var(--btn-hover) !important;
+    color: #fff;
+}
+
+.navbar-custom .navbar-toggler {
+    border-color: var(--btn-hover) !important; 
+}
+  
+.navbar-custom .navbar-toggler-icon {
+background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E <path stroke='rgba(255, 255, 255, 1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important; /* white lines */
+}
+
+/* for the introduction section */
+.form-control {
+    border-color: var(--btn-color) !important;
+}
+
+.form-control:focus {
+    border-color: var(--btn-hover) !important;
+    box-shadow: 0 0 0 0.2rem rgba(93, 167, 162, 0.25); /* Adjust shadow color if needed */
+}
+
+
+
+
+
+
+
+/* PAGE COLOR THEME */
+:root {
+    --primary-bg: #240750;      
+    --primary-text: #E5E7EB;
+    --btn-color:#72bdb8;
+    --btn-hover: #5da7a2;    
+    --accent-color: #e2ebf4;    
+    --secondary-color: #577B8D; 
+    --highlight-color: #344C64; 
+    
 }
