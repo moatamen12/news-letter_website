@@ -1,8 +1,0 @@
-
-:root {
-    --primary-bg: #1F2937;   /* Cool dark gray for background */
-    --primary-text: #E5E7EB; /* Light text for contrast */
-    --accent-color: #3F91E3; /* Vibrant blue for important elements */
-    --secondary-color: #9AA1A6; /* Muted gray for secondary sections */
-    --highlight-color: #F59E0B; /* Golden accent for highlights or call-to-action */
-  }
