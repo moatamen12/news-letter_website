@@ -8,6 +8,7 @@
 .env
 .env.local
 .env.*.local
+.ini
 
 # IDE files
 .vscode/
@@ -35,3 +36,4 @@ yarn-error.log*
 *.swp
 *.swo
 *~
+
