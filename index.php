@@ -179,11 +179,6 @@
     </section>
 
 
-
-
-
-
-
     <!-- Subscribe Modal -->
     <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
