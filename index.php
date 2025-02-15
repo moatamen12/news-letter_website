@@ -33,8 +33,31 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- prev artical -->
-    <section class="container mrgn shadow-sm">
+    <section class="container mrgn">
         <div class="row justify-content-center text-center">
             <div class="col-md-8">
                 <h2 class="display-4"> See for yourself </h2>
@@ -43,74 +66,49 @@
         </div>
 
 
-
-
         <!-- Latest News -->
-         <h2 class="my-5">Latest News</h2>
-         <section class="row row-cols-1 row-cols-md-2 g-4">
-            <a href="" style="text-decoration: none;" class="my-3">   
-                <div class="col ">
-                    <div class="card shadow-sm ">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h5 class="card-title mb-0">Card title</h5>
-                                <small class="text-muted">2 hours ago</small>
-                            </div>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <img src="images/background.webp" class="card-img-bottom rounded" alt="..." style="height: 200px; ">
-                        </div>    
+        <h2 class="my-5 text-start">Today's top highlights</h2>
+        <div class="row gy-2">
+            <div class="col-md-6 ">
+                <div class="card main-card ">
+                    <img src="assets\images\background.webp" class="card-img" alt="...">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small>Last updated 3 mins ago</small></p>
                     </div>
                 </div>
-            </a>
+            </div>
 
-            <div class="col my-3">
-                <div class="card shadow-sm ">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h5 class="card-title mb-0">Card title</h5>
-                            <small class="text-muted">2 hours ago</small>
-                        </div>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <img src="images/background.webp" class="card-img-bottom rounded" alt="..." style="height: 200px; ">
-                    </div>    
+            <div class="col-md-6">
+
+                <div class="card secondary-card mb-5">
+                    <img src="assets/images/BACKGROUND.jpeg" class="card-img" alt="...">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">First Secondary Card Title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small>Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+
+
+                <div class="card secondary-card">
+                    <img src="assets/images/BACKGROUND.jpeg" class="card-img" alt="...">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">Second Secondary Card Title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small>Last updated 3 mins ago</small></p>
+                    </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Most popular topics -->
-        <h2 class="my-5">Most popular topics</h2>
-        <section class="row row-cols-1 row-cols-md-2 g-4">
-            <div class="col my-3">
-                <div class="card shadow-sm ">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h5 class="card-title mb-0">Card title</h5>
-                            <small class="text-muted">2 hours ago</small>
-                        </div>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <img src="images/background.webp" class="card-img-bottom rounded" alt="..." style="height: 200px; ">
-                    </div>    
-                </div>
-            </div>
-           
-            <div class="col my-3">
-                <div class="card shadow-sm ">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h5 class="card-title mb-0">Card title</h5>
-                            <small class="text-muted">2 hours ago</small>
-                        </div>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <img src="images/background.webp" class="card-img-bottom rounded" alt="..." style="height: 200px; ">
-                    </div>    
-                </div>
-            </div>
-       </section>
-
+        </div>
     </section>
 
+
+
+
 <!-- Comments Section -->
-    <section class="container mrgn">
+    <section class="container mrgn" >
         <div class="row justify-content-center text-center">
             <div class="col-md-8">
                 <h2 class="display-4"> The people who know US </h2>
@@ -120,8 +118,8 @@
         <div class="row justify-content-around my-3">
             <div class="card text-center mb-4 bg-transparent border-0" style="width: 18rem;">
                 <div class="card-body">
-                <p class="card-text">Yours is one of the few newsletters I’m excited to open! So many interesting tools to explore that I would never hear of otherwise</p>
-                <h5 class="card-title">jou hatabe</h5>
+                    <p class="card-text">Yours is one of the few newsletters I’m excited to open! So many interesting tools to explore that I would never hear of otherwise</p>
+                    <h5 class="card-title">jou hatabe</h5>
                 </div>
             </div>
 
@@ -129,15 +127,15 @@
 
             <div class="card text-center mb-4 bg-transparent border-0" style="width: 18rem;">
                 <div class="card-body">
-                <p class="card-text">The best newsletter of all, mandatory daily reading, great job!.</p>
-                <h5 class="card-title">mr beast</h5>
+                    <p class="card-text">The best newsletter of all, mandatory daily reading, great job!.</p>
+                    <h5 class="card-title">mr beast</h5>
                 </div>
             </div>
 
             <div class="card text-center mb-4 bg-transparent border-0" style="width: 18rem;">
                 <div class="card-body">
-                <p class="card-text">For me it is a great source of inspiration. I get ideas and feel very creative after browsing PH and also the newsletter is just fantastic. Great gift of the internet</p>
-                <h5 class="card-title">maotamen naief</h5>
+                    <p class="card-text">For me it is a great source of inspiration. I get ideas and feel very creative after browsing PH and also the newsletter is just fantastic. Great gift of the internet</p>
+                    <h5 class="card-title">maotamen naief</h5>
                 </div>
             </div>
 
@@ -147,8 +145,8 @@
     
 
 
-
-    <!-- Contact Section -->
+<!-- 
+    Contact Section
     <section class="container my-5 mb-5 ">
         <div class="row justify-content-center shadow-lg">
             <div class="col-md-8 text-center">
@@ -176,7 +174,7 @@
                 </form>
             </div>
         </div>
-    </section>
+    </section> -->
 
 
     <!-- Subscribe Modal -->

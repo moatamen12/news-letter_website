@@ -58,11 +58,23 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
 }
 
 
+/* prev artecales style */
+.main-card{
+    min-height: 400px; 
+    max-height: 400px;
+    /* border: none; */
+    border-radius: 10px;
+}
+.secondary-card{
+    min-height: 250px;
+    max-height: 250px;
+    overflow: hidden;
+     border: none;
+}
 
-
-
-
-
+.mrgn{
+    margin-top: 100px;
+}
 
 
 
