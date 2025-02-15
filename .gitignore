@@ -3,6 +3,7 @@
 /vendor
 /images
 /artucals
+
 # Environment files
 .env
 .env.local

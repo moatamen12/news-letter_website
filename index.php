@@ -1,63 +1,37 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tech News Letter</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-</head>
-  <body>
-    <!-- the navegation bar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Articles</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Contact</a>
-                    </li>
-                </ul>
-                <a class="btn btn-subscribe " type="submit">Subscribe</a>
-            </div>
-        </div>
-    </nav>
+<?php 
+    require_once 'utility/header.php';
+?>
    
     <!--introduction section   -->
-    <section class="container-fluid my-5 ">
-        <div class="row align-items-center justify-content-center">
-            <div class="col-md-6 text-center my-5">
-
+    <section class="intro-bg position-relative m-5 ">
+        <div class="row align-items-center justify-content-center text-center min-vh-75">
+            <!-- introduction text section  -->
+            <div class="col-md-6 position-relative">
                 <h1 class="display-4">Stay updated whenever you want!📫</h1>
-                <p class="lead my-3 ">Welcome to our vibrant news-letter where tech meets creativity! <br> Discover inspiring stories, fresh ideas, rising startups, cutting-edge tech  
-                    <br> and more </p>
+                <p class="lead my-3">
+                    Welcome to our vibrant newsletter where tech meets creativity!<br>
+                    Discover inspiring stories, fresh ideas, rising startups, cutting-edge tech<br>
+                    and more
+                </p>
 
-                <form class="row g-3 justify-content-center my-3 ">
+                <form class="row g-3 justify-content-center my-3">
                     <div class="col-md-6">
-                      <label for="inputEmail" class="visually-hidden">Email</label>
-                      <input type="password" class="form-control form-control" id="inputEmail" placeholder="Your Email!">
+                        <label for="inputEmail" class="visually-hidden">Email</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Your Email!">
                     </div>
+                    
                     <div class="col-auto">
-                      <button type="submit" class="btn btn-primary mb-3 btn-subscribe">Subscribe</button>
+                        <a class="btn btn-primary mb-3 btn-subscribe "  href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal">Subscribe</a>
                     </div>
-                  </form>
+                </form>
 
-            </div>        
+            </div>
         </div>
     </section>
  
-   <div class="seperatore my-5"></div> 
+
+
+
 
     <!-- prev artical -->
     <section class="container mrgn shadow-sm">
@@ -74,19 +48,20 @@
         <!-- Latest News -->
          <h2 class="my-5">Latest News</h2>
          <section class="row row-cols-1 row-cols-md-2 g-4">
-
-            <div class="col my-3">
-                <div class="card shadow-sm ">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h5 class="card-title mb-0">Card title</h5>
-                            <small class="text-muted">2 hours ago</small>
-                        </div>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <img src="images/background.webp" class="card-img-bottom rounded" alt="..." style="height: 200px; ">
-                    </div>    
+            <a href="" style="text-decoration: none;" class="my-3">   
+                <div class="col ">
+                    <div class="card shadow-sm ">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="card-title mb-0">Card title</h5>
+                                <small class="text-muted">2 hours ago</small>
+                            </div>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <img src="images/background.webp" class="card-img-bottom rounded" alt="..." style="height: 200px; ">
+                        </div>    
+                    </div>
                 </div>
-            </div>
+            </a>
 
             <div class="col my-3">
                 <div class="card shadow-sm ">
@@ -168,8 +143,12 @@
 
         </div>
     </section>
+  
     
-<!-- Contact Section -->
+
+
+
+    <!-- Contact Section -->
     <section class="container my-5 mb-5 ">
         <div class="row justify-content-center shadow-lg">
             <div class="col-md-8 text-center">
@@ -199,45 +178,77 @@
         </div>
     </section>
 
-<!--  footer-->
-    <footer class="bg-dark text-light py-4 ">
-        <div class="container">
-            <div class="row">
 
-                <div class="col-md-4 mb-3">
-                    <h5>About Us</h5>
-                    <p class="text-color">Your trusted source for the latest tech news, trends, and insights. Stay informed with our curated content.</p>
+
+
+
+
+
+    <!-- Subscribe Modal -->
+    <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0">
+                <div class="modal-header justify-content-center">
+                    <h5 class="modal-title " id="subscribeModalLabel">SUBSCRIBE</h5>
+                    <!-- <button type="button" class="btn-close position-absolute " data-bs-dismiss="modal" aria-label="Close"></button> -->
                 </div>
-                
 
-                <div class="col-md-4 mb-3">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-color text-decoration-none">Home</a></li>
-                        <li><a href="#" class="text-color text-decoration-none">Articles</a></li>
-                        <li><a href="#" class="text-color text-decoration-none">Contact</a></li>
-                        <li><a href="#" class="text-color text-decoration-none">Subscribe</a></li>
-                    </ul>
-                </div>
-                
+                <div class="modal-body">
+                    <!-- Place your subscription form here -->
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <label for="modalInputFname" class="form-label">First Name</label>
+                            <input type="password" class="form-control" id="modalInputFname" placeholder="Your First Name">
+                        </div>
 
-                <div class="col-md-4 mb-3">
-                    <h5>Contact Us</h5>
-                    <ul class="list-unstyled text-color">
-                        <li>📧 info@technewsletter.com</li>
-                        <li>📱 +1 234 567 890</li>
-                        <li>📍 Tech Street, Digital City</li>
-                    </ul>
+                        <div class="col-md-6">
+                            <label for="modalInputSname" class="form-label">Surname</label>
+                            <input type="password" class="form-control" id="modalInputSname" placeholder="Your SoreName">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="modalInputEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="modalInputEmail" placeholder="Your Email">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="modalInputPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="modalInputPassword" placeholder="creat a Password">
+                        </div>
+                                
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary btn-subscribe text-center">Subscribe</button>
+                        </div>
+
+                        <!-- SEperatore -->
+                        <div class="col-12">
+                        <div class="d-flex align-items-center my-3">
+                            <div class="flex-grow-1"><hr class="m-0"></div>
+                            <span class="px-2">OR</span>
+                            <div class="flex-grow-1"><hr class="m-0"></div>
+                        </div>
+                        </div>
+
+                        <!-- google subscribe -->
+                        <div class="col-6 mx-auto">
+                            <button type="submit" class="btn btn-google w-100  text-center border-secondary"> 
+                                <i class="fa-brands fa-google"></i> Subscribe with Google</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-        
+    </div>
 
-        <div class="text-center  mt-3 border-top border-secondary">
-            <p class="text-color mb-0">&copy; 2024 Tech Newsletter. All rights reserved.</p>
-        </div>
-    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  </body>
-</html>
+
+
+
+
+
+
+
+<?php 
+    require_once 'utility/footer.php';
+?>
+

@@ -2,16 +2,20 @@
     margin: 0;
     padding: 0;
 }
+
 body{
-    background-color: var(--background) ;
+    background-color: var(--primary-bg) ;
+    color: var(--primary-text);
 }
+
+
 /* header SECTION */
 .navbar-custom {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    background-color: var(--background) !important;
+    background-color: var(--primary-bg) !important;
     color: var(--primary-text) !important;
 }
 
@@ -26,12 +30,12 @@ body{
 .btn-subscribe {
     background-color: var(--btn-color) !important;
     border-color: var(--btn-color) !important;
-    color: #fff;
+    color: var(--accent-color);
 }
 .btn-subscribe:hover {
     background-color: var(--btn-hover) !important;
     border-color: var(--btn-hover) !important;
-    color: #fff;
+    color: var(--accent-color);
 }
 
 .navbar-custom .navbar-toggler {
@@ -42,64 +46,55 @@ body{
 background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E <path stroke='rgba(255, 255, 255, 1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important; /* white lines */
 }
 
-/* for the introduction section */
-/* .costom-bg{
-    background-color:var(--accent-color)
-} */
-.form-control {
+
+
+/* for the entroduction section */
+.form-control { /* to chang the border color */
     border-color: var(--btn-color) !important;
 }
-
-.form-control:focus {
+.form-control:focus { /* for the houver efect  */
     border-color: var(--btn-hover) !important;
     box-shadow: 0 0 0 0.2rem rgba(93, 167, 162, 0.25); /* Adjust shadow color if needed */
 }
 
 
-/* seperator */
-.seperatore {
-    border-top: 2px solid var(--primary-bg);
-    width: 80%;
-    margin: 1rem auto;
-    padding:0;
-}
 
-/* prev */
-.card {
-    overflow: hidden;  /* Ensures image stays within card boundaries */
-}
-
-.card-img-top {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    max-height: 200px;
-    transition: transform 0.3s ease;  /* Smooth transition for hover effects */
-}
 
 
 
 
 
 /* Subscribe */
-.text-colo{
-    color: var(--primary-text);
+.model{
+    position:fixed;
+    z-index: 10;
+
 }
-.mrgn{
-    margin-top: 200px;
-    margin-bottom: 200px;
-    overflow: auto; /* prevents margin collapse */
+
+#overlay{         /* to darcken the arya behiend the model  */
+    position: fixed;
+    opacity: 0;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background-color: rgb(0, 0, 0,0.5);
+    pointer-events: none;
 }
+
+
+
+
 
 
 /* PAGE COLOR THEME */
 :root {
-    --primary-bg: #240750;  
-    --background:#ffffff;
+    --primary-bg: #fefffe;
+    --secoundary-bg: rgba(254, 255, 254, 0.87);;
     --primary-text: #354154;
     --btn-color: #2bb2a9; 
     --btn-hover: #59aca6;
     --accent-color: #e2ebf4;    
     --secondary-color: #577B8D; 
-    --highlight-color: #344C64;  
+    --highlight-color: #34643c;
 }
