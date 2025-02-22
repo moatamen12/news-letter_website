@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="style.css">
     
 </head>
-  <body>
+  <body class="d-flex flex-column min-vh-100"> <!--to take 100% of the view port-->
     <!-- the navegation bar -->
-    <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary shadow-lg">
+    <nav class="navbar navbar-custom sticky-top navbar-expand-lg bg-body-tertiary shadow-sm">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.php">Tech Expo</a>
+            <a class="navbar-brand " href="index.php">Tech Expo</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -24,7 +24,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Articles</a>  <!-- add a link to the articals section in the index page -->
+                        <a class="nav-link" href="#">Articles</a>  <!--TODO: add a link to the articals section in the index page -->
                     </li>
 
                     <li class="nav-item">

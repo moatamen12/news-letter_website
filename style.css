@@ -16,11 +16,10 @@ body{
     width: 100%;
     z-index: 1000;
     background-color: var(--primary-bg) !important;
-    color: var(--primary-text) !important;
 }
 
-.navbar-custom .nav-link {
-    color: var(--primary-text) !important;
+.navbar-custom .nav-link:hover{
+    color: var(--btn-hover) !important;
 }
 
 .navbar-custom .navbar-brand {
@@ -59,30 +58,54 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
 
 
 /* prev artecales style */
-.main-card{
-    min-height: 400px; 
-    max-height: 400px;
-    /* border: none; */
-    border-radius: 10px;
+.card-img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
-.secondary-card{
-    min-height: 250px;
-    max-height: 250px;
-    overflow: hidden;
-     border: none;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .mrgn{
     margin-top: 100px;
+    margin-bottom:100px ;
 }
+
+
+
+
+/* for the accounte page */
+.cirular-img{
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+}
+
+
 
 
 
 
 /* PAGE COLOR THEME */
 :root {
-    --primary-bg: #fefffe;
-    --secoundary-bg: rgba(254, 255, 254, 0.87);;
+    --primary-bg: rgb(252,253,252);
+    --secoundary-bg: rgb(252,253,252);
     --primary-text: #354154;
     --btn-color: #2bb2a9; 
     --btn-hover: #59aca6;

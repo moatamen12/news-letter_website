@@ -31,31 +31,6 @@
  
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- prev artical -->
     <section class="container mrgn">
         <div class="row justify-content-center text-center">
