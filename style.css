@@ -15,7 +15,7 @@ body{
     width: 100%;
     z-index: 1000;
     background-color: var(--primary-bg) !important;
-    margin-bottom: 30px ;
+    margin-bottom: 50px ;
 }
 
 .navbar-custom .nav-link:hover{
@@ -67,7 +67,6 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
     box-shadow: 0 0 0 0.2rem rgba(93, 167, 162, 0.25); /* Adjust shadow color if needed */
 }
 
-
 .card-title a {
     text-decoration: none;
     /* position: relative; */
@@ -87,45 +86,33 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
 .card-title a:hover::after {
     width: 100%;
 }
-/* prev artecales style */
-/* .card-img{
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-} */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.mrgn{
-    margin-top: 100px;
-    margin-bottom:100px ;
+/* for the highlights */
+.fixed-size-img{
+    width:200px;
+    height:200px;
+    object-fit:cover;
 }
 
 
 
 
-/* for the accounte page */
-/* .cirular-img{
-    border-radius: 50%;
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -135,8 +122,8 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
 /* PAGE COLOR THEME */
 :root {
     --primary-bg: rgb(252,253,252);
-    --secoundary-bg: rgb(252,253,252);
-    --primary-text: #354154;
+    --secoundary-bg: #e8eefc;
+    --primary-text: #181b1f;
     --btn-color: #2bb2a9; 
     --btn-hover: #59aca6;
     --accent-color: #e2ebf4;    

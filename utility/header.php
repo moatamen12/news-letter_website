@@ -6,10 +6,9 @@
     <title>Tech News Letter</title>
     <script src="https://kit.fontawesome.com/fc7e8d802d.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    
+    <link rel="stylesheet" href="style.css">    
 </head>
-  <body class="d-flex flex-column min-vh-100 "> <!--to take 100% of the view port-->
+<body class="d-flex flex-column min-vh-100 "> <!--to take 100% of the view port-->
     <!-- the navegation bar -->
     <nav class="navbar navbar-custom sticky-top navbar-expand-lg bg-body-tertiary shadow-sm px-2">
         <div class="container-fluid">
@@ -30,8 +29,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="articlesDropdown">
                             <li><a class="dropdown-item" href="article1.php">Followed</a></li>
-                            <li><a class="dropdown-item" href="article2.php">All Articles</a></li>
-                            <!-- Add more dropdown items as needed -->
+                            <li><a class="dropdown-item" href="Artials.php">All Articles</a></li>
                         </ul>
                     </li>
 
@@ -42,9 +40,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="contact.php">Contact</a>
                     </li>
-
                 </ul>
+
                 <a class="btn btn-subscribe " href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal"> Subscribe</a>
+                <input class="form-control me-2 ms-2 w-auto" type="search" placeholder="Search" aria-label="Search">
+
             </div>
         </div>
     </nav>
