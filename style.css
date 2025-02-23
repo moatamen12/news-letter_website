@@ -11,15 +11,15 @@ body{
 
 /* header SECTION */
 .navbar-custom {
-    position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
     background-color: var(--primary-bg) !important;
+    margin-bottom: 30px ;
 }
 
 .navbar-custom .nav-link:hover{
-    color: var(--btn-hover) !important;
+    color: var(--btn-color) !important;
 }
 
 .navbar-custom .navbar-brand {
@@ -31,6 +31,7 @@ body{
     border-color: var(--btn-color) !important;
     color: var(--accent-color);
 }
+
 .btn-subscribe:hover {
     background-color: var(--btn-hover) !important;
     border-color: var(--btn-hover) !important;
@@ -44,10 +45,20 @@ body{
 .navbar-custom .navbar-toggler-icon {
 background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E <path stroke='rgba(255, 255, 255, 1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important; /* white lines */
 }
+        
+.navbar-nav .dropdown:hover .dropdown-menu { /* to make the dropsown by hover */
+    display: block;
+    /* margin-top: 100;  */
+
+}
+.navbar-nav .dropdown-menu .dropdown-item:hover{
+    color: var(--btn-color) !important;
+}
 
 
 
-/* for the entroduction section */
+
+/*** for the entroduction section ***/
 .form-control { /* to chang the border color */
     border-color: var(--btn-color) !important;
 }
@@ -57,12 +68,31 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
 }
 
 
+.card-title a {
+    text-decoration: none;
+    /* position: relative; */
+}
+
+.card-title a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--btn-color);
+    transition: width 0.3s ease;
+}
+
+.card-title a:hover::after {
+    width: 100%;
+}
 /* prev artecales style */
-.card-img{
+/* .card-img{
     object-fit: cover;
     width: 100%;
     height: 100%;
-}
+} */
 
 
 
@@ -90,12 +120,12 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
 
 
 /* for the accounte page */
-.cirular-img{
+/* .cirular-img{
     border-radius: 50%;
     width: 70px;
     height: 70px;
     object-fit: cover;
-}
+} */
 
 
 

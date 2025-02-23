@@ -3,35 +3,164 @@
 ?>
    
     <!--introduction section   -->
-    <section class="intro-bg position-relative m-5 ">
-        <div class="row align-items-center justify-content-center text-center min-vh-75">
-            <!-- introduction text section  -->
-            <div class="col-md-6 position-relative">
-                <h1 class="display-4">Stay updated whenever you want!📫</h1>
-                <p class="lead my-3">
-                    Welcome to our vibrant newsletter where tech meets creativity!<br>
-                    Discover inspiring stories, fresh ideas, rising startups, cutting-edge tech<br>
-                    and more
-                </p>
-
-                <form class="row g-3 justify-content-center my-3">
-                    <div class="col-md-6">
-                        <label for="inputEmail" class="visually-hidden">Email</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Your Email!">
-                    </div>
-                    
-                    <div class="col-auto">
-                        <a class="btn btn-primary mb-3 btn-subscribe "  href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal">Subscribe</a>
-                    </div>
-                </form>
-
+    <section class="intro-bg position-relative">
+        <div class="container p-0 ">
+            <div class="row align-items-center justify-content-center min-vh-75 text-center">
+                <!-- introduction text section  -->
+                <div class="col-md-6 position-relative ">
+                    <h1 class="display-5 fw-bold">Stay updated whenever, wherever you want! 📫</h1>
+                    <p class="lead my-3">Enjoy inspiring stories, ideas, and more.</p>
+                </div>        
             </div>
-        </div>
+
+            <div class="row my-5">
+                <!-- Card -->
+                <div class="col-md-6 justify-content-start border-0 ">   
+                    <div class="card bg-transparent border-0">
+                        <!-- Card img -->
+                        <div class="position-relative">
+                            <img class="card-img img-fluid border-rounded" src="assets/images/BACKGROUND.jpeg" alt="Card image">
+                        </div>
+                        <div class="card-body px-0 pt-3 align-items-start">
+                            <h4 class="card-title"><a href="#" class="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a></h4>
+                            <p class="card-text">He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay assistance joy. Unaffected at ye of compliment alteration to</p>
+                            <!-- Card info -->
+                            <ul class="nav d-flex align-items-center">
+                            <li class="nav-item  ">
+                                    <div class="nav-link">
+                                        <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span> <!--TODO: MAke IT-->
+                                    </div>
+                                </li>
+                                <li class="nav-item">Jan 22, 2021</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-md-6">
+                    <div class="list-group">
+                        <dov class="list-group-item p-0 border-0">
+                            <div class="card mb-4 border-0 p-0">
+                                <div class="card-body " style="height: 150px;"> <!-- set a desired height -->
+                                    <div class="d-flex align-items-start h-100">
+                                        <!-- Image Container -->
+                                        <div class="flex-shrink-0 h-100">
+                                            <img class="img-fluid rounded" src="assets/images/BACKGROUND.jpeg" alt="Card image" style="height: 100%; width: auto; object-fit: cover;">
+                                        </div>
+                                        <!-- Content Container -->
+                                        <div class="flex-grow-1 ms-3">
+                                            <h4 class="card-title">
+                                                <a href="#" class="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a>
+                                            </h4>
+                                            <!-- Card info -->
+                                            <ul class="nav d-flex align-items-center">
+                                                <li class="nav-item">
+                                                    <div class="nav-link">
+                                                        <span>by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
+                                                    </div>
+                                                </li>
+                                                <li class="nav-item ms-3">Jan 22, 2021</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </dov>
+
+
+                        <dov class="list-group-item p-0 border-0">
+                            <div class="card mb-4 border-0 p-0">
+                                <div class="card-body " style="height: 150px;"> <!-- set a desired height -->
+                                    <div class="d-flex align-items-start h-100">
+                                        <!-- Image Container -->
+                                        <div class="flex-shrink-0 h-100">
+                                            <img class="img-fluid rounded" src="assets/images/BACKGROUND.jpeg" alt="Card image" style="height: 100%; width: auto; object-fit: cover;">
+                                        </div>
+                                        <!-- Content Container -->
+                                        <div class="flex-grow-1 ms-3">
+                                            <h4 class="card-title">
+                                                <a href="#" class="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a>
+                                            </h4>
+                                            <!-- Card info -->
+                                            <ul class="nav d-flex align-items-center">
+                                                <li class="nav-item">
+                                                    <div class="nav-link">
+                                                        <span>by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
+                                                    </div>
+                                                </li>
+                                                <li class="nav-item ms-3">Jan 22, 2021</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </dov>
+
+
+                        <dov class="list-group-item p-0 border-0">
+                            <div class="card mb-4 border-0 p-0">
+                                <div class="card-body " style="height: 150px;"> <!-- set a desired height -->
+                                    <div class="d-flex align-items-start h-100">
+                                        <!-- Image Container -->
+                                        <div class="flex-shrink-0 h-100">
+                                            <img class="img-fluid rounded" src="assets/images/BACKGROUND.jpeg" alt="Card image" style="height: 100%; width: auto; object-fit: cover;">
+                                        </div>
+                                        <!-- Content Container -->
+                                        <div class="flex-grow-1 ms-3">
+                                            <h4 class="card-title">
+                                                <a href="#" class="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a>
+                                            </h4>
+                                            <!-- Card info -->
+                                            <ul class="nav d-flex align-items-center">
+                                                <li class="nav-item">
+                                                    <div class="nav-link">
+                                                        <span>by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
+                                                    </div>
+                                                </li>
+                                                <li class="nav-item ms-3">Jan 22, 2021</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </dov>
+
+
+
+
+                    </div>
+                </div>  
+            </div>
+        </div> 
     </section>
+
+
+
+
+
+
+
+
+                <!-- Supscribtion form -->
+                <!-- <div class="col-md-6">
+                    <form class="row g-3 justify-content-center my-3">
+                        <div class="col-md-6">
+                            <label for="inputEmail" class="visually-hidden">Email</label>
+                            <input type="email" class="form-control" id="inputEmail" placeholder="Your Email!">
+                        </div>
+                        
+                        <div class="col-auto">
+                            <a class="btn btn-primary mb-3 btn-subscribe "  href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal">Subscribe</a>
+                        </div>
+                    </form>
+                </div> -->
  
 
-
-    <!-- prev artical -->
+<!-- 
+    prev artical
     <section class="container mrgn">
         <div class="row justify-content-center text-center">
             <div class="col-md-8">
@@ -41,7 +170,7 @@
         </div>
 
 
-        <!-- Latest News -->
+        Latest News
         <h2 class="my-5 text-start">Today's top highlights</h2>
         <div class="row gy-2">
             <div class="col-md-6 ">
@@ -82,7 +211,7 @@
 
 
 
-<!-- Comments Section -->
+Comments Section
     <section class="container mrgn" >
         <div class="row justify-content-center text-center">
             <div class="col-md-8">
@@ -116,7 +245,7 @@
 
         </div>
     </section>
-  
+   -->
     
 
 
