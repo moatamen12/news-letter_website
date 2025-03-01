@@ -2,9 +2,6 @@
     require_once 'utility/header.php';
 ?>
 
-
-
-    <!-- Contact Section -->
     <section class="container py-5 my-5">
         <div class="row justify-content-center shadow-lg">
             <div class="col-md-8 text-center">
@@ -28,14 +25,16 @@
                         <textarea class="form-control" id="message" rows="5" placeholder="Your Message"></textarea>
                     </div>
 
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-subscribe w-100">Send Message</button>
+                    <div class="mb-3 d-flex">
+                        <button type="submit" class="btn w-100 btn-subscribe">Send Message</button>
+                        <button type="submit" class="btn w-100 mx-2 btn-danger">Cansel</button>
+                        <button type="submit" class="btn w-100 btn btn-warning">Rewrite</button>
                     </div>
                 </form>
             </div>
         </div>
     </section>
 
-    <?php 
-        require_once 'utility/footer.php';
-    ?>  
+<?php 
+    require_once 'utility/footer.php';
+?>  

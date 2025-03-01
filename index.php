@@ -1,10 +1,9 @@
 <?php 
     require_once 'utility/header.php';
-?>
-   
+?> 
     
     
-    <section class="intro-bg position-relative my-5">
+    <section class="position-relative mb-5">
         <div class="container p-0 ">
             <div class="row align-items-center justify-content-center min-vh-75 text-center">
                 <!-- introduction text section  -->
@@ -15,6 +14,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Today's top highlights   -->
     <section class="intro-bg position-relative my-5"> 
@@ -29,14 +29,16 @@
                     <div class="card bg-transparent border-0">
                         <!-- Card img -->
                         <div class="position-relative">
-                            <img class="card-img img-fluid border-rounded" src="assets/images/background.webp" alt="Card image">
+                            <img class="card-img img-fluid " src="assets/images/background.webp" alt="Card image">
                         </div>
                         <div class="card-body px-0 pt-3 align-items-start">
-                            <h4 class="card-title"><a href="#" class="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a></h4>
-                            <p class="card-text">He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay assistance joy. Unaffected at ye of compliment alteration to</p>
+                            <h4 class="card-title ">
+                                <a href="#" class=" btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a>
+                            </h4>
+                            <p class="card-text"> He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay assistance joy. Unaffected at ye of compliment alteration to</p>
                             <!-- Card info -->
                             <ul class="nav d-flex align-items-center">
-                            <li class="nav-item  ">
+                                <li class="nav-item  ">
                                     <div class="nav-link">
                                         <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span> <!--TODO: MAke IT-->
                                     </div>
@@ -191,7 +193,7 @@
                         <h3><a href="#" class="btn-link stretched-link text-dark fw-bold">5 reasons why you shouldn't startup</a></h3>
                         <p>Given and shown creating curiously to more in are man were smaller by we instead the these sighed Avoid in the sufficient me real man longer of his how her for countries to brains warned notch important Finds be to the of on the increased explain noise of power deep asking contribution this live of suppliers goals bit separated poured sort several the was </p>
                         <!-- Card info -->
-                        <ul class="nav nav-divider align-items-center d-flex jusify-content-between d-none d-sm-inline-block">
+                        <ul class="nav  align-items-center d-flex  d-none d-sm-inline-block">
                             <li class="nav-item">
                                 <div class="nav-link">
                                     <div class="d-flex align-items-center position-relative">
@@ -220,7 +222,7 @@
                         <h3><a href="#" class="btn-link stretched-link text-dark fw-bold">5 reasons why you shouldn't startup</a></h3>
                         <p>Given and shown creating curiously to more in are man were smaller by we instead the these sighed Avoid in the sufficient me real man longer of his how her for countries to brains warned notch important Finds be to the of on the increased explain noise of power deep asking contribution this live of suppliers goals bit separated poured sort several the was </p>
                         <!-- Card info -->
-                        <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+                        <ul class="nav  align-items-center d-none d-sm-inline-block">
                             <li class="nav-item">
                                 <div class="nav-link">
                                     <div class="d-flex align-items-center position-relative">
@@ -247,7 +249,7 @@
                             <h3><a href="#" class="btn-link stretched-link text-dark fw-bold">5 reasons why you shouldn't startup</a></h3>
                             <p>Given and shown creating curiously to more in are man were smaller by we instead the these sighed Avoid in the sufficient me real man longer of his how her for countries to brains warned notch important Finds be to the of on the increased explain noise of power deep asking contribution this live of suppliers goals bit separated poured sort several the was </p>
                             <!-- Card info -->
-                            <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+                            <ul class="nav  align-items-center d-none d-sm-inline-block">
                                 <li class="nav-item">
                                     <div class="nav-link">
                                         <div class="d-flex align-items-center position-relative">
@@ -270,10 +272,42 @@
         </div>
     </section>
 
-               
 
 
+    <!-- Contact Section -->
+    <section class="container py-5 my-5">
+        <div class="row justify-content-center shadow-lg">
+            <div class="col-md-8 text-center">
+                <h2 class="display-4">Get in Touch</h2>
+                <p class="lead mb-5">Have questions? any complains or any Suggestion! <br> We'd love to hear from you </p>
+            </div>
+            <div class="col-md-6">
+                <form>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="your@email.com">
+                    </div>
 
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="5" placeholder="Your Message"></textarea>
+                    </div>
+
+                    <div class="mb-3 d-flex">
+                        <button type="submit" class="btn w-100 btn-subscribe">Send Message</button>
+                        <button type="submit" class="btn w-100 mx-2 btn-danger">Cansel</button>
+                        <button type="submit" class="btn w-100 btn btn-warning">Rewrite</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+          
     <!-- subscrip -->
     <section class="container my-5 p-3 shadow-sm">
         <div class="card text-bg-dark">
@@ -301,147 +335,6 @@
 
 
 
-
-
-
-    <!-- Subscribe Modal  -->
-    <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0">
-                <div class="modal-header">
-                    <h3 class="modal-title p-4" id="subscribeModalLabel">SUBSCRIBE</h3>
-                </div>
-
-                <div class="modal-body">
-                    <form class="row g-3">
-                        <div class="col-md-6">
-                            <label for="modalInputFname" class="form-label">First Name</label>
-                            <input type="password" class="form-control" id="modalInputFname" placeholder="Your First Name">
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="modalInputSname" class="form-label">Surname</label>
-                            <input type="password" class="form-control" id="modalInputSname" placeholder="Your SoreName">
-                        </div>
-
-                        <div class="col-md-12">
-                            <label for="modalInputEmail" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="modalInputEmail" placeholder="Your Email">
-                        </div>
-
-                        <div class="col-md-12">
-                            <label for="modalInputPassword" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="modalInputPassword" placeholder="creat a Password">
-                        </div>
-
-                        <div class="col-md-12">
-                            <label for="modalInputPassword" class="form-label"> conferm Password</label>
-                            <input type="password" class="form-control" id="modalInputPassword" placeholder="creat a Password">
-                        </div>
-                                
-                        <div class="col-6 text-center">
-                            <button type="submit" class="btn btn-primary btn-subscribe text-center">Subscribe</button>
-                        </div>
-
-                        <div class="col-6 text-center">
-                            <p class="text-body-secondary">Have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#LoginModal" data-bs-dismiss="modal">Sign in</a></p>
-                        </div>
-
-                        <!-- SEperatore -->
-                        <div class="col-12">
-                            <div class="d-flex align-items-center my-3">
-                                <div class="flex-grow-1"><hr class="m-0"></div>
-                                <span class="px-2">OR</span>
-                                <div class="flex-grow-1"><hr class="m-0"></div>
-                            </div>
-                        </div>
-
-                        <!-- google subscribe -->
-                        <div class="col-6 mx-auto">
-                            <p class="text-body-secondary text-center ">Sign up with your social network for quick access</p>
-                            <button type="submit" class="btn btn-google w-100  text-center btn-primary border-primary"> 
-                                <i class="fa-brands fa-google"></i> Subscribe with Google</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- login Model -->
-    <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="subscribeModalLabel">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0">
-                <div class="modal-header ">
-                    <h3 class="modal-title p-4 " id="subscribeModalLabel">Log in to your account</h3>
-                </div>
-
-                <div class="modal-body">
-                    <form class="row g-3">
-                        <div class="col-md-6">
-                            <label for="modalInputFname" class="form-label">First Name</label>
-                            <input type="password" class="form-control" id="modalInputFname" placeholder="Your First Name">
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="modalInputSname" class="form-label">Surname</label>
-                            <input type="password" class="form-control" id="modalInputSname" placeholder="Your SoreName">
-                        </div>
-
-                        <div class="col-md-12">
-                            <label for="modalInputEmail" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="modalInputEmail" placeholder="Your Email">
-                        </div>
-
-                        <div class="col-md-12">
-                            <label for="modalInputPassword" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="modalInputPassword" placeholder="creat a Password">
-                        </div>
-
-                        <div class="col-md-12">
-                            <label for="modalInputPassword" class="form-label"> conferm Password</label>
-                            <input type="password" class="form-control" id="modalInputPassword" placeholder="creat a Password">
-                        </div>
-                                
-                        <div class="col-6 text-center">
-                            <button type="submit" class="btn btn-primary btn-subscribe text-center">Subscribe</button>
-                        </div>
-
-                        <div class="col-6 text-center">
-                            <p class="text-body-secondary">Don't have an account?<a href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal" data-bs-dismiss="modal">Sign up</a></p>
-                        </div>
-
-                        <!-- SEperatore -->
-                        <div class="col-12">
-                            <div class="d-flex align-items-center my-3">
-                                <div class="flex-grow-1"><hr class="m-0"></div>
-                                <span class="px-2">OR</span>
-                                <div class="flex-grow-1"><hr class="m-0"></div>
-                            </div>
-                        </div>
-
-                        <!-- google subscribe -->
-                        <div class="col-6 mx-auto">
-                            <p class="text-body-secondary text-center ">Log in with your social network for quick acces</p>
-                            <button type="submit" class="btn btn-google w-100  text-center btn-primary border-primary"> 
-                                <i class="fa-brands fa-google"></i> Subscribe with Google</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-
 <?php 
     require_once 'utility/footer.php';
 ?>
-

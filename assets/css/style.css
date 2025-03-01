@@ -67,24 +67,32 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
     box-shadow: 0 0 0 0.2rem rgba(93, 167, 162, 0.25); /* Adjust shadow color if needed */
 }
 
-.card-title a {
+
+/* for the under line of the title    TODO:fined out why it is not working */ 
+.card-body > h4.card-title > a,
+.list-group-item .card-body h4.card-title > a,
+h3 > a.btn-link {
     text-decoration: none;
-    /* position: relative; */
+    background-image: linear-gradient(to right, var(--under-line-color), var(--under-line-color));
+    background-size: 0 2px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s ease;
+    display: inline;
+    padding-bottom: 2px;
 }
 
-.card-title a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--btn-color);
-    transition: width 0.3s ease;
+.card-body > h4.card-title > a:hover,
+.list-group-item .card-body h4.card-title > a:hover,
+h3 > a.btn-link:hover {
+    background-size: 100% 2px;
 }
 
-.card-title a:hover::after {
-    width: 100%;
+
+
+/* for the login/signup */
+.modal-bg{
+    background-color: var(--secoundary-bg);
 }
 
 
@@ -96,32 +104,9 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* PAGE COLOR THEME */
 :root {
-    --primary-bg: rgb(252,253,252);
+    --primary-bg: #ffffff;
     --secoundary-bg: #e8eefc;
     --primary-text: #181b1f;
     --btn-color: #2bb2a9; 
@@ -129,4 +114,5 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
     --accent-color: #e2ebf4;    
     --secondary-color: #577B8D; 
     --highlight-color: #34643c;
+    --under-line-color: black;
 }
