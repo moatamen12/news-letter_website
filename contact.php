@@ -1,5 +1,5 @@
 <?php 
-    require_once 'utility/header.php';
+    require_once 'includes/header.php';
 ?>
 
     <section class="container py-5 my-5">
@@ -36,5 +36,5 @@
     </section>
 
 <?php 
-    require_once 'utility/footer.php';
+    require_once 'includes/footer.php';
 ?>  

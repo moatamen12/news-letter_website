@@ -1,16 +1,22 @@
 <?php 
-    require_once 'utility/header.php';
+    require_once 'includes/header.php';
 ?> 
     
-    
-    <section class="position-relative mb-5">
-        <div class="container p-0 ">
-            <div class="row align-items-center justify-content-center min-vh-75 text-center">
-                <!-- introduction text section  -->
-                <div class="col-md-6 position-relative ">
-                    <h1 class="display-3 fw-bold">Stay updated whenever, wherever you want! 📫</h1>
-                    <p class="lead my-3">Enjoy inspiring stories, ideas, and more.</p>
-                </div>        
+    <!-- hero sec -->
+    <section class="position-relative mb-5 py-2 bg-light rounded-bottom">
+        <div class="container p-0">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-6 position-relative text-center text-md-start">
+                    <h1 class="display-4 fw-bold">Stay updated whenever, wherever you want! <i class="fas fa-paper-plane text-primary"></i></h1>
+                    <p class="lead my-3">Enjoy inspiring stories, ideas, and more delivered right to your inbox.</p>
+                    <div class="mt-4">
+                        <a href="#" class="btn btn-subscribe btn-lg me-2" data-bs-toggle="modal" data-bs-target="#subscribeModal">Subscribe Now</a>
+                        <a href="articals.php" class="btn btn-outline btn-lg">Browse Articles</a>
+                    </div>
+                </div>
+                <div class="col-md-6 d-none d-md-block">
+                    <img src="assets/images/hero_bg.jpg" alt="Newsletter illustration" class="img-fluid rounded">
+                </div>
             </div>
         </div>
     </section>
@@ -300,41 +306,15 @@
 
                     <div class="mb-3 d-flex">
                         <button type="submit" class="btn w-100 btn-subscribe">Send Message</button>
-                        <button type="submit" class="btn w-100 mx-2 btn-danger">Cansel</button>
-                        <button type="submit" class="btn w-100 btn btn-warning">Rewrite</button>
+                        <!-- <button type="submit" class="btn w-100 mx-2 btn-danger">Cansel</button>
+                        <button type="submit" class="btn w-100 btn btn-warning">Rewrite</button> -->
                     </div>
                 </form>
             </div>
         </div>
     </section>
           
-    <!-- subscrip -->
-    <section class="container my-5 p-3 shadow-sm">
-        <div class="card text-bg-dark">
-            <img src="assets\images\subscipe_bg.jpg" class="card-img" alt="..." style="height: 350px;">
-            <div class="card-img-overlay d-flex flex-column justify-content-center text-center">
-                <h2 class="display-2 card-title fw-bold ">Never miss a story!</h2>
-                <p class="card-text">Get the freshest headlines and updates sent uninterrupted to your inbox.</p>
-
-                <form class="row g-3 justify-content-center my-3">
-                    <div class="col-md-6">
-                        <label for="inputEmail" class="visually-hidden">Email</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Your Email!">
-                    </div>
-                    
-                    <div class="col-auto">
-                        <a class="btn btn-primary mb-3 btn-subscribe "  href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal">Subscribe</a>
-                    </div>
-                </form>
-
-                <p class="card-text"><small>By subscribing you agree to our <a href="" style="text-decoration: none;">Privacy Policy</a></small></p>
-            </div>
-        </div>
-    </section>
-
-
-
 
 <?php 
-    require_once 'utility/footer.php';
+    require_once 'includes/footer.php';
 ?>

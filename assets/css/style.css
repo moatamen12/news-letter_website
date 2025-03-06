@@ -59,6 +59,17 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
 
 
 /*** for the entroduction section ***/
+
+.btn-outline{
+    border-color: var(--btn-hover) !important;
+    color: var(--btn-color) !important;
+}
+.btn-outline:hover{
+    background-color: var(--btn-hover) !important;
+    color: var(--accent-color) !important;
+}
+
+
 .form-control { /* to chang the border color */
     border-color: var(--btn-color) !important;
 }
@@ -88,6 +99,14 @@ h3 > a.btn-link:hover {
     background-size: 100% 2px;
 }
 
+
+/* for the articals page */
+
+.article-card-img {
+    max-height: auto;
+    width: 100%;
+    object-fit: cover;
+}
 
 
 /* for the login/signup */
