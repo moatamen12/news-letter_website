@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tech News Letter</title>
+    <title><?php echo isset($page_title)? $page_title . ' -Tech Expo': 'Tech Expo';?></title>
     <script src="https://kit.fontawesome.com/fc7e8d802d.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">     
@@ -43,9 +43,32 @@
                 </ul>
 
                 <a class="btn btn-subscribe " href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal"> Subscribe</a>
-                <input class="form-control me-2 ms-2 w-auto" type="search" placeholder="Search" aria-label="Search">
-
+                <button class="btn ms-2" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
+                    <i class="fas fa-search"></i>
+                </button>
             </div>
         </div>
     </nav>
 
+
+
+    <!-- <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="searchModalLabel">Search</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="search.php" method="GET">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="query" placeholder="Search for articles..." required>
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> -->

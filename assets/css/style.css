@@ -135,3 +135,6 @@ h3 > a.btn-link:hover {
     --highlight-color: #34643c;
     --under-line-color: black;
 }
+
+/* Import contact page styles */
+@import url('contact.css');

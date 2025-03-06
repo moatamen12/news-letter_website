@@ -1,8 +1,9 @@
 # Dependencies
 /node_modules
 /vendor
-/assets
-/artucals
+/assets/articals
+/assets/images
+/config
 
 # Environment files
 .env

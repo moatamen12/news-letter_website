@@ -1,4 +1,5 @@
 <?php 
+    // $page_title = 'Home';
     require_once 'includes/header.php';
 ?> 
     
@@ -304,10 +305,13 @@
                         <textarea class="form-control" id="message" rows="5" placeholder="Your Message"></textarea>
                     </div>
 
-                    <div class="mb-3 d-flex">
-                        <button type="submit" class="btn w-100 btn-subscribe">Send Message</button>
-                        <!-- <button type="submit" class="btn w-100 mx-2 btn-danger">Cansel</button>
-                        <button type="submit" class="btn w-100 btn btn-warning">Rewrite</button> -->
+                    <div class="col-12 d-flex gap-2 mb-3">
+                        <button type="submit" class="btn btn-subscribe">
+                            <i class="fas fa-paper-plane me-2"></i>Send Message
+                        </button>
+                        <button type="reset" class="btn btn-outline">
+                            <i class="fas fa-redo me-2"></i>Reset
+                        </button>
                     </div>
                 </form>
             </div>

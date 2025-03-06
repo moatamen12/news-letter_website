@@ -1,4 +1,5 @@
 <?php 
+    $page_title = 'All Articals';
     require_once 'includes/header.php';
 ?>   
 
