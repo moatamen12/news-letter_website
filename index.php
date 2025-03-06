@@ -4,10 +4,10 @@
 ?> 
     
     <!-- hero sec -->
-    <section class="position-relative mb-5 py-2 bg-light rounded-bottom">
+    <section class="position-relative mb-5 py-2 bg-light rounded-bottom" style="background: url('assets/images/hero_bg.jpg') center/cover no-repeat; min-height: 400px;">
         <div class="container p-0">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-md-6 position-relative text-center text-md-start">
+            <div class="row align-items-center justify-content-start text-white">
+                <div class="col-md-6 position-relative text-center text-md-start ">
                     <h1 class="display-4 fw-bold">Stay updated whenever, wherever you want! <i class="fas fa-paper-plane text-primary"></i></h1>
                     <p class="lead my-3">Enjoy inspiring stories, ideas, and more delivered right to your inbox.</p>
                     <div class="mt-4">
@@ -15,9 +15,9 @@
                         <a href="articals.php" class="btn btn-outline btn-lg">Browse Articles</a>
                     </div>
                 </div>
-                <div class="col-md-6 d-none d-md-block">
+                <!-- <div class="col-md-6 d-none d-md-block">
                     <img src="assets/images/hero_bg.jpg" alt="Newsletter illustration" class="img-fluid rounded">
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

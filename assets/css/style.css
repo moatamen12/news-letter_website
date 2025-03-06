@@ -55,7 +55,11 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
     color: var(--btn-color) !important;
 }
 
-
+/* hero section-aboutUs */
+.hero-bg{
+    background: url('/newsLetter/assets/images/hero_bg1.jpg') center/cover no-repeat;
+     min-height: 400px;
+}
 
 
 /*** for the entroduction section ***/
