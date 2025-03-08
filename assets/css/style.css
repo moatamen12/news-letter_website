@@ -55,11 +55,7 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
     color: var(--btn-color) !important;
 }
 
-/* hero section-aboutUs */
-.hero-bg{
-    background: url('/newsLetter/assets/images/hero_bg1.jpg') center/cover no-repeat;
-     min-height: 400px;
-}
+
 
 
 /*** for the entroduction section ***/
@@ -116,6 +112,12 @@ h3 > a.btn-link:hover {
 /* for the login/signup */
 .modal-bg{
     background-color: var(--secoundary-bg);
+}
+button.btn.btn-bg{
+    background-color: var(--primary-bg) !important;    /* Use teal background */
+    border-color: var(--btn-color) !important;
+    border-left: none !important;
+    color: var(--primary-text) !important;
 }
 
 

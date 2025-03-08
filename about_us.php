@@ -4,7 +4,7 @@
 ?>
 
 <!-- Hero Section -->
-<section class="mx-5 py-5 text-center rounded" style="background: url('assets/images/hero_bg1.jpg') center/cover no-repeat; min-height: 400px;">
+<section class="mx-5 py-5 text-center rounded text-white d-flex align-items-center" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('assets/images/about_us_bg.jpg') center/cover no-repeat; min-height: 400px; ">
     <div class="container-fluid">
         <h1 class="display-4 ">All About Our Newsletter</h1>
         <p class="lead ">Discover who we are and what we do</p>

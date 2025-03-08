@@ -19,7 +19,7 @@
 
     <div class="row g-4">
         <!-- main card LARGE -->
-        <div class="col-md-9">
+        <div class="col-md-9 order-md-1 order-1">
             <div class="card bg-transparent mb-4 border-0">
                 <div class="row g-3">
                     <div class="col-md-12">
@@ -49,7 +49,7 @@
         </div>
         
         <!-- side bare TODO:make it beter -->
-        <div class="col-md-3">
+        <div class="col-md-3 order-md-2 order-3 ">
             <div class="card-title">
                 <h4 class = "fw-bold">Trending topics</h4>
             </div>
@@ -81,7 +81,7 @@
         </div>
 
         <!-- Main content area - Article cards -->
-        <div class="col-md-12">
+        <div class="col-md-12  order-2">
             <!-- First article card -->
             <div class="card bg-transparent mb-4 border-0">
                 <div class="row g-3">
@@ -277,9 +277,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        
+        </div>      
     </div>
 
     <!-- Pagination  -->

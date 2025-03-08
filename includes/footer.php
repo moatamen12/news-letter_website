@@ -4,33 +4,33 @@
             <div class="modal-content border-0  modal-bg">
                 <h3 class="modal-title p-4" id="subscribeModalLabel">SUBSCRIBE</h3>
                 <div class="modal-body">
-                    <form class="row g-3">
+                    <form action="../Subscribe.php" method="POST" class="row g-3">
                         <!-- name -->
                         <div class="col-md-6">
                             <label for="modalInputFname" class="form-label">First Name</label>
-                            <input type="text" class="form-control " id="modalInputFname" placeholder="Your First Name" aria-required="true">
+                            <input name="FirstName" type="text" class="form-control " id="modalInputFname" placeholder="Your First Name" aria-required="true">
                         </div>
 
                         <!-- surnsme -->
                         <div class="col-md-6">
                             <label for="modalInputSname" class="form-label">Surname</label>
-                            <input type="text" class="form-control" id="modalInputSname" placeholder="Your Surname"  aria-required="true">
+                            <input name="lastname" type="text" class="form-control" id="modalInputSname" placeholder="Your Surname"  aria-required="true">
                         </div>
 
                         <!-- email -->
                         <div class="col-md-12">
                             <label for="modalInputEmail" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="modalInputEmail" placeholder="Your Email" aria-required="true">
+                            <input type="email" class="form-control" id="modalInputEmail" placeholder="Your Email" aria-required="true" name="email">
                         </div>
 
                         <!-- password -->
                         <div class="col-md-12">
                             <label for="modalInputPassword" class="form-label">Password</label>
                             <div class="input-group">
-                                <input type="password" class="form-control" id="modalInputPassword" placeholder="create a Password" aria-required="true">
+                                <input type="password" class="form-control" id="modalInputPassword" placeholder="create a Password" aria-required="true" name="password">
                                 <!-- visability togle -->
-                                <button class="btn btn-outline-secondary" type="button">
-                                    <i class="fas fa-eye"></i>
+                                <button class="btn btn-bg" type="button">
+                                    <i class="fas fa-eye" id="eye"></i>
                                 </button>
                             </div>
                         </div>
@@ -39,10 +39,10 @@
                         <div class="col-md-12">
                             <label for="modalInputPassword" class="form-label"> confirm Password</label>
                             <div class="input-group">
-                                <input type="password" class="form-control" id="modalInputPassword" placeholder="Confirm it  Password" aria-required="true">
+                                <input type="password" class="form-control" id="confPassword" placeholder="Confirm it  Password" aria-required="true" name="confPassword">
                                 <!-- visability togle -->
-                                <button class="btn btn-outline-secondary" type="button">
-                                    <i class="fas fa-eye"></i>
+                                <button class="btn btn-bg" type="button">
+                                    <i class="fas fa-eye" id="eye"></i>
                                 </button>
                             </div>
                         </div>
@@ -79,11 +79,11 @@
             <div class="modal-content border-0 modal-bg">
                 <h3 class="modal-title p-4 " id="subscribeModalLabel">Log in to your account</h3>
                 <div class="modal-body">
-                    <form class="row g-3">
+                    <form action="POST" method="login.php" class="row g-3">
                         <!-- email -->
                         <div class="col-md-12">
                             <label for="modalInputEmail" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="modalInputEmail" placeholder="Your Email" aria-required="true">
+                            <input type="email" class="form-control" id="modalInputEmail" placeholder="Your Email" aria-required="true" name="LoginEmail">
                         </div>
 
 
@@ -91,10 +91,10 @@
                         <div class="col-md-12">
                             <label for="modalInputPassword" class="form-label">Password</label>
                             <div class="input-group">
-                                <input type="password" class="form-control" id="modalInputPassword" placeholder="create a Password" aria-required="true">
+                                <input type="password" class="form-control" id="modalInputPassword" placeholder="create a Password" aria-required="true" name= "LoginPassword">
                                 <!-- visability togle -->
-                                <button class="btn btn-outline-secondary" type="button">
-                                    <i class="fas fa-eye"></i>
+                                <button class="btn btn-bg" type="button">
+                                    <i class="fas fa-eye" id="eye"></i>
                                 </button>
                             </div>    
                         </div>
@@ -192,5 +192,37 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  </body>
+    <!-- password visability togle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const passwordField = document.getElementById('modalInputPassword');
+            const confirmField = document.getElementById('confPassword');
+            
+            const eyeIcons = document.querySelectorAll('.fa-eye, .fa-eye-slash');
+            
+            // Add click event to all eye icons
+            eyeIcons.forEach(icon => {
+                icon.addEventListener('click', function() {
+                    // Finding the input field next to this icon
+                    const inputField = this.closest('.input-group').querySelector('input');
+                    
+                    if (inputField.type === 'password') {
+                        inputField.type = 'text';
+
+                        this.classList.remove('fa-eye');
+                        this.classList.add('fa-eye-slash');
+                    } else {
+                        inputField.type = 'password';
+
+                        this.classList.remove('fa-eye-slash');
+                        this.classList.add('fa-eye');
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    </body>
 </html>
