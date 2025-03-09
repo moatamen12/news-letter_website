@@ -1,131 +1,3 @@
-    <!-- Subscribe Modal  -->
-    <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0  modal-bg">
-                <h3 class="modal-title p-4" id="subscribeModalLabel">SUBSCRIBE</h3>
-                <div class="modal-body">
-                    <form action="../Subscribe.php" method="POST" class="row g-3">
-                        <!-- name -->
-                        <div class="col-md-6">
-                            <label for="modalInputFname" class="form-label">First Name</label>
-                            <input name="FirstName" type="text" class="form-control " id="modalInputFname" placeholder="Your First Name" aria-required="true">
-                        </div>
-
-                        <!-- surnsme -->
-                        <div class="col-md-6">
-                            <label for="modalInputSname" class="form-label">Surname</label>
-                            <input name="lastname" type="text" class="form-control" id="modalInputSname" placeholder="Your Surname"  aria-required="true">
-                        </div>
-
-                        <!-- email -->
-                        <div class="col-md-12">
-                            <label for="modalInputEmail" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="modalInputEmail" placeholder="Your Email" aria-required="true" name="email">
-                        </div>
-
-                        <!-- password -->
-                        <div class="col-md-12">
-                            <label for="modalInputPassword" class="form-label">Password</label>
-                            <div class="input-group">
-                                <input type="password" class="form-control" id="modalInputPassword" placeholder="create a Password" aria-required="true" name="password">
-                                <!-- visability togle -->
-                                <button class="btn btn-bg" type="button">
-                                    <i class="fas fa-eye" id="eye"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- conferm password -->
-                        <div class="col-md-12">
-                            <label for="modalInputPassword" class="form-label"> confirm Password</label>
-                            <div class="input-group">
-                                <input type="password" class="form-control" id="confPassword" placeholder="Confirm it  Password" aria-required="true" name="confPassword">
-                                <!-- visability togle -->
-                                <button class="btn btn-bg" type="button">
-                                    <i class="fas fa-eye" id="eye"></i>
-                                </button>
-                            </div>
-                        </div>
-                                
-                        <div class="col-12 text-center d-flex justify-content-between align-items-center">
-                            <button type="submit" class="btn btn-primary btn-subscribe text-center">Subscribe</button>
-                            <p class="text-body-secondary">Have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#LoginModal" data-bs-dismiss="modal">Sign in</a></p>
-                        </div>
-
-                        <!-- Separator -->
-                        <div class="col-12">
-                            <div class="d-flex align-items-center">
-                                <div class="flex-grow-1"><hr class="m-0"></div>
-                                <span class="px-2">OR</span>
-                                <div class="flex-grow-1"><hr class="m-0"></div>
-                            </div>
-                        </div>
-
-                        <!-- google subscribe -->
-                        <div class="col-12 d-flex justify-content-between">
-                            <button type="submit" class="btn text-center btn-primary border-primary "> 
-                            <i class="fa-brands fa-google"></i> Subscribe with Google</button>
-                            <p class="text-body-secondary"><small> Sign up with google for quick accesss </small></p>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- login Model -->
-    <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="subscribeModalLabel">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 modal-bg">
-                <h3 class="modal-title p-4 " id="subscribeModalLabel">Log in to your account</h3>
-                <div class="modal-body">
-                    <form action="POST" method="login.php" class="row g-3">
-                        <!-- email -->
-                        <div class="col-md-12">
-                            <label for="modalInputEmail" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="modalInputEmail" placeholder="Your Email" aria-required="true" name="LoginEmail">
-                        </div>
-
-
-                        <!-- password -->
-                        <div class="col-md-12">
-                            <label for="modalInputPassword" class="form-label">Password</label>
-                            <div class="input-group">
-                                <input type="password" class="form-control" id="modalInputPassword" placeholder="create a Password" aria-required="true" name= "LoginPassword">
-                                <!-- visability togle -->
-                                <button class="btn btn-bg" type="button">
-                                    <i class="fas fa-eye" id="eye"></i>
-                                </button>
-                            </div>    
-                        </div>
-                                
-                        <div class="col-12 text-center d-flex justify-content-between align-items-center">
-                            <button type="submit" class="btn btn-primary btn-subscribe text-center">Subscribe</button>
-                            <p class="text-body-secondary">Don't have an account?<a href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal" data-bs-dismiss="modal">Sign up</a></p>
-
-                        </div>
-
-                        <!-- Separator -->
-                        <div class="col-12">
-                            <div class="d-flex align-items-center ">
-                                <div class="flex-grow-1"><hr class="m-0"></div>
-                                <span class="px-2">OR</span>
-                                <div class="flex-grow-1"><hr class="m-0"></div>
-                            </div>
-                        </div>
-
-                        <!-- google subscribe -->
-                        <div class="col-12 d-flex justify-content-between">
-                            <button type="submit" class="btn  text-center btn-primary border-primary"> 
-                            <i class="fa-brands fa-google"></i> Subscribe with Google</button>
-                            <p class="text-body-secondary text-center "> <small>Login with google for quick access</small></p>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <!--  footer-->
     <footer class="bg-dark bg-opacity-90 text-light py-2 mt-auto mt-5 border">
@@ -190,39 +62,16 @@
             <p class="text-color mb-0">&copy; 2024 Tech Newsletter. All rights reserved.</p>
         </div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <!-- password visability togle -->
+    <!-- Password visibility toggle and validation  -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-
-            const passwordField = document.getElementById('modalInputPassword');
-            const confirmField = document.getElementById('confPassword');
-            
-            const eyeIcons = document.querySelectorAll('.fa-eye, .fa-eye-slash');
-            
-            // Add click event to all eye icons
-            eyeIcons.forEach(icon => {
-                icon.addEventListener('click', function() {
-                    // Finding the input field next to this icon
-                    const inputField = this.closest('.input-group').querySelector('input');
-                    
-                    if (inputField.type === 'password') {
-                        inputField.type = 'text';
-
-                        this.classList.remove('fa-eye');
-                        this.classList.add('fa-eye-slash');
-                    } else {
-                        inputField.type = 'password';
-
-                        this.classList.remove('fa-eye-slash');
-                        this.classList.add('fa-eye');
-                    }
-                });
-            });
-        });
+        //global object to store server-side data
+        window.serverData = {
+            errors: <?= json_encode($registerErrors) ?>,
+            formData: <?= json_encode($registerData) ?>
+        };
     </script>
-
-
-    </body>
+    <!-- Password visibility toggle and validation  -->
+    <script src="assets/js/validation_forms.js"></script>
+    </body>    
 </html>

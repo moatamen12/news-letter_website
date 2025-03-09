@@ -1,3 +1,4 @@
+/* @import url('contact.css'); Import contact page styles */
 *{
     margin: 0;
     padding: 0;
@@ -142,5 +143,3 @@ button.btn.btn-bg{
     --under-line-color: black;
 }
 
-/* Import contact page styles */
-@import url('contact.css');

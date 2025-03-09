@@ -75,4 +75,3 @@ CREATE TABLE role_permissions (
     FOREIGN KEY (role_id) REFERENCES roles(role_id),
     FOREIGN KEY (permission_id) REFERENCES permissions(permission_id)
 );
-
