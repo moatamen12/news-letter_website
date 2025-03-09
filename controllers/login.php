@@ -26,7 +26,7 @@
         if (empty($errors)) {
             try {
                 // Check if user exists with this email
-                $stmt = $connection->prepare("SELECT * FROM users WHERE email = :email");
+                $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email");
                 $stmt->execute(['email' => $email]);
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 
@@ -37,7 +37,7 @@
                     // Verify password
                     if (password_verify($password, $user['password_hash'])) {
                         //udatig last login timesrstamp
-                        $updateStmt = $connection->prepare("UPDATE users SET last_login = NOW() WHERE user_id = :user_id");
+                        $updateStmt = $conn->prepare("UPDATE users SET last_login = NOW() WHERE user_id = :user_id");
                         $updateStmt->execute(['user_id' => $user['user_id']]);
                         
                         // Login successful

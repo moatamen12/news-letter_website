@@ -25,7 +25,7 @@
             $errors[] = "Invalid email format";
         }else{
             try{
-                $stmt = $connection->prepare("SELECT COUNT(*) FROM users WHERE email = :email");
+                $stmt = $conn->prepare("SELECT COUNT(*) FROM users WHERE email = :email");
                 $stmt->execute(['email' => $email]);
                 $count = $stmt->fetchColumn();
                 if ($count > 0){
@@ -45,7 +45,7 @@
         else{
             // Check if username already exists in database
             try {
-                $stmt = $connection->prepare("SELECT COUNT(*) FROM users WHERE username = :username");
+                $stmt = $conn->prepare("SELECT COUNT(*) FROM users WHERE username = :username");
                 $stmt->execute(['username' => $username]);
                 $count = $stmt->fetchColumn();
                 
@@ -69,13 +69,13 @@
         if (empty($errors)) {
             try {
                 // Start a transaction to ensure both user and profile are created
-                $connection->beginTransaction();
+                $conn->beginTransaction();
                 
                 // Hash the password 
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                 
                 // Prepare statement for user insertion
-                $stmt = $connection->prepare("
+                $stmt = $conn->prepare("
                     INSERT INTO users (name, email, username, password_hash, role_id, created_at)
                     VALUES (:name, :email, :username, :password_hash, 1, NOW())
                 ");
@@ -89,17 +89,17 @@
                 ]);
                 
                 // Get the newly created user ID
-                $user_id = $connection->lastInsertId();
+                $user_id = $conn->lastInsertId();
                 
                 // Create default profile for the new user
-                $stmt = $connection->prepare("
+                $stmt = $conn->prepare("
                     INSERT INTO user_profiles (user_id)
                     VALUES (:user_id)
                 ");
                 $stmt->execute(['user_id' => $user_id]);
                 
                 // Commit the transaction
-                $connection->commit();
+                $conn->commit();
                 
                 // Set up session (automatic login)
                 $_SESSION['user_id'] = $user_id;
@@ -114,7 +114,7 @@
                 
             } catch (PDOException $e) {
                 // Rollback transaction in case of error
-                $connection->rollBack();
+                $conn->rollBack();
                 
                 // Check for duplicate email
                 if ($e->getCode() == 23000) { // MySQL integrity constraint violation code
