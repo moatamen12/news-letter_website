@@ -1,5 +1,5 @@
 <?php 
-    $page_title = 'All Articals';
+    $page_title = 'All Articles';
     require_once 'includes/header.php';
 ?>   
 
@@ -10,7 +10,7 @@
                 <!-- introduction text section  -->
                 <div class="mb-4">
                     <h1 class="fw-bold">Today's top highlights</h1>
-                    <footer class="text-body-secondary">Latest breaking news, in tech, sciences and gameing</footer>
+                    <footer class="text-body-secondary">Latest breaking news, in tech, sciences and gaming</footer>
                 </div>        
             </div>
         </div>
@@ -75,6 +75,20 @@
 
                     <li class="list-group-item my-2"> 
                         <a class="btn">AI/LLM    </a>   
+                    </li>
+                </ul>
+            </div>
+            <div class="card border mb-4">
+                <h5 class="card-header">More Topics</h5>
+                <ul class="list-group list-group-flush text-center">
+                    <li class="list-group-item my-2">
+                        <a class="btn">AI Ethics</a>
+                    </li>
+                    <li class="list-group-item my-2">
+                        <a class="btn">Web3</a>
+                    </li>
+                    <li class="list-group-item my-2">
+                        <a class="btn">Quantum Computing</a>
                     </li>
                 </ul>
             </div>
@@ -301,12 +315,6 @@
         </nav>
     </section>
 </div>
-
-
-
-
-
-
 
 <?php 
     require_once 'includes/footer.php';

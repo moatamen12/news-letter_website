@@ -68,10 +68,13 @@
         // If validation passes, insert into database
         if (empty($errors)) {
             try {
+                // Start a transaction to ensure both user and profile are created
+                $connection->beginTransaction();
+                
                 // Hash the password 
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                 
-                // Prepare statement
+                // Prepare statement for user insertion
                 $stmt = $connection->prepare("
                     INSERT INTO users (name, email, username, password_hash, role_id, created_at)
                     VALUES (:name, :email, :username, :password_hash, 1, NOW())
@@ -85,15 +88,34 @@
                     'password_hash' => $hashedPassword
                 ]);
                 
-                // Start session for messages
-                session_start();
-                $_SESSION['success_message'] = "Registration successful! You can now log in.";
+                // Get the newly created user ID
+                $user_id = $connection->lastInsertId();
                 
-                // Redirect to login
-                header('Location: ../index.php');
+                // Create default profile for the new user
+                $stmt = $connection->prepare("
+                    INSERT INTO user_profiles (user_id)
+                    VALUES (:user_id)
+                ");
+                $stmt->execute(['user_id' => $user_id]);
+                
+                // Commit the transaction
+                $connection->commit();
+                
+                // Set up session (automatic login)
+                $_SESSION['user_id'] = $user_id;
+                $_SESSION['username'] = $username;
+                $_SESSION['name'] = $Fname;
+                $_SESSION['role_id'] = 1; // Default role is reader (1)
+                $_SESSION['success_message'] = "Registration successful! Your profile has been created.";
+                
+                // Redirect to profile page
+                header('Location: ../profile.php');
                 exit;
                 
             } catch (PDOException $e) {
+                // Rollback transaction in case of error
+                $connection->rollBack();
+                
                 // Check for duplicate email
                 if ($e->getCode() == 23000) { // MySQL integrity constraint violation code
                     $errors[] = "Email is already registered";

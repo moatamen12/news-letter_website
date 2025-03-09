@@ -1,28 +1,3 @@
-<?php
-
-    if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-    }
-
-    // Prepareing variables for JavaScript
-    $registerErrors = [];
-    $registerData = [];
-
-    if (isset($_SESSION['register_errors'])) {
-    $registerErrors = $_SESSION['register_errors'];
-    unset($_SESSION['register_errors']);
-    }
-
-    if (isset($_SESSION['register_data'])) {
-    $registerData = $_SESSION['register_data'];
-    unset($_SESSION['register_data']);
-    }
-
-    // Convert PHP arrays to JSON for JavaScript
-    $registerErrorsJson = json_encode($registerErrors);
-    $registerDataJson = json_encode($registerData);
-?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -77,8 +52,10 @@
             </div>
         </div>
     </nav>
-    <!-- Subscribe Modal  -->
-    <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel">
+
+
+        <!-- Subscribe Modal  -->
+        <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0  modal-bg">
                 <h3 class="modal-title p-4" id="subscribeModalLabel">SUBSCRIBE</h3>
@@ -220,27 +197,4 @@
             </div>
         </div>
     </div>
-
-
-
-    <!-- <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="searchModalLabel">Search</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="search.php" method="GET">
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="query" placeholder="Search for articles..." required>
-                            <button class="btn btn-primary" type="submit">
-                                <i class="fas fa-search"></i> Search
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
