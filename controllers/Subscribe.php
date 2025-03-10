@@ -79,7 +79,8 @@
                     INSERT INTO users (name, email, username, password_hash, role_id, created_at)
                     VALUES (:name, :email, :username, :password_hash, 1, NOW())
                 ");
-                
+
+
                 // Execute with parameters
                 $stmt->execute([
                     'name' => $Fname,
@@ -107,7 +108,10 @@
                 $_SESSION['name'] = $Fname;
                 $_SESSION['role_id'] = 1; // Default role is reader (1)
                 $_SESSION['success_message'] = "Registration successful! Your profile has been created.";
-                
+                // Set the default profile photo explicitly
+                $_SESSION['profile_photo'] = 'assets/images/userImage.jpg';
+                $_SESSION['success_message'] = "Registration successful! Your profile has been created.";
+
                 // Redirect to profile page
                 header('Location: ../index.php');
                 exit;

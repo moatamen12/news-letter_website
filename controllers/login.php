@@ -25,17 +25,22 @@
         if (empty($errors)) {
             try {
                 // Check if user exists with this email
-                $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email AND username =:username");
+                $stmt = $conn->prepare("
+                        SELECT u.*, up.profile_photo 
+                        FROM users u 
+                        LEFT JOIN user_profiles up ON u.user_id = up.user_id 
+                        WHERE u.email = :email AND u.username = :username
+                    ");
                 $stmt->execute(['email' => $email, 'username' => $username]);
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
-                
+            
                 if (!$user) {
                     // User not found
-                    $errors[] = "Invalid email or username ";
+                    $errors[] = "Invalid email or username";
                 } else {
                     // Verify password
                     if (password_verify($password, $user['password_hash'])) {
-                        //udatig last login timesrstamp
+                        // update last login timestamp
                         $updateStmt = $conn->prepare("UPDATE users SET last_login = NOW() WHERE user_id = :user_id");
                         $updateStmt->execute(['user_id' => $user['user_id']]);
                         
@@ -44,9 +49,11 @@
                         $_SESSION['user_id'] = $user['user_id'];
                         $_SESSION['username'] = $user['username'];
                         $_SESSION['role_id'] = $user['role_id'];
+                        $_SESSION['email'] = $user['email'];
                         $_SESSION['success_message'] = "Login successful. Welcome back!";
-                        
-
+                        // Set profile photo; fallback to default
+                        $_SESSION['profile_photo'] = $user['profile_photo'] ?? 'assets/images/userImage.jpg';
+        
                         header('Location: ../index.php');
                         exit;
                     } else {
@@ -58,6 +65,7 @@
                 $errors[] = "Database error: " . $e->getMessage();
             }
         }
+
 
 
         

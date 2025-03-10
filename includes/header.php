@@ -80,8 +80,22 @@
                     </li>
                 </ul>
 
-                <a class="btn btn-subscribe " href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal"> Subscribe</a>
-                <button class="btn ms-2" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
+                <?php if(isset($_SESSION['user_id'])): ?>
+                    <div class="dropdown">
+                        <a href="#" class="d-flex align-items-center" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="<?= htmlspecialchars($_SESSION['profile_photo'] ?? 'assets/images/userImage.jpg') ?>" alt="Profile" 
+                                class="rounded-circle" style="width:40px; height:40px; object-fit:cover;">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="/newsLetter/profile.php"><i class="fas fa-user-edit me-2"></i>Edit Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/newsLetter/controllers/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                <?php else: ?>
+                    <a class="btn btn-subscribe" href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal">Subscribe</a>
+                <?php endif; ?>
+                <button class="border-start  border-2 btn ms-2" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
                     <i class="fas fa-search"></i>
                 </button>
             </div>
