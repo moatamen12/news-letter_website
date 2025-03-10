@@ -78,14 +78,14 @@ CREATE TABLE role_permissions (
 
 
 -- user messages(contact)
-CREATE TABLE IF NOT EXISTS contact_messages (
+CREATE TABLE contact_messages (
   id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL,
   username VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   subject VARCHAR(255),
-  message_category ENUM('general', 'complaint', 'Suggestion') NOT NULL DEFAULT 'general',
+  message_category ENUM('general', 'complaint', 'Suggestion','Technical Support') NOT NULL DEFAULT 'general',
   message TEXT NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  FOREIGN KEY (user_id) REFERENCES users(user_id)
 );

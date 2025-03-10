@@ -1,18 +1,28 @@
 <?php 
-    $page_title = 'Contact US';
+    $page_title = 'Contact Us';
     require_once 'includes/header.php';
     
-    $contactErrrors = $_SESSION['contact_error'] ?? [];
+    // Start session if not already started
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    
+    // Get messages from session
+    $contactErrors = $_SESSION['contact_errors'] ?? [];
     $contactError = $_SESSION['contact_error'] ?? '';
     $contactSuccess = $_SESSION['contact_success'] ?? '';
-
-    unset($_SESSION['contact_error'],$_SESSION['contact_error'],$_SESSION['contact_success']);
-    $isLoggedIn = isset($_SESSION['user_id']) ? true : false;
-
+    
+    // Get form data if available (for refilling the form after validation error)
+    $formData = $_SESSION['form_data'] ?? [];
+    
+    // Clear session variables
+    unset($_SESSION['contact_errors'], $_SESSION['contact_error'], $_SESSION['contact_success'], $_SESSION['form_data']);
+    
+    // Check if user is logged in
+    $isLoggedIn = isset($_SESSION['user_id']);
 ?>
 
 <div class="container py-5 my-5">
-    <!-- Page Title -->
     <div class="row mb-4">
         <div class="col-12 text-center">
             <h1 class="fw-bold mb-2">Contact Us</h1>
@@ -20,158 +30,94 @@
         </div>
     </div>
 
-        <!-- Display success message -->
+    <!-- Success message -->
     <?php if (!empty($contactSuccess)): ?>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <?= htmlspecialchars($contactSuccess) ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="alert alert-success">
+        <i class="fas fa-check-circle me-2"></i><?= htmlspecialchars($contactSuccess) ?>
     </div>
     <?php endif; ?>
     
-    <!-- Display error messages -->
+    <!-- Login error message -->
     <?php if (!empty($contactError)): ?>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <?= htmlspecialchars($contactError) ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="alert alert-warning">
+        <i class="fas fa-exclamation-triangle me-2"></i><?= htmlspecialchars($contactError) ?>
+        <div class="mt-3">
+            <a href="login.php" class="btn btn-primary me-2">Log In</a>
+            <a href="index.php" class="btn btn-secondary">Back to Home</a>
+        </div>
     </div>
     <?php endif; ?>
     
+    <!-- Validation errors -->
     <?php if (!empty($contactErrors)): ?>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <ul class="mb-0">
+    <div class="alert alert-danger">
+        <h5>Please fix the following errors:</h5>
+        <ul>
             <?php foreach($contactErrors as $error): ?>
                 <li><?= htmlspecialchars($error) ?></li>
             <?php endforeach; ?>
         </ul>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <?php endif; ?>
+
+    <!-- Login required message for non-logged in users -->
+    <?php if (!$isLoggedIn): ?>
+    <div class="alert alert-info">
+        <h5>Login Required</h5>
+        <p>You need to be logged in to send us a message.</p>
+        <a href="login.php" class="btn btn-primary me-2">Log In</a>
+        <a href="register.php" class="btn btn-outline-primary">Register</a>
+    </div>
     
-    <div class="row g-4">
-        <!-- Contact Form -->
-        <div class="col-lg-7">
-            <div class="card border-0 rounded-3 shadow-sm">
-                <div class="card-body p-4 p-md-5">
-                    <h3 class="mb-4 border-start border-4 border-info ps-3">Send us a message</h3>
-                    <form  action="controllers/contact_msg.php" method="post" id = "ContactForm">
-                        <div class="row g-3">
-                            <!-- name -->
-                            <div class="col-md-6">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="username" name="username" placeholder="Your Username" required>
-                                    <label for="name">Your Username <span class="text-danger">*</span></label>
-                                </div>
-                            </div>
-                            <!-- email -->
-                            <div class="col-md-6">
-                                <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
-                                    <label for="email">Email Address <span class="text-danger">*</span></label>
-                                </div>
-                            </div>
-                            <!-- supject/type-->
-                            <div class="col-md-12">
-                                <label for="subject" class="form-label">Subject</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
-                                    <button class="btn btn-subscribe dropdown-toggle" 
-                                            type="button" data-bs-toggle="dropdown">
-                                    Category
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" >General</a></li>
-                                        <li><a class="dropdown-item" >Complaint</a></li>
-                                        <li><a class="dropdown-item" >Suggestion</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-floating mb-3">
-                                    <textarea class="form-control" id="message" name="message" style="height: 150px" placeholder="Your Message" required></textarea>
-                                    <label for="message">Message <span class="text-danger">*</span></label>
-                                </div>
-                            </div>
-                            <div class="col-12 d-flex gap-2">
-                                <button type="submit" class="btn btn-subscribe">
-                                    <i class="fas fa-paper-plane me-2"></i>Send Message
-                                </button>
-                                <button type="reset" class="btn btn-outline">
-                                    <i class="fas fa-redo me-2"></i>Reset
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Contact Information -->
-        <div class="col-lg-5">
-            <div class="card border-0 rounded-3 shadow-sm mb-4">
-                <div class="card-body p-4">
-                    <h3 class="mb-4 border-start border-4 border-info ps-3">Contact Information</h3>
-                    <div class="mb-4 d-flex align-items-start contact-item">
-                        <div class="contact-icon me-3">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h5 class="fs-5 fw-bold">Email Us</h5>
-                            <p class="mb-0"><a href="mailto:info@newsletter.com" class="text-decoration-none contact-link">info@newsletter.com</a></p>
-                        </div>
+    <?php else: ?>
+    <!-- Contact form - only shown for logged in users -->
+    <div class="card">
+        <div class="card-body">
+            <form action="controllers/contact_msg.php" method="post">
+                <div class="row mb-3">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <label for="username" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="username" name="username" 
+                            value="<?= htmlspecialchars($formData['username'] ?? $_SESSION['username'] ?? '') ?>">
                     </div>
-                    <div class="mb-4 d-flex align-items-start contact-item">
-                        <div class="contact-icon me-3">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div>
-                            <h5 class="fs-5 fw-bold">Call Us</h5>
-                            <p class="mb-0"><a href="tel:+1234567890" class="text-decoration-none contact-link">+1 (234) 567-890</a></p>
-                        </div>
+                    <div class="col-md-6">
+                        <label for="email" class="form-label">Your Email</label>
+                        <input type="email" class="form-control" id="email" name="email"
+                            value="<?= htmlspecialchars($formData['email'] ?? $_SESSION['email'] ?? '') ?>">
                     </div>
                 </div>
-            </div>
-            
-            <div class="card border-0 rounded-3 shadow-sm">
-                <div class="card-body p-4">
-                    <h3 class="mb-4 border-start border-4 border-info ps-3">Connect With Us</h3>               
-                    <div>
-                        <h5 class="fs-5 fw-bold mb-3">Social Media</h5>
-                        <ul class="list-unstyled mb-0 ms-3">
-                            <li class= "md-2">
-                                <i class="fab fa-facebook-f me-2 social-link"></i> 
-                                <a href="#" class="social-link ms-1 text-decoration-none" title="Facebook">techexpo</a>
-                            </li>
-
-                            <li class="md-2">
-                                <i class="fab fa-twitter me-2 social-link"></i> 
-                                <a href="#" class="social-link ms-1 text-decoration-none" title="Twitter">techexpo</a>
-                            </li>
-
-                            <li class="md-2">
-                                <i class="fab fa-instagram me-2"></i> 
-                                <a href="#" class="social-link ms-1 text-decoration-none" title="Instagram">tech_expo</a>
-                            </li> 
-                        </ul>
+                
+                <div class="row mb-3">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" class="form-control" id="subject" name="subject"
+                            value="<?= htmlspecialchars($formData['subject'] ?? '') ?>">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="category" class="form-label">Category</label>
+                        <select class="form-select" id="category" name="category">
+                            <option value="general" <?= ($formData['category'] ?? '') === 'general' ? 'selected' : '' ?>>General</option>
+                            <option value="technical" <?= ($formData['category'] ?? '') === 'technical' ? 'selected' : '' ?>>Technical Support</option>
+                            <option value="billing" <?= ($formData['category'] ?? '') === 'billing' ? 'selected' : '' ?>>Billing</option>
+                            <option value="feature" <?= ($formData['category'] ?? '') === 'feature' ? 'selected' : '' ?>>Feature Request</option>
+                            <option value="feedback" <?= ($formData['category'] ?? '') === 'feedback' ? 'selected' : '' ?>>Feedback</option>
+                        </select>
                     </div>
                 </div>
-            </div>
+                
+                <div class="mb-3">
+                    <label for="message" class="form-label">Your Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="5"><?= htmlspecialchars($formData['message'] ?? '') ?></textarea>
+                </div>
+                
+                <div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <button type="reset" class="btn btn-outline-secondary ms-2">Reset</button>
+                </div>
+            </form>
         </div>
     </div>
+    <?php endif; ?>
 </div>
 
-
-<?php 
-    //validate if hte user is logged id  
-    $isLoggedIn = isset($_SESSION['user_id']) ? true : false;
-?>
-
-<script>
-    // Passing login status to JavaScript
-    const userLoggedIn = <?php echo $isLoggedIn ? 'true' : 'false'; ?>;
-</script>
-<script type="module" src="assets/js/validation_contact.js"></script>
-
-<?php    
-    require_once 'includes/footer.php';
-?>
+<?php require_once 'includes/footer.php'; ?>

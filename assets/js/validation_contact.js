@@ -5,34 +5,10 @@ import {
 } from './helpers_fun.js';
 
 document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.querySelector('ContactForm');
+    const contactForm = document.getElementById('ContactForm'); 
     
-    if (contactForm) {
+    if (contactForm) {   
         contactForm.addEventListener('submit', function(event) {
-            //verefying if useer is loged in
-            if (!userLoggedIn) {
-                event.preventDefault();
-                
-                // Create login modal or message
-                const formContainer = contactForm.closest('.card-body');
-                
-                // Clear the form
-                formContainer.innerHTML = `
-                    <div class="alert alert-warning">
-                        <h4><i class="fas fa-exclamation-triangle me-2"></i>Login Required</h4>
-                        <p>You must be logged in to send a message.</p>
-                        <a href="login.php" class="btn btn-subscribe mt-3">
-                            <i class="fas fa-sign-in-alt me-2"></i>Log In
-                        </a>
-                        <a href="index.php" class="btn btn-outline-secondary mt-3 ms-2">
-                            <i class="fas fa-home me-2"></i>Back to Home
-                        </a>
-                    </div>
-                `;
-                return;
-            }
-            
-            // If logged in, continue with form validation
             clearError(contactForm);
             
             const username = document.getElementById('username');
@@ -63,7 +39,34 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (hasError) {
                 event.preventDefault();
+                // Scroll to the first error
+                const firstError = document.querySelector('.is-invalid');
+                if (firstError) {
+                    firstError.focus();
+                }
+            } else {
+                // Show a loading indicator
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+                submitBtn.disabled = true;
             }
         });
+        
+        // Handle category dropdown selection
+        const dropdownItems = document.querySelectorAll('.dropdown-item');
+        const categoryInput = document.getElementById('category');
+        const dropdownButton = document.querySelector('.dropdown-toggle');
+        
+        if (dropdownItems && categoryInput && dropdownButton) {
+            dropdownItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const category = this.textContent.trim().toLowerCase();
+                    categoryInput.value = category;
+                    dropdownButton.textContent = this.textContent;
+                });
+            });
+        }
     }
 });
