@@ -5,13 +5,13 @@ import {
 } from './helpers_fun.js';
 
 document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('ContactForm'); 
+    const contactForm = document.getElementById('contactForm'); // Fixed case to match HTML
     
     if (contactForm) {   
         contactForm.addEventListener('submit', function(event) {
             clearError(contactForm);
             
-            const username = document.getElementById('username');
+            const username = document.getElementById('contanct_username');
             const email = document.getElementById('email');
             const message = document.getElementById('message');
             let hasError = false;
@@ -53,20 +53,5 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Handle category dropdown selection
-        const dropdownItems = document.querySelectorAll('.dropdown-item');
-        const categoryInput = document.getElementById('category');
-        const dropdownButton = document.querySelector('.dropdown-toggle');
-        
-        if (dropdownItems && categoryInput && dropdownButton) {
-            dropdownItems.forEach(item => {
-                item.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const category = this.textContent.trim().toLowerCase();
-                    categoryInput.value = category;
-                    dropdownButton.textContent = this.textContent;
-                });
-            });
-        }
     }
 });

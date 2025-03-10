@@ -77,6 +77,6 @@
     <!-- Password visibility toggle and validation  -->
     <script type="module" src="assets/js/helpers_fun.js"></script>
     <script type="module" src="assets/js/validation_forms.js"></script>
-    
+    <script type="module" src="assets/js/validation_contact.js"></script>
     </body>    
 </html>

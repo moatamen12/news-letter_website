@@ -1,9 +1,27 @@
 <?php 
    require_once '../config/config.php';
    
+   // Enable error reporting for debugging
+   error_reporting(E_ALL);
+   ini_set('display_errors', 1);
+   
    // Start session if not already started
    if (session_status() === PHP_SESSION_NONE) {
       session_start();
+   }
+
+   // Log request data for debugging
+   error_log("Contact form submission received: " . json_encode($_POST));
+   error_log("Session data: " . json_encode($_SESSION));
+
+   // For additional debugging, temporarily uncomment the line below:
+   // var_dump($_POST); exit;
+
+   // Check if form was actually submitted
+   if (!isset($_POST['form_submitted'])) {
+      $_SESSION['contact_error'] = "Form was not submitted properly.";
+      header('Location: ../contact.php');
+      exit;
    }
 
    // Check if user is logged in
@@ -14,11 +32,11 @@
    }
 
    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-      $username = trim($_POST['username'] ?? '');
+      $username = trim($_POST['contanct_username'] ?? '');
       $email = trim($_POST['email'] ?? '');
       $subject = trim($_POST['subject'] ?? '');
       $category = $_POST['category'] ?? 'general';  
-      $message = trim($_POST['message'] ?? '');
+      $message = $_POST['message'] ?? '';
       
       // Validate inputs
       $errors = [];
@@ -46,6 +64,34 @@
             'category' => $category,
             'message' => $message
          ];
+         header('Location: ../contact.php');
+         exit;
+      }
+
+      //viryfiy the user
+      try{
+         $stmt  = $conn->prepare("SELECT username, email FROM users WHERE user_id = :user_id");
+         $stmt->execute(['user_id' => $_SESSION['user_id']]);
+         $user = $stmt->fetch();
+         
+         if (!$user) {
+            $_SESSION['contact_error'] = "User not found";
+            header('Location: ../contact.php');
+            exit;
+         }elseif ($user['username'] !== $username || $user['email'] !== $email) {
+            $_SESSION['contact_errors'] = ["Invalid username or email"];
+            $_SESSION['form_data'] = [
+               'username' => $username,
+               'email' => $email,
+               'subject' => $subject,
+               'category' => $category,
+               'message' => $message
+            ];
+            header('Location: ../contact.php');
+            exit;
+         }
+      }catch (PDOException $e) {
+         $_SESSION['contact_errors'] = ["Database error: " . $e->getMessage()];
          header('Location: ../contact.php');
          exit;
       }
@@ -84,4 +130,5 @@
       header('Location: ../contact.php');
       exit;
    }
+   var_dump($_SESSION);
 ?>

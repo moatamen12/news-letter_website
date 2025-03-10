@@ -1,24 +1,28 @@
 <?php 
-    $page_title = 'Contact Us';
-    require_once 'includes/header.php';
-    
-    // Start session if not already started
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
-    
+
+    // Temporary debug (remove when done)
+    // var_dump($_SESSION);
+
+    $page_title = 'Contact Us';
+    require_once 'includes/header.php';
     // Get messages from session
     $contactErrors = $_SESSION['contact_errors'] ?? [];
     $contactError = $_SESSION['contact_error'] ?? '';
     $contactSuccess = $_SESSION['contact_success'] ?? '';
-    
-    // Get form data if available (for refilling the form after validation error)
+
+    if (!empty($contactError)) {
+        $contactErrors[] = $contactError;
+    }
+
     $formData = $_SESSION['form_data'] ?? [];
-    
-    // Clear session variables
+
+
     unset($_SESSION['contact_errors'], $_SESSION['contact_error'], $_SESSION['contact_success'], $_SESSION['form_data']);
-    
-    // Check if user is logged in
+
+
     $isLoggedIn = isset($_SESSION['user_id']);
 ?>
 
@@ -32,22 +36,24 @@
 
     <!-- Success message -->
     <?php if (!empty($contactSuccess)): ?>
-    <div class="alert alert-success">
-        <i class="fas fa-check-circle me-2"></i><?= htmlspecialchars($contactSuccess) ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <?= htmlspecialchars($contactSuccess) ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <?php endif; ?>
     
-    <!-- Login error message -->
-    <?php if (!empty($contactError)): ?>
-    <div class="alert alert-warning">
-        <i class="fas fa-exclamation-triangle me-2"></i><?= htmlspecialchars($contactError) ?>
-        <div class="mt-3">
-            <a href="login.php" class="btn btn-primary me-2">Log In</a>
-            <a href="index.php" class="btn btn-secondary">Back to Home</a>
-        </div>
+    <!-- Error messages -->
+    <?php if (!empty($contactErrors)): ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <ul class="mb-0">
+            <?php foreach ($contactErrors as $error): ?>
+                <li><?= htmlspecialchars($error) ?></li>
+            <?php endforeach; ?>
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <?php endif; ?>
-    
+
     <!-- Validation errors -->
     <?php if (!empty($contactErrors)): ?>
     <div class="alert alert-danger">
@@ -65,56 +71,135 @@
     <div class="alert alert-info">
         <h5>Login Required</h5>
         <p>You need to be logged in to send us a message.</p>
-        <a href="login.php" class="btn btn-primary me-2">Log In</a>
-        <a href="register.php" class="btn btn-outline-primary">Register</a>
+        <a href="#" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#LoginModal">Log In</a>
+        <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#subscribeModal">Register</a>
     </div>
     
     <?php else: ?>
     <!-- Contact form - only shown for logged in users -->
-    <div class="card">
-        <div class="card-body">
-            <form action="controllers/contact_msg.php" method="post">
-                <div class="row mb-3">
-                    <div class="col-md-6 mb-3 mb-md-0">
-                        <label for="username" class="form-label">Your Name</label>
-                        <input type="text" class="form-control" id="username" name="username" 
-                            value="<?= htmlspecialchars($formData['username'] ?? $_SESSION['username'] ?? '') ?>">
+    <div class="row g-4">
+        <!-- Form Column -->
+        <div class="col-lg-7 mb-4">
+            <div class="card border-0 rounded-3 shadow-sm">
+                <div class="card-body ">
+                    <h3 class="mb-4 border-start border-4 border-info ps-3">Send us a message</h3>
+                    <form action="controllers/contact_msg.php" method="post" id="contactForm">
+                        <input type="hidden" name="form_submitted" value="1" />
+                        <div class="row mb-3 g-3">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label for="username" class="form-label">Your Name</label>
+                                <input type="text" class="form-control" id="contanct_username" name="contanct_username" 
+                                    value="<?= htmlspecialchars($formData['username'] ?? $_SESSION['username'] ?? '') ?>"/>
+                                
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Your Email</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    value="<?= htmlspecialchars($formData['email'] ?? $_SESSION['email'] ?? '') ?>"/>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label for="subject" class="form-label">Subject</label>
+                                <input type="text" class="form-control" id="subject" name="subject"
+                                    value="<?= htmlspecialchars($formData['subject'] ?? '') ?>"/>
+                                
+                            </div>
+                            <div class="col-md-6">
+                                <label for="category" class="form-label">Category</label>
+                                <select class="form-select" id="category" name="category">
+                                    <option value="general" <?= ($formData['category'] ?? '') === 'general' ? 'selected' : '' ?>>General</option>
+                                    <option value="Technical Support" <?= ($formData['category'] ?? '') === 'Technical Support' ? 'selected' : '' ?>>Technical Support</option>
+                                    <option value="complaint" <?= ($formData['category'] ?? '') === 'complaint' ? 'selected' : '' ?>>Complaint</option>
+                                    <option value="Suggestion" <?= ($formData['category'] ?? '') === 'Suggestion' ? 'selected' : '' ?>>Suggestion</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Your Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" placeholder="should not pass 500 letter "><?= htmlspecialchars($formData['message'] ?? '') ?></textarea>
+                        </div>
+                        
+                        <div>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane me-2"></i>Send Message</button>
+                            <button type="reset" class="btn btn-outline-info ms-2"><i class="fas fa-redo me-2"></i>Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Info Column -->
+        <div class="col-lg-5">
+            <!-- Contact Information Card -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Contact Information</h5>
+                    <div class="mb-3 d-flex align-items-center">
+                        <div class="me-3">
+                            <i class="fas fa-envelope fa-lg text-primary"></i>
+                        </div>
+                        <div>
+                            <h6 class="mb-1">Email Us</h6>
+                            <a href="mailto:info@newsletter.com" class="text-decoration-none">info@newsletter.com</a>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <label for="email" class="form-label">Your Email</label>
-                        <input type="email" class="form-control" id="email" name="email"
-                            value="<?= htmlspecialchars($formData['email'] ?? $_SESSION['email'] ?? '') ?>">
+                    <div class="mb-3 d-flex align-items-center">
+                        <div class="me-3">
+                            <i class="fas fa-phone-alt fa-lg text-primary"></i>
+                        </div>
+                        <div>
+                            <h6 class="mb-1">Call Us</h6>
+                            <a href="tel:+1234567890" class="text-decoration-none">+1 (234) 567-890</a>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="me-3">
+                            <i class="fas fa-map-marker-alt fa-lg text-primary"></i>
+                        </div>
+                        <div>
+                            <h6 class="mb-1">Our Location</h6>
+                            <p class="mb-0">123 Tech Street, Digital City, 45678</p>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="row mb-3">
-                    <div class="col-md-6 mb-3 mb-md-0">
-                        <label for="subject" class="form-label">Subject</label>
-                        <input type="text" class="form-control" id="subject" name="subject"
-                            value="<?= htmlspecialchars($formData['subject'] ?? '') ?>">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="category" class="form-label">Category</label>
-                        <select class="form-select" id="category" name="category">
-                            <option value="general" <?= ($formData['category'] ?? '') === 'general' ? 'selected' : '' ?>>General</option>
-                            <option value="technical" <?= ($formData['category'] ?? '') === 'technical' ? 'selected' : '' ?>>Technical Support</option>
-                            <option value="billing" <?= ($formData['category'] ?? '') === 'billing' ? 'selected' : '' ?>>Billing</option>
-                            <option value="feature" <?= ($formData['category'] ?? '') === 'feature' ? 'selected' : '' ?>>Feature Request</option>
-                            <option value="feedback" <?= ($formData['category'] ?? '') === 'feedback' ? 'selected' : '' ?>>Feedback</option>
-                        </select>
-                    </div>
+            </div>
+            
+            <!-- Social Media Card -->
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Connect With Us</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2">
+                            <a href="#" class="text-decoration-none d-flex align-items-center">
+                                <i class="fab fa-facebook-f me-3 text-primary"></i>
+                                <span>facebook.com/newsletter</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-decoration-none d-flex align-items-center">
+                                <i class="fab fa-twitter me-3 text-info"></i>
+                                <span>@newsletter</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-decoration-none d-flex align-items-center">
+                                <i class="fab fa-instagram me-3 text-danger"></i>
+                                <span>@newsletter_official</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-decoration-none d-flex align-items-center">
+                                <i class="fab fa-linkedin me-3 text-primary"></i>
+                                <span>linkedin.com/company/newsletter</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                
-                <div class="mb-3">
-                    <label for="message" class="form-label">Your Message</label>
-                    <textarea class="form-control" id="message" name="message" rows="5"><?= htmlspecialchars($formData['message'] ?? '') ?></textarea>
-                </div>
-                
-                <div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                    <button type="reset" class="btn btn-outline-secondary ms-2">Reset</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
     <?php endif; ?>
