@@ -182,7 +182,7 @@
     <!-- Trending topics-->
     <section class="container my-5">
 
-        <h1 class="fw-bold">Trending topics</h1>
+        <h1 class="fw-bold">Trending</h1>
         <footer class="text-body-secondary">Latest breaking news, pictures, videos, and special reports</footer>
 
 
@@ -282,7 +282,7 @@
 
 
     <!-- Contact Section -->
-    <section class="container py-5 my-5">
+    <!-- <section class="container py-5 my-5">
         <div class="row justify-content-center shadow-lg">
             <div class="col-md-8 text-center">
                 <h2 class="display-4">Get in Touch</h2>
@@ -316,7 +316,7 @@
                 </form>
             </div>
         </div>
-    </section>
+    </section> -->
           
 
 <?php 

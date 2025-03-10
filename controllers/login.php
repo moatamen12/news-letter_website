@@ -6,10 +6,9 @@
     }
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $username = trim($_POST['Logsername'] ?? '');
-        $email = trim($_POST['LoginEmail'] ?? '');
-        $password = $_POST['LoginPassword'] ?? '';
-
+        $username = trim($_POST['logusername'] ?? '');
+        $email = trim($_POST['logEmail'] ?? '');
+        $password = $_POST['logPassword'] ?? '';
 
         $errors = [];
 
@@ -26,13 +25,13 @@
         if (empty($errors)) {
             try {
                 // Check if user exists with this email
-                $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email");
-                $stmt->execute(['email' => $email]);
+                $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email AND username =:username");
+                $stmt->execute(['email' => $email, 'username' => $username]);
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 
                 if (!$user) {
                     // User not found
-                    $errors[] = "Invalid email or password";
+                    $errors[] = "Invalid email or username ";
                 } else {
                     // Verify password
                     if (password_verify($password, $user['password_hash'])) {
@@ -52,7 +51,7 @@
                         exit;
                     } else {
 
-                        $errors[] = "Invalid email or password";
+                        $errors[] = "Invalid  password";
                     }
                 }
             } catch (PDOException $e) {

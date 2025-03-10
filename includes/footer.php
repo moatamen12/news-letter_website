@@ -1,4 +1,4 @@
-<!-- footer--> -->
+<!-- footer-->
     <footer class="bg-dark bg-opacity-90 text-light py-2 mt-auto mt-5 border">
         <!-- subscrip -->
         <section class="container p-3 mb-3 border-bottom border-secondary">

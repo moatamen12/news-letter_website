@@ -1,36 +1,36 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 
-// Preparing variables for JavaScript
-$registerErrors = [];
-$registerData = [];
-$loginErrors = [];
-$loginData = [];
+    // Preparing variables for JavaScript
+    $registerErrors = [];
+    $registerData = [];
+    $loginErrors = [];
+    $loginData = [];
 
-if (isset($_SESSION['register_errors'])) {
-    $registerErrors = $_SESSION['register_errors'];
-    unset($_SESSION['register_errors']);
-}
+    if (isset($_SESSION['register_errors'])) {
+        $registerErrors = $_SESSION['register_errors'];
+        unset($_SESSION['register_errors']);
+    }
 
-if (isset($_SESSION['register_data'])) {
-    $registerData = $_SESSION['register_data'];
-    unset($_SESSION['register_data']);
-}
+    if (isset($_SESSION['register_data'])) {
+        $registerData = $_SESSION['register_data'];
+        unset($_SESSION['register_data']);
+    }
 
-if (isset($_SESSION['login_errors'])) {
-    $loginErrors = $_SESSION['login_errors'];
-    unset($_SESSION['login_errors']);
-}
+    if (isset($_SESSION['login_errors'])) {
+        $loginErrors = $_SESSION['login_errors'];
+        unset($_SESSION['login_errors']);
+    }
 
-if (isset($_SESSION['login_data'])) {
-    $loginData = $_SESSION['login_data'];
-    unset($_SESSION['login_data']);
-}
+    if (isset($_SESSION['login_data'])) {
+        $loginData = $_SESSION['login_data'];
+        unset($_SESSION['login_data']);
+    }
 
-// Combine all errors for JavaScript
-$allErrors = array_merge($registerErrors, $loginErrors);
+    // Combine all errors for JavaScript
+    $allErrors = array_merge($registerErrors, $loginErrors);
 ?>
 
 <!doctype html>
@@ -89,8 +89,8 @@ $allErrors = array_merge($registerErrors, $loginErrors);
     </nav>
 
 
-        <!-- Subscribe Modal  -->
-        <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel">
+    <!-- Subscribe Modal  -->
+    <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0  modal-bg">
                 <h3 class="modal-title p-4" id="subscribeModalLabel">SUBSCRIBE</h3>
@@ -184,21 +184,21 @@ $allErrors = array_merge($registerErrors, $loginErrors);
                     <form action="controllers/login.php" method="POST" class="row g-3" id = "loginForm">
                     <!-- userName -->
                     <div class="col-md-12">
-                        <label for="modalInputEmail" class="form-label">Username<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="logusername" placeholder="Your Username" aria-required="true" name="Logsername">
+                        <label for="logusername" class="form-label">Username<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="logusername" placeholder="Your Username" aria-required="true" name="logusername">
                     </div>
                         <!-- email -->
                         <div class="col-md-12">
-                            <label for="modalInputEmail" class="form-label">Email<span class="text-danger">*</span></label>
-                            <input type="email" class="form-control" id="logEmail" placeholder="Your Email" aria-required="true" name="LoginEmail">
+                            <label for="logEmail" class="form-label">Email<span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="logEmail" placeholder="Your Email" aria-required="true" name="logEmail">
                         </div>
 
 
                         <!-- password -->
                         <div class="col-md-12">
-                            <label for="modalInputPassword" class="form-label">Password<span class="text-danger">*</span></label>
+                            <label for="logPassword" class="form-label">Password<span class="text-danger">*</span></label>
                             <div class="input-group">
-                                <input type="password" class="form-control" id="logPassword" placeholder="create a Password" aria-required="true" name= "LoginPassword">
+                                <input type="password" class="form-control" id="logPassword" placeholder="create a Password" aria-required="true" name= "logPassword">
                                 <!-- visability togle -->
                                 <button class="btn btn-bg" type="button">
                                     <i class="fas fa-eye" id="eye"></i>
