@@ -11,14 +11,14 @@
         $username = trim($_POST['username'] ?? '');
         $email = trim($_POST['email'] ?? '');
         $password = $_POST['password'] ?? '';
-        $confPassword = trim($_POST['confPassword'] ?? '');
+        $confPassword = $_POST['confPassword'] ?? '';
 
         // Server-side validation
         $errors = [];
         
-        // if (empty($Fname)) {
-        //     $errors[] = "First name is required";
-        // }
+        if (empty($Fname)) {
+            $errors[] = "First name is required";
+        }
         if (empty($email)) {
             $errors[] = "Email is required";
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -39,9 +39,9 @@
         if (empty($username)) {
             $errors[] = "Username is required"; 
         } 
-        // elseif (strlen($username) < 3) {
-        //     $errors[] = "Username must be at least 3 characters"; 
-        // }
+        elseif (strlen($username) < 5) {
+            $errors[] = "Username must be at least 5 characters"; 
+        }
         else{
             // Check if username already exists in database
             try {
@@ -57,13 +57,13 @@
             }
         }
              
-        // if (empty($password)) {
-        //     $errors[] = "Password is required";
-        // }
+        if (empty($password)) {
+            $errors[] = "Password is required";
+        }
         
-        // if ($password !== $confPassword) {
-        //     $errors[] = "Passwords do not match";
-        // }
+        if ($password !== $confPassword) {
+            $errors[] = "Passwords do not match";
+        }
         
         // If validation passes, insert into database
         if (empty($errors)) {
@@ -109,7 +109,7 @@
                 $_SESSION['success_message'] = "Registration successful! Your profile has been created.";
                 
                 // Redirect to profile page
-                header('Location: ../profile.php');
+                header('Location: ../index.php');
                 exit;
                 
             } catch (PDOException $e) {
@@ -117,7 +117,7 @@
                 $conn->rollBack();
                 
                 // Check for duplicate email
-                if ($e->getCode() == 23000) { // MySQL integrity constraint violation code
+                if ($e->getCode() == 23000) { 
                     $errors[] = "Email is already registered";
                 } else {
                     $errors[] = "Database error: " . $e->getMessage();

@@ -1,3 +1,38 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Preparing variables for JavaScript
+$registerErrors = [];
+$registerData = [];
+$loginErrors = [];
+$loginData = [];
+
+if (isset($_SESSION['register_errors'])) {
+    $registerErrors = $_SESSION['register_errors'];
+    unset($_SESSION['register_errors']);
+}
+
+if (isset($_SESSION['register_data'])) {
+    $registerData = $_SESSION['register_data'];
+    unset($_SESSION['register_data']);
+}
+
+if (isset($_SESSION['login_errors'])) {
+    $loginErrors = $_SESSION['login_errors'];
+    unset($_SESSION['login_errors']);
+}
+
+if (isset($_SESSION['login_data'])) {
+    $loginData = $_SESSION['login_data'];
+    unset($_SESSION['login_data']);
+}
+
+// Combine all errors for JavaScript
+$allErrors = array_merge($registerErrors, $loginErrors);
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -68,25 +103,25 @@
                     <form action="controllers/Subscribe.php" method="POST" class="row g-3" id="subscribeForm">
                         <!--Full name -->
                         <div class="col-md-6">
-                            <label for="modalInputFname" class="form-label">Full Name</label>
-                            <input name="FullName" type="text" class="form-control " id="Fname" placeholder="Your Full Name" aria-required="true">
+                            <label for="modalInputFname" class="form-label">Full Name <span class="text-danger">*</span></label>
+                            <input name="FullName" type="text" class="form-control " id="Fname" placeholder="Your Full Name" aria-required="true" required>
                         </div>
 
                         <!-- User anme -->
                         <div class="col-md-6">
-                            <label for="modalInputSname" class="form-label">User Name</label>
-                            <input name="username" type="text" class="form-control" id="username" placeholder="Creat A Username"  aria-required="true">
+                            <label for="modalInputSname" class="form-label">User Name <span class="text-danger">*</span></label>
+                            <input name="username" type="text" class="form-control" id="username" placeholder="Creat A Username" aria-required="true">
                         </div>
 
                         <!-- email -->
                         <div class="col-md-12">
-                            <label for="modalInputEmail" class="form-label">Email</label>
+                            <label for="modalInputEmail" class="form-label">Email <span class="text-danger">*</span></label>
                             <input type="email" class="form-control" id="modalInputEmail" placeholder="Your Email" aria-required="true" name="email">
                         </div>
 
                         <!-- password -->
                         <div class="col-md-12">
-                            <label for="modalInputPassword" class="form-label">Password</label>
+                            <label for="modalInputPassword" class="form-label">Password <span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <input type="password" class="form-control" id="modalInputPassword" placeholder="create a Password" aria-required="true" name="password">
                                 <!-- visability togle -->
@@ -98,7 +133,7 @@
 
                         <!-- conferm password -->
                         <div class="col-md-12">
-                            <label for="modalInputPassword" class="form-label"> confirm Password</label>
+                            <label for="modalInputPassword" class="form-label"> confirm Password <span class="text-danger">*</span> </label>
                             <div class="input-group">
                                 <input type="password" class="form-control" id="confPassword" placeholder="Confirm it  Password" aria-required="true" name="confPassword">
                                 <!-- visability togle -->
@@ -149,19 +184,19 @@
                     <form action="controllers/login.php" method="POST" class="row g-3" id = "loginForm">
                     <!-- userName -->
                     <div class="col-md-12">
-                        <label for="modalInputEmail" class="form-label">Username</label>
+                        <label for="modalInputEmail" class="form-label">Username<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="logusername" placeholder="Your Username" aria-required="true" name="Logsername">
                     </div>
                         <!-- email -->
                         <div class="col-md-12">
-                            <label for="modalInputEmail" class="form-label">Email</label>
+                            <label for="modalInputEmail" class="form-label">Email<span class="text-danger">*</span></label>
                             <input type="email" class="form-control" id="logEmail" placeholder="Your Email" aria-required="true" name="LoginEmail">
                         </div>
 
 
                         <!-- password -->
                         <div class="col-md-12">
-                            <label for="modalInputPassword" class="form-label">Password</label>
+                            <label for="modalInputPassword" class="form-label">Password<span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <input type="password" class="form-control" id="logPassword" placeholder="create a Password" aria-required="true" name= "LoginPassword">
                                 <!-- visability togle -->
@@ -197,4 +232,3 @@
             </div>
         </div>
     </div>
-

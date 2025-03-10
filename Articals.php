@@ -3,7 +3,7 @@
     require_once 'includes/header.php';
 ?>   
 
-<div class="container">
+<div class="container my-5">
     <section class="position-relative mb-5">
         <div class="container p-0 ">
             <div class="row align-items-center justify-content-center min-vh-75 text-center">
@@ -35,7 +35,7 @@
                                 <div class="nav-link">
                                     <div class="d-flex align-items-center position-relative">
                                         <div class="avatar avatar-xs">
-                                            <img class="avatar-img rounded-circle" src="assets/images/avatar/02.jpg" alt="avatar">
+                                            <img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg" alt="avatar">
                                         </div>
                                         <span class="ms-3">by <a href="#" class="text-reset btn-link">Dennis</a></span>
                                     </div>
@@ -112,7 +112,7 @@
                                 <div class="nav-link">
                                     <div class="d-flex align-items-center position-relative">
                                         <div class="avatar avatar-xs">
-                                            <img class="avatar-img rounded-circle" src="assets/images/avatar/02.jpg" alt="avatar">
+                                            <img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg" alt="avatar">
                                         </div>
                                         <span class="ms-3">by <a href="#" class="text-reset btn-link">Dennis</a></span>
                                     </div>

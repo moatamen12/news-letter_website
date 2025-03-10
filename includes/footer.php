@@ -1,5 +1,4 @@
-
-    <!--  footer-->
+<!-- footer--> -->
     <footer class="bg-dark bg-opacity-90 text-light py-2 mt-auto mt-5 border">
         <!-- subscrip -->
         <section class="container p-3 mb-3 border-bottom border-secondary">
@@ -63,15 +62,21 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <!-- Password visibility toggle and validation  -->
+    
+    <!-- Debug info -->
     <script>
-        //global object to store server-side data
+        console.log('PHP error data:', <?= json_encode($allErrors) ?>);
+    </script>
+
+    <script>
         window.serverData = {
-            errors: <?= json_encode($registerErrors) ?>,
-            formData: <?= json_encode($registerData) ?>
+            errors: <?= json_encode($allErrors) ?>,
+            formData: <?= json_encode($registerData ?: $loginData) ?>
         };
     </script>
     <!-- Password visibility toggle and validation  -->
-    <script src="assets/js/validation_forms.js"></script>
+    <script type="module" src="assets/js/helpers_fun.js"></script>
+    <script type="module" src="assets/js/validation_forms.js"></script>
+    
     </body>    
 </html>

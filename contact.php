@@ -2,36 +2,9 @@
     $page_title = 'Contact US';
     require_once 'includes/header.php';
     
-    $message = '';
-    $messageClass = '';
-    
-    // Process the form submission
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Simple form validation
-        $name = trim($_POST['name'] ?? '');
-        $email = trim($_POST['email'] ?? '');
-        $subject = trim($_POST['subject'] ?? '');
-        $message_content = trim($_POST['message'] ?? '');
-        
-        if (empty($name) || empty($email) || empty($message_content)) {
-            $message = 'Please fill in all required fields';
-            $messageClass = 'alert-danger';
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $message = 'Please enter a valid email address';
-            $messageClass = 'alert-danger';
-        } else {
-            // In a real application, you would send the email here
-            // For demonstration, we'll just show a success message
-            $message = 'Thank you for your message. We will get back to you soon!';
-            $messageClass = 'alert-success';
-            
-            // Reset form fields after successful submission
-            $name = $email = $subject = $message_content = '';
-        }
-    }
 ?>
 
-<div class="container py-5">
+<div class="container py-5 my-5">
     <!-- Page Title -->
     <div class="row mb-4">
         <div class="col-12 text-center">
@@ -40,16 +13,7 @@
         </div>
     </div>
     
-    <?php if ($message): ?>
-        <div class="row mb-4">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <div class="alert <?php echo $messageClass; ?> alert-dismissible fade show shadow-sm" role="alert">
-                    <?php echo $message; ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            </div>
-        </div>
-    <?php endif; ?>
+
     
     <div class="row g-4">
         <!-- Contact Form -->
@@ -57,26 +21,39 @@
             <div class="card border-0 rounded-3 shadow-sm">
                 <div class="card-body p-4 p-md-5">
                     <h3 class="mb-4 border-start border-4 border-info ps-3">Send us a message</h3>
-                    <form method="post" action="">
+                    <form method="post" action="controllers/contact_msg.php">
                         <div class="row g-3">
+                            <!-- name -->
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
                                     <label for="name">Your Name <span class="text-danger">*</span></label>
                                 </div>
                             </div>
+                            <!-- email -->
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
                                     <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
                                     <label for="email">Email Address <span class="text-danger">*</span></label>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="form-floating mb-3">
+                            <!-- supject/type-->
+                            <div class="col-md-12">
+                                <label for="subject" class="form-label">Subject</label>
+                                <div class="input-group">
                                     <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
-                                    <label for="subject">Subject</label>
+                                    <button class="btn btn-subscribe dropdown-toggle" 
+                                            type="button" data-bs-toggle="dropdown">
+                                    Category
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" >General</a></li>
+                                        <li><a class="dropdown-item" >Complaint</a></li>
+                                        <li><a class="dropdown-item" >Suggestion</a></li>
+                                    </ul>
                                 </div>
                             </div>
+
                             <div class="col-12">
                                 <div class="form-floating mb-3">
                                     <textarea class="form-control" id="message" name="message" style="height: 150px" placeholder="Your Message" required></textarea>
@@ -90,7 +67,7 @@
                                 <button type="reset" class="btn btn-outline">
                                     <i class="fas fa-redo me-2"></i>Reset
                                 </button>
-                            </div>
+        `                   </div>
                         </div>
                     </form>
                 </div>

@@ -1,22 +1,9 @@
-// Clear error messages
-function clearError(Form) {
-    Form.querySelectorAll('.error-message').forEach(msg => msg.remove());
-}
-
-// Display error message
-function showError(error, element) {
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'error-message text-danger';
-    errorDiv.style.fontSize = '0.9em';
-    errorDiv.textContent = error;
-    element.parentElement.appendChild(errorDiv);
-}
-
-// Validate email format
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
+import { 
+    isValidEmail, 
+    clearError, 
+    showError, 
+    displayServerErrors 
+} from './helpers_fun.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     // Toggle password visibility
@@ -67,10 +54,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (!email.value.trim()) {
                 showError('Email is required', email);
-                hasLoginError = true;
+                hasError = true;  
             } else if (!isValidEmail(email.value.trim())) {
                 showError('Please enter a valid email address', email);
-                hasLoginError = true;
+                hasError = true;  
             }
 
             if(!password.value.trim()){
@@ -78,17 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 hasError = true;
             }else if (password.value.trim().length < 8) {
                 showError('Password sholde have 8+ charecters', password);
-                hasLoginError = true;
-            }
-
-            if(!confPassword.value.trim()){
-                showError('Please confirm your password', confPassword);
-                hasError = true;
-            }
-
-            if (confPassword.value.trim() !== password.value.trim()){
-                showError('Passwords do not match', confPassword);
-                hasError = true;
+                hasError = true;  
             }
             if (hasError){
                 event.preventDefault();
@@ -139,43 +116,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
     }
-
-    // Display server-side errors
-    function displayServerErrors() {
-        // Check if window.serverData exists (will be set in footer.php)
-        if (window.serverData && window.serverData.errors && window.serverData.errors.length > 0) {
-            // Show the subscribe modal
-            const subscribeModal = new bootstrap.Modal(document.getElementById('subscribeModal'));
-            subscribeModal.show();
-            
-            // Display errors
-            const errorContainer = document.getElementById('serverErrorContainer');
-            const errorList = document.getElementById('errorList');
-            
-            errorList.innerHTML = ''; // Clear previous errors
-            window.serverData.errors.forEach(error => {
-                const li = document.createElement('li');
-                li.textContent = error;
-                errorList.appendChild(li);
-            });
-            
-            errorContainer.classList.remove('d-none');
-            
-            // Fill form with previous data
-            const formData = window.serverData.formData || {};
-            
-            if (formData['Full Name']) {
-                document.getElementById('Fname').value = formData['Full Name'];
-            }
-            if (formData['username']) {
-                document.getElementById('username').value = formData['username'];
-            }
-            if (formData['email']) {
-                document.getElementById('modalInputEmail').value = formData['email'];
-            }
-        }
-    }
-
     // Call the function to display errors
     displayServerErrors();
 });

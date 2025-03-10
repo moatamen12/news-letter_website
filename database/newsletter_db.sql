@@ -75,3 +75,15 @@ CREATE TABLE role_permissions (
     FOREIGN KEY (role_id) REFERENCES roles(role_id),
     FOREIGN KEY (permission_id) REFERENCES permissions(permission_id)
 );
+
+
+-- user messages(contact)
+CREATE TABLE contact_messages (
+    message_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100),
+    subject VARCHAR(255),
+    message_content TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    message_category ENUM('general', 'complaint', 'Suggestion') NOT NULL DEFAULT 'general'
+);
