@@ -116,6 +116,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
     }
+
+    
     // Call the function to display errors
     displayServerErrors();
 });

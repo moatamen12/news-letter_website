@@ -1,7 +1,7 @@
 <!-- footer-->
     <footer class="bg-dark bg-opacity-90 text-light py-2 mt-auto mt-5 border">
         <!-- subscrip -->
-        <section class="container p-3 mb-3 border-bottom border-secondary">
+        <!-- <section class="container p-3 mb-3 border-bottom border-secondary">
             <div class="card text-bg-dark">
                 <img src="assets\images\subscipe_bg.jpg" class="card-img" alt="..." style="height: 350px;">
                 <div class="card-img-overlay d-flex flex-column justify-content-center text-center" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7));">
@@ -22,7 +22,7 @@
                     <p class="card-text"><small>By subscribing you agree to our <a href="" style="text-decoration: none;">Privacy Policy</a></small></p>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <div class="container">
             <div class="row">
@@ -30,16 +30,24 @@
                 <div class="col-md-4 mb-3">
                     <h5>About Us</h5>
                     <p class="text-color">Your trusted source for the latest tech news, trends, and insights. Stay informed with our curated content.</p>
+                    <div class="d-flex">
+                        <ul  class="list-unstyled">
+
+                        </ul>
+                    
+                    </div>
                 </div>
+
+  
                 
 
                 <div class="col-md-4 mb-3">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-color text-decoration-none">Home</a></li>
-                        <li><a href="#" class="text-color text-decoration-none">Articles</a></li>
-                        <li><a href="#" class="text-color text-decoration-none">Contact</a></li>
-                        <li><a href="#" class="text-color text-decoration-none">Subscribe</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>index.php" class="text-color text-decoration-none">Home</a></li>
+                        <li><a href="<?php BASE_URL; ?>articals.ph" class="text-color text-decoration-none">Articles</a></li>
+                        <li><a href="<?php BASE_URL; ?>contact.php" class="text-color text-decoration-none">Contact</a></li>
+                        <li><a href="<?php BASE_URL; ?>about_us.php" class="text-color text-decoration-none">Subscribe</a></li>
                     </ul>
                 </div>
 
@@ -76,6 +84,7 @@
     </script>
     <!-- Password visibility toggle and validation  -->
     <script type="module" src="assets/js/helpers_fun.js"></script>
+    <script type="module" src="assets/js/search_container.js"></script>
     <script type="module" src="assets/js/validation_forms.js"></script>
     <script type="module" src="assets/js/validation_contact.js"></script>
     </body>    

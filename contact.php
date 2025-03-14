@@ -135,7 +135,7 @@
         <!-- Contact Info Column -->
         <div class="col-lg-5">
             <!-- Contact Information Card -->
-            <div class="card mb-4">
+            <div class="card mb-4 shadow-sm border-0">
                 <div class="card-body">
                     <h5 class="card-title">Contact Information</h5>
                     <div class="mb-3 d-flex align-items-center">
@@ -169,14 +169,14 @@
             </div>
             
             <!-- Social Media Card -->
-            <div class="card">
+            <div class="card shadow-sm shadow-sm border-0">
                 <div class="card-body">
                     <h5 class="card-title">Connect With Us</h5>
                     <ul class="list-unstyled mb-0">
                         <li class="mb-2">
                             <a href="#" class="text-decoration-none d-flex align-items-center">
                                 <i class="fab fa-facebook-f me-3 text-primary"></i>
-                                <span>facebook.com/newsletter</span>
+                                <span>@facebook.com/newsletter</span>
                             </a>
                         </li>
                         <li class="mb-2">
@@ -191,10 +191,16 @@
                                 <span>@newsletter_official</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="mb-2">
                             <a href="#" class="text-decoration-none d-flex align-items-center">
                                 <i class="fab fa-linkedin me-3 text-primary"></i>
-                                <span>linkedin.com/company/newsletter</span>
+                                <span>@linkedin.com/company/newsletter</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-decoration-none d-flex align-items-center">
+                                <i class="fa-brands fa-discord me-3" style="color: #794f9c;"></i>
+                                <span>@descord.com/newsletter</span>
                             </a>
                         </li>
                     </ul>
