@@ -1,57 +1,25 @@
 <!-- footer-->
-    <footer class="bg-dark bg-opacity-90 text-light py-2 mt-auto mt-5 border">
-        <!-- subscrip -->
-        <!-- <section class="container p-3 mb-3 border-bottom border-secondary">
-            <div class="card text-bg-dark">
-                <img src="assets\images\subscipe_bg.jpg" class="card-img" alt="..." style="height: 350px;">
-                <div class="card-img-overlay d-flex flex-column justify-content-center text-center" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7));">
-                    <h2 class="display-2 card-title fw-bold ">Never miss a story!</h2>
-                    <p class="card-text">Get the freshest headlines and updates sent uninterrupted to your inbox.</p>
-
-                    <form class="row g-3 justify-content-center my-3">
-                        <div class="col-md-6">
-                            <label for="inputEmail" class="visually-hidden">Email</label>
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Your Email!">
-                        </div>
-                        
-                        <div class="col-auto">
-                            <a class="btn btn-primary mb-3 btn-subscribe "  href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal">Subscribe</a>
-                        </div>
-                    </form>
-
-                    <p class="card-text"><small>By subscribing you agree to our <a href="" style="text-decoration: none;">Privacy Policy</a></small></p>
-                </div>
-            </div>
-        </section> -->
+<footer class="bg-dark bg-opacity-90 text-light py-2 mt-auto mt-5 border">
 
         <div class="container">
             <div class="row">
-
                 <div class="col-md-4 mb-3">
                     <h5>About Us</h5>
                     <p class="text-color">Your trusted source for the latest tech news, trends, and insights. Stay informed with our curated content.</p>
                     <div class="d-flex">
-                        <ul  class="list-unstyled">
-
-                        </ul>
-                    
+                        <ul class="list-unstyled"></ul>
                     </div>
                 </div>
-
-  
-                
 
                 <div class="col-md-4 mb-3">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="<?php echo BASE_URL; ?>index.php" class="text-color text-decoration-none">Home</a></li>
-                        <li><a href="<?php BASE_URL; ?>articals.ph" class="text-color text-decoration-none">Articles</a></li>
-                        <li><a href="<?php BASE_URL; ?>contact.php" class="text-color text-decoration-none">Contact</a></li>
-                        <li><a href="<?php BASE_URL; ?>about_us.php" class="text-color text-decoration-none">Subscribe</a></li>
+                        <li><a href="index.php" class="text-color text-decoration-none">Home</a></li>
+                        <li><a href="articles.php" class="text-color text-decoration-none">Articles</a></li>
+                        <li><a href="contact.php" class="text-color text-decoration-none">Contact</a></li>
+                        <li><a href="about_us.php" class="text-color text-decoration-none">Subscribe</a></li>
                     </ul>
                 </div>
-
-                
 
                 <div class="col-md-4 mb-3">
                     <h5>Contact Us</h5>
@@ -63,29 +31,27 @@
                 </div>
             </div>
         </div>
-        
 
-        <div class="text-center  mt-3 border-top border-secondary">
+        <div class="text-center mt-3 border-top border-secondary">
             <p class="text-color mb-0">&copy; 2025 Tech Newsletter. All rights reserved.</p>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
-    <!-- Debug info -->
+    <!-- Debug info with error handling -->
     <script>
-        console.log('PHP error data:', <?= json_encode($allErrors) ?>);
-    </script>
-
-    <script>
+        console.log('PHP error data:', <?php echo isset($allErrors) ? json_encode($allErrors) : '{}' ?>);
+        
         window.serverData = {
-            errors: <?= json_encode($allErrors) ?>,
-            formData: <?= json_encode($registerData ?: $loginData) ?>
+            errors: <?php echo isset($allErrors) ? json_encode($allErrors) : '{}' ?>,
+            formData: <?php echo isset($registerData) ? json_encode($registerData) : (isset($loginData) ? json_encode($loginData) : '{}') ?>
         };
     </script>
-    <!-- Password visibility toggle and validation  -->
-    <script type="module" src="assets/js/helpers_fun.js"></script>
-    <script type="module" src="assets/js/search_container.js"></script>
-    <script type="module" src="assets/js/validation_forms.js"></script>
-    <script type="module" src="assets/js/validation_contact.js"></script>
+    
+    <!-- Script imports -->
+    <script src="assets/js/search_container.js"></script>
+    <script src="assets/js/helpers_fun.js"        type="module"></script>
+    <script src="assets/js/validation_forms.js"   type="module"></script>
+    <script src="assets/js/validation_contact.js" type="module" ></script>
     </body>    
 </html>
