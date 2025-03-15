@@ -49,9 +49,10 @@
     </script>
     
     <!-- Script imports -->
-    <script src="assets/js/search_container.js"></script>
+    <!-- <script src="assets/js/search_container.js"></script>
     <script src="assets/js/helpers_fun.js"        type="module"></script>
     <script src="assets/js/validation_forms.js"   type="module"></script>
-    <script src="assets/js/validation_contact.js" type="module" ></script>
+    <script src="assets/js/validation_contact.js" type="module" ></script> -->
+    <script src="assets/js/profile.js"               type="module"></script>
     </body>    
 </html>

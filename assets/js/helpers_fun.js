@@ -15,6 +15,9 @@ export function showError(error, element) {
     element.parentElement.appendChild(errorDiv);
 }
 
+
+
+
 export function displayServerErrors() {
     console.log('Server data:', window.serverData); // Debug output
     

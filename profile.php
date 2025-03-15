@@ -1,5 +1,6 @@
 <?php 
-    require_once 'controllers/profile_logic.php';
+    require_once 'controllers/getProfile.php';
+    $pageTitle = "Edit Profile";
     require_once 'includes/header.php';
 ?>
 
@@ -17,16 +18,16 @@
                     <div class=" my-3 border-bottom  border-secondary border-2 rounded"></div>
                 </div>
                 <div class="card-body p-4">
-                    <form action="controllers/profile_logic.php" method="post" enctype="multipart/form-data" class="row g-3">
+                    <form action="controllers/profile_uploade.php" method="post" enctype="multipart/form-data" class="row g-3">
                         <!-- img -->
                         <div class="col-md-4">
                             <div class="d-flex align-items-start">
                                 <div class="avatar-upload me-3">
                                     <div class="avatar-preview">
-                                        <img id="profileImagePreview" src="<?php echo htmlspecialchars($profile_picture); ?>" alt="Profile Preview">
+                                        <img id="profileImagePreview "  src="<?php echo htmlspecialchars($profile_picture); ?>" alt="Profile Photo" >
                                     </div>
                                     <div class="avatar-edit">
-                                        <input type="file" id="profileImageUpload" name="profileImage" accept=".png, .jpg, .jpeg">
+                                        <input type="file" id="profileImageUpload" name="profileImage" accept=".png, .jpeg">
                                         <label for="profileImageUpload"><i class="fas fa-pencil-alt"></i></label>
                                     </div>
                                 </div>
@@ -40,7 +41,8 @@
                         <!-- bio -->
                         <div class="col-md-8">
                             <label for="bio" class="form-label">Bio </label>
-                            <textarea name="bio" type="text" class="form-control " id="bio" placeholder="<?php echo htmlspecialchars($bio);?>"  ></textarea>
+                            <footer class="text-body-secondary">500 characters at max</footer>
+                            <textarea name="bio" type="text" class="form-control " id="bio" maxlength="500" placeholder="<?php echo htmlspecialchars($bio);?>"  ></textarea>
                         </div>
 
 
@@ -224,8 +226,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
-        
+            </div>   
         </div>
     </section>
 

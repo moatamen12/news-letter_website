@@ -147,5 +147,5 @@
     // If not POST request, redirect to homepage
     header('Location: ../index.php');
     exit;
-    session_regenerate_id(true);
+
 ?>
