@@ -95,4 +95,52 @@ function get_user_name($conn, $user_id) {
 }
 
 
+
+/**
+ * Set error messages in session and redirect
+ * 
+ * @param mixed $errors String or array of error messages
+ * @param string $type Error type
+ * @param string $redirect_to URL to redirect to
+ */
+function set_errors($errors, $type = 'errors', $redirect_to = null) {
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    
+    // Convert single string error to array
+    if (!is_array($errors)) {
+        $errors = [$errors];
+    }
+    
+    // Set errors in session
+    $_SESSION[$type] = $errors;
+    
+    // Redirect if specified
+    if ($redirect_to) {
+        redirect($redirect_to);
+    }
+    exit();
+}
+
+/**
+ * Set success message in session and redirect
+ * 
+ * @param mixed $message Success message
+ * @param string $type Success message type
+ * @param string $redirect_to URL to redirect to
+ */
+function set_success($message, $type = 'success', $redirect_to = null) {
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    
+    $_SESSION[$type] = $message;
+    
+    // Redirect if specified
+    if ($redirect_to) {
+        redirect($redirect_to);
+    }
+    exit();
+}
 ?>

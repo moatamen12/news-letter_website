@@ -1,4 +1,5 @@
 <?php
+// include_once __DIR__ .'/../controllers/getProfile.php';
     // require_once 'C:\xampp\htdocs\newsLetter\config\config.php';
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
@@ -83,7 +84,7 @@
                 <?php if(isset($_SESSION['user_id'])): ?>
                     <div class="dropdown">
                         <a href="#" class="d-flex align-items-center" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="<?= htmlspecialchars($_SESSION['profile_photo'] ?? 'assets/images/userImage.jpg') ?>" alt="Profile" 
+                        <img src="<?= htmlspecialchars($_SESSION['profile_photo'] ?? 'assets/images/default-use.jpg') ?>" alt="Profile" 
                                 class="rounded-circle" style="width:40px; height:40px; object-fit:cover;">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">

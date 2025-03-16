@@ -1,19 +1,106 @@
-// Helper functions
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-function clearError(Form) {
-    Form.querySelectorAll('.error-message').forEach(msg => msg.remove());
-}
-
-function showError(error, element) {
+// Error handling utilities
+function showError(message, element) {
+    // Remove any existing error messages
+    clearError(element);
+    
+    // Create error message container
     const errorDiv = document.createElement('div');
-    errorDiv.className = 'error-message text-danger';
-    errorDiv.style.fontSize = '0.9em';
-    errorDiv.textContent = error;
-    element.parentElement.appendChild(errorDiv);
+    errorDiv.className = 'error-message text-danger mt-1 small';
+    errorDiv.textContent = message;
+    
+    // Insert after the element
+    element.parentNode.insertBefore(errorDiv, element.nextSibling);
+    
+    // Add error class to the input
+    element.classList.add('is-invalid');
+}
+
+function clearError(element) {
+    // Clear all errors if form element is passed
+    if (element.tagName === 'FORM') {
+        const errorMessages = element.querySelectorAll('.error-message');
+        errorMessages.forEach(msg => msg.remove());
+        
+        const invalidInputs = element.querySelectorAll('.is-invalid');
+        invalidInputs.forEach(input => input.classList.remove('is-invalid'));
+        return;
+    }
+    
+    // Clear specific error for an input element
+    const errorElement = element.parentNode.querySelector('.error-message');
+    if (errorElement) {
+        errorElement.remove();
+    }
+    element.classList.remove('is-invalid');
+}
+
+// Validation functions
+function validateUsername(username, minLength = 5) {
+    if (!username) return true; // Skip if element doesn't exist
+    
+    if (!username.value.trim()) {
+        showError('Username is required', username);
+        return false;
+    } 
+    
+    if (username.value.length < minLength) {
+        showError(`Username must be at least ${minLength} characters`, username);
+        return false;
+    }
+    
+    // Username format validation (letters, numbers, underscores)
+    const usernameRegex = /^[a-zA-Z0-9_]+$/;
+    if (!usernameRegex.test(username.value)) {
+        showError('Username can only contain letters, numbers, and underscores', username);
+        return false;
+    }
+    
+    return true;
+}
+
+function validateEmail(email) {
+    if (!email) return true; // Skip if element doesn't exist
+    
+    if (!email.value.trim()) {
+        showError('Email is required', email);
+        return false;
+    }
+    
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.value)) {
+        showError('Please enter a valid email address', email);
+        return false;
+    }
+    
+    return true;
+}
+
+function validatePassword(password, minLength = 8) {
+    if (!password) return true; // Skip if element doesn't exist
+    
+    if (!password.value.trim()) {
+        showError('Password is required', password);
+        return false;
+    }
+    
+    if (password.value.length < minLength) {
+        showError(`Password must be at least ${minLength} characters`, password);
+        return false;
+    }
+    
+    return true;
+}
+
+function validateMessage(message) {
+    if (!message) return true; // Skip if element doesn't exist
+    
+    if (!message.value.trim()) {
+        showError('Message is required', message);
+        return false;
+    }
+    
+    return true;
 }
 
 function displayServerErrors() {
@@ -21,14 +108,14 @@ function displayServerErrors() {
     
     if (window.serverData && window.serverData.errors && window.serverData.errors.length > 0) {
         try {
-            // if model not found(not loaded)
+            // If modal not found (not loaded)
             const modal = document.getElementById('subscribeModal');
             if (!modal) {
                 console.error('Modal element not found');
                 return;
             }
             
-            //Bootstrap is available
+            // Ensure Bootstrap is loaded
             if (typeof bootstrap === 'undefined') {
                 console.error('Bootstrap not loaded');
                 return;
@@ -50,7 +137,7 @@ function displayServerErrors() {
                 const li = document.createElement('li');
                 li.textContent = error;
                 errorList.appendChild(li);
-            });
+            });  // <-- Fixed missing closing parenthesis
             
             errorContainer.classList.remove('d-none');
             
@@ -71,116 +158,11 @@ function displayServerErrors() {
     }
 }
 
-// Validation functions
-function validateUsername(username, minLength = 5) {
-    if (!username.value.trim()) {
-        showError('Username is required', username);
-        return false;
-    } else if (username.value.length < minLength) {
-        showError(`Username must be at least ${minLength} characters`, username);
-        return false;
-    }
-    return true;
-}
-
-function validateEmail(email) {
-    if (!email.value.trim()) {
-        showError('Email is required', email);
-        return false;
-    } else if (!isValidEmail(email.value.trim())) {
-        showError('Please enter a valid email address', email);
-        return false;
-    }
-    return true;
-}
-
-function validatePassword(password, minLength = 8) {
-    if (!password.value.trim()) {
-        showError('Password is required', password);
-        return false;
-    } else if (password.value.trim().length < minLength) {
-        showError(`Password should have at least ${minLength} characters`, password);
-        return false;
-    }
-    return true;
-}
-
-function validateMessage(message) {
-    if (!message.value.trim()) {
-        showError('Message is required', message);
-        return false;
-    }
-    return true;
-}
-//Profile validation function
-function validateProfile(form) {
-    clearError(form);
-    let hasError = false;
-    
-    // Get profile form elements
-    const fullName = document.getElementById('profile_fullname');
-    const bio = document.getElementById('profile_bio');
-    const currentPassword = document.getElementById('current_password');
-    const newPassword = document.getElementById('new_password');
-    const confirmPassword = document.getElementById('confirm_password');
-    const profileImage = document.getElementById('profile_image');
-    
-    // Validate full name
-    if (fullName && !fullName.value.trim()) {
-        showError('Full name is required', fullName);
-        hasError = true;
-    }
-    
-    // Validate bio (if required)
-    if (bio && bio.value.trim().length > 500) {
-        showError('Bio should not exceed 500 characters', bio);
-        hasError = true;
-    }
-    
-    // Password change validation (only if user is changing password)
-    if (newPassword && newPassword.value.trim()) {
-        // Current password is required when changing password
-        if (!currentPassword.value.trim()) {
-            showError('Current password is required to set a new password', currentPassword);
-            hasError = true;
-        }
-        
-        // Validate new password
-        if (newPassword.value.trim().length < 8) {
-            showError('New password must be at least 8 characters', newPassword);
-            hasError = true;
-        }
-        
-        // Confirm passwords match
-        if (newPassword.value !== confirmPassword.value) {
-            showError('Passwords do not match', confirmPassword);
-            hasError = true;
-        }
-    }
-    
-    // Validate profile image (if user is uploading one)
-    if (profileImage && profileImage.files.length > 0) {
-        const file = profileImage.files[0];
-        const fileSize = file.size / 1024 / 1024; // size in MB
-        const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
-        
-        if (!validTypes.includes(file.type)) {
-            showError('Please upload a valid image file (JPG, PNG, or GIF)', profileImage);
-            hasError = true;
-        }
-        
-        if (fileSize > 2) {
-            showError('Image size should not exceed 2MB', profileImage);
-            hasError = true;
-        }
-    }
-    
-    return !hasError;
-}
-
 // Document ready handler
 document.addEventListener('DOMContentLoaded', function() {
-    // Toggle password visibility
+
+    displayServerErrors();
+    
     const eyeIcons = document.querySelectorAll('.fa-eye, .fa-eye-slash');
     eyeIcons.forEach(icon => {
         icon.addEventListener('click', function() {
@@ -197,7 +179,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Subscribe form validation
     const subscribeForm = document.getElementById('subscribeForm');
     if (subscribeForm) {
         subscribeForm.addEventListener('submit', function(event) {
@@ -212,37 +193,42 @@ document.addEventListener('DOMContentLoaded', function() {
             let hasError = false;
 
             // Full name validation
-            if(!Fname.value.trim()) {
+            if (Fname && !Fname.value.trim()) {
                 showError('Full Name is required', Fname);
                 hasError = true;
-            } else if(Fname.value.length < 5) { 
+            } else if (Fname && Fname.value.length < 5) { 
                 showError('Full Name must be at least 5 characters', Fname);
                 hasError = true;
             }
 
             // Username validation
-            if(!validateUsername(username)) {
+            if (username && !validateUsername(username)) {
                 hasError = true;
             }
 
             // Email validation
-            if(!validateEmail(email)) {
+            if (email && !validateEmail(email)) {
                 hasError = true;
             }
 
             // Password validation
-            if(!validatePassword(password)) {
+            if (password && !validatePassword(password)) {
                 hasError = true;
             }
 
             // Confirm password validation
-            if(confPassword && password.value !== confPassword.value) {
+            if (confPassword && password && password.value !== confPassword.value) {
                 showError('Passwords do not match', confPassword);
                 hasError = true;
             }
             
             if (hasError) {
                 event.preventDefault();
+                // Scroll to first error
+                const firstError = document.querySelector('.error-message');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
             }
         });
     }
@@ -260,23 +246,28 @@ document.addEventListener('DOMContentLoaded', function() {
             let hasLoginError = false;
             
             // Validate username
-            if(!validateUsername(username)) {
+            if (username && !validateUsername(username)) {
                 hasLoginError = true;
             }
             
             // Validate email
-            if(!validateEmail(email)) {
+            if (email && !validateEmail(email)) {
                 hasLoginError = true;
             }
             
             // Validate password
-            if(!validatePassword(password)) {
+            if (password && !validatePassword(password)) {
                 hasLoginError = true;
             }
             
             // Prevent form submission if there are errors
             if (hasLoginError) {
                 event.preventDefault();
+                // Scroll to first error
+                const firstError = document.querySelector('.error-message');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
             }
         });
     }
@@ -287,50 +278,101 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', function(event) {
             clearError(contactForm);
             
-            const username = document.getElementById('contanct_username');
+            // Fixed potential typo: using "contact_username" instead of "contanct_username"
+            const username = document.getElementById('contact_username');
             const email = document.getElementById('email');
             const message = document.getElementById('message');
             let hasError = false;
             
             // Validate username
-            if(!validateUsername(username)) {
+            if (username && !validateUsername(username)) {
                 hasError = true;
             }
             
             // Validate email
-            if(!validateEmail(email)) {
+            if (email && !validateEmail(email)) {
                 hasError = true;
             }
             
             // Validate message
-            if(!validateMessage(message)) {
+            if (message && !validateMessage(message)) {
                 hasError = true;
             }
             
+            // Prevent form submission if there are errors
             if (hasError) {
                 event.preventDefault();
-                // Scroll to the first error
-                const firstError = document.querySelector('.is-invalid');
+                // Scroll to first error
+                const firstError = document.querySelector('.error-message');
                 if (firstError) {
-                    firstError.focus();
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             } else {
-                // Show a loading indicator
+                // Show loading indicator
                 const submitBtn = contactForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
-                submitBtn.disabled = true;
+                if (submitBtn) {
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+                    submitBtn.disabled = true;
+                    
+                    // Re-enable after timeout (fallback in case form submission is delayed)
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }, 5000);
+                }
             }
         });
     }
-
-    // NEW: Profile form validation
+    
+    // Profile form validation
     const profileForm = document.getElementById('profileForm');
     if (profileForm) {
         profileForm.addEventListener('submit', function(event) {
-            const isValid = validateProfile(profileForm);
+            clearError(profileForm);
+            let hasError = false;
             
-            if (!isValid) {
+            // Validate file type on submit
+            const imgUpload = document.getElementById('profileImageUpload');
+            if (imgUpload && imgUpload.files.length > 0) {
+                const file = imgUpload.files[0];
+                if (!(file.type === 'image/jpeg' || file.type === 'image/png')) {
+                    showError('Invalid file type. Only JPEG or PNG files are allowed', imgUpload);
+                    hasError = true;
+                }
+                
+                // Check file size (max 1MB)
+                const maxSize = 1 * 1024 * 1024; // 1MB
+                if (file.size > maxSize) {
+                    showError('File size exceeds 1MB limit', imgUpload);
+                    hasError = true;
+                }
+            }
+            // validation bio
+            const bio = document.getElementById('bio');
+            if (bio && bio.value.length > 500) {
+                showError('Bio cannot exceed 500 characters', bio);
+                hasError = true;
+            }
+
+            // validation of the fuul name
+            const FullName = document.getElementById('FullName');
+            if(FullName && !validateUsername(FullName)){
+                hasError = true;
+            }
+
+            const usernameInput = document.getElementById('usernameInput');
+            if(usernameInput && !validateUsername(usernameInput)){
+                hasError = true;
+            }
+            // validation of the email
+            const emaileInput = document.getElementById('emaileInput');
+            if (emaileInput && !validateEmail(emaileInput)) {
+                hasError = true;
+            }
+
+            
+            if (hasError) {
                 event.preventDefault();
                 // Scroll to the first error
                 const firstError = document.querySelector('.error-message');
@@ -338,15 +380,50 @@ document.addEventListener('DOMContentLoaded', function() {
                     firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             } else {
-                // Show loading indicator
+                // Show a loading indicator
                 const submitBtn = profileForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Updating...';
-                submitBtn.disabled = true;
+                if (submitBtn) {
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Saving...';
+                    submitBtn.disabled = true;
+                }
             }
         });
+
+        // Image preview functionality
+        const imgUpload = document.getElementById('profileImageUpload');
+        const imgPreview = document.getElementById('profileImagePreview');
+        
+        if (imgUpload && imgPreview) {
+            imgUpload.addEventListener('change', function() {
+                // Clear previous errors
+                clearError(imgUpload);
+                
+                if (this.files && this.files[0]) {
+                    const file = this.files[0];
+                    
+                    // Validate file type
+                    if (!(file.type === 'image/jpeg' || file.type === 'image/png')) {
+                        showError('Invalid file type. Only JPEG or PNG files are allowed', imgUpload);
+                        return;
+                    }
+                    
+                    // Validate file size
+                    const maxSize = 1 * 1024 * 1024; // 1MB
+                    if (file.size > maxSize) {
+                        showError('File size exceeds 1MB limit', imgUpload);
+                        return;
+                    }
+                    
+                    // Show preview
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        imgPreview.src = e.target.result;
+                        imgPreview.style.display = 'block';
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
     }
-    
-    // Call the function to display errors
-    displayServerErrors();
 });

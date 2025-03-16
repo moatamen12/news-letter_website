@@ -7,27 +7,23 @@
         session_start();
     }
     
-    $contactErrors = isset($_SESSION['Profile_errors']) ? $_SESSION['Profile_errors'] : [];
-    $contactSuccess = isset($_SESSION['Profile_success']) ? $_SESSION['Profile_success'] : '';
+    $errors = $_SESSION['errors'] ?? [];
+    $success = $_SESSION['success'] ?? [];
     
-    unset($_SESSION['Profile_errors']);
-    unset($_SESSION['Profile_success']);
+    unset($_SESSION['errors']);
+    unset($_SESSION['success']);
     
     require_once 'includes/header.php';
 ?>
 
-    <!-- Add message displays below the header -->
-    <div class="container mt-3">
-        <?php 
-            include 'includes/error_msg.php';
-            include 'includes/success_msg.php'; 
-        ?>
-    </div>
-
-
-
-
-    <section class="container-fluid p-5">   
+    <section class="container-fluid p-5"> 
+        <!-- message displays -->
+        <div class="container mt-3">
+            <?php 
+                include 'includes/messages.php'
+            ?>
+        </div>
+        
         <div class="p-5">
             <div class=" mb-5 ">
                 <h1 class="fw-bold">My Account</h1>
@@ -40,19 +36,19 @@
                     <div class=" my-3 border-bottom  border-secondary border-2 rounded"></div>
                 </div>
                 <div class="card-body p-4">
-                    <form action="controllers/profile_update.php" method="post" enctype="multipart/form-data" class="row g-3">
+                    <form action="controllers/profile_update.php" method="post" enctype="multipart/form-data" class="row g-3" id="profileForm">
                         <!-- img -->
                         <div class="col-md-4">
                             <div class="d-flex align-items-start">
                                 <div class="avatar-upload me-3">
                                     <div class="avatar-preview">
                                         <img id="profileImagePreview" src="<?php     
-                                            if (strpos($profile_photo, 'http') === 0) {
-                                                    echo htmlspecialchars($profile_photo);
-                                                } else {
-                                                    echo htmlspecialchars(BASE_URL . $profile_photo);
-                                                } ?>
-                                                " alt="Profile Photo" >
+                                                if (strpos($profile_photo, 'http') === 0) {
+                                                        echo htmlspecialchars($profile_photo);
+                                                    } else {
+                                                        echo htmlspecialchars(BASE_URL . $profile_photo);
+                                                    } ?>
+                                                    " alt="Profile Photo" >
                                     </div>
                                     <div class="avatar-edit">
                                         <input type="file" id="profileImageUpload" name="profileImage" accept=".png, .jpeg">
@@ -60,7 +56,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-5">
-                                    <button type="submit" name="deleteProfileImage" class="btn btn-sm btn-danger">
+                                    <button type="submit" id="deleteProfileImage" name="deleteProfileImage" lass="btn btn-sm btn-danger">
                                         <i class="fas fa-trash-alt me-1"></i>Delete
                                     </button>
                                 </div>
@@ -70,31 +66,42 @@
                         <div class="col-md-8">
                             <label for="bio" class="form-label">Bio </label>
                             <footer class="text-body-secondary">500 characters at max</footer>
-                            <textarea name="bio" type="text" class="form-control " id="bio" maxlength="500" placeholder="<?php echo htmlspecialchars($bio);?>"  ></textarea>
+                            <textarea name="bio" type="text" class="form-control " id="bio" maxlength="500" value="<?php echo htmlspecialchars($bio);?>"  ></textarea>
                         </div>
 
-
+                        <!-- full name -->
                         <div class="col-md-6">
                             <label for="FullName" class="form-label">Full Name </label>
-                            <input name="FullName" type="text" class="form-control " id="FullName" placeholder="<?php echo htmlspecialchars($name);?>"  >
+                            <input name="FullName" type="text" class="form-control " id="FullName" value="<?php echo htmlspecialchars($name);?>"  >
                         </div>
-
+                        
+                        <!-- username -->
                         <div class="col-md-6">
                             <label for="usernameInput" class="form-label">User Name </label>
-                            <input name="usernameInput" type="text" class="form-control " id="usernameInput" placeholder="<?php echo htmlspecialchars($username);?>" >
+                            <input name="usernameInput" type="text" class="form-control " id="usernameInput" value="<?php echo htmlspecialchars($username);?>" >
                         </div>
-
+                        <!-- email -->
                         <div class="col-md-6">
                             <label for="emaileInput" class="form-label">email </label>
-                            <input name="emaileInput" type="text" class="form-control " id="emaileInput" placeholder="<?php echo htmlspecialchars($email);?>" >
+                            <input name="emaileInput" type="text" class="form-control " id="emaileInput" value="<?php echo htmlspecialchars($email);?>" >
                         </div>
-
+                        <!-- work -->
                         <div class="col-md-6">
                             <label for="WorkInput" class="form-label">Work </label>
-                            <input name="WorkInput" type="text" class="form-control " id="WorkInput" placeholder="<?php echo htmlspecialchars($work);?>" >
+                            <input name="WorkInput" type="text" class="form-control " id="WorkInput" value="<?php echo htmlspecialchars($work);?>" >
                         </div>
 
-                        
+                        <!-- confirm the password -->
+                        <!-- <div class="col-md-6">
+                            <label for="currentPassword" class="form-label">Confirm Password<span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="ConfPassword" name="currentPassword" placeholder="pleas conferm your identity" required>
+                                visability togle 
+                                <button class="btn btn-bg" type="button">
+                                    <i class="fas fa-eye" id="eye"></i>
+                                </button>
+                            </div>
+                        </div>                         -->
                         <!-- submit -->
                         <div class="col-12 d-flex justify-content-end">
                             <button type="submit" name="saveChanges" class="btn text-center btn-lg btn-primary border-primary ">Save Change</button>
@@ -186,10 +193,14 @@
                     <form action="controllers/profile_logic.php" method="post" class="row g-3">
                         <!-- Current Password -->
                         <div class="col-md-6">
-                            <label for="currentPassword" class="form-label">Current Password</label>
+                            <label for="currentPassword" class="form-label">Current Password<span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fas fa-lock"></i></span>
                                 <input type="password" class="form-control" id="currentPassword" name="currentPassword" required>
+                                <!-- visability togle -->
+                                <button class="btn btn-bg" type="button">
+                                    <i class="fas fa-eye" id="eye"></i>
+                                </button>
                             </div>
                         </div>
                         
@@ -199,19 +210,27 @@
                         
                         <!-- New Password -->
                         <div class="col-md-6">
-                            <label for="newPassword" class="form-label">New Password</label>
+                            <label for="newPassword" class="form-label">New Password<span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                                 <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+                                <!-- visability togle -->
+                                <button class="btn btn-bg" type="button">
+                                    <i class="fas fa-eye" id="eye"></i>
+                                </button>
                             </div>
                         </div>
                         
                         <!-- Confirm New Password -->
                         <div class="col-md-6">
-                            <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                            <label for="confirmPassword" class="form-label">Confirm New Password<span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fas fa-check-double"></i></span>
                                 <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                                <!-- visability togle -->
+                                <button class="btn btn-bg" type="button">
+                                    <i class="fas fa-eye" id="eye"></i>
+                                </button>
                             </div>
                         </div>
                         

@@ -11,7 +11,7 @@
     if (!is_logged_in()) {
         redirect(BASE_URL .  'index.php');
     }
-    $userimg = BASE_URL . USER_IMG;
+    $userimg = 'assets/images/default-use.jpg';
     
     $user_id = $_SESSION['user_id'];
     $errors = [];
@@ -39,5 +39,6 @@
         
     }catch(PDOException $e){
         $errors[] = "DATA ERROR PLEAS TRAY AGEN LATER: " . $e->getMessage();
+        set_errors($errors,'errors','../profile.php');
     }
 ?>

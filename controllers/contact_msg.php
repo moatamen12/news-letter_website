@@ -1,21 +1,11 @@
 <?php 
    require_once '../config/config.php';
-   
-   // Enable error reporting for debugging
-   error_reporting(E_ALL);
-   ini_set('display_errors', 1);
+   include_once 'functions.php';
    
    // Start session if not already started
    if (session_status() === PHP_SESSION_NONE) {
       session_start();
    }
-
-   // Log request data for debugging
-   error_log("Contact form submission received: " . json_encode($_POST));
-   error_log("Session data: " . json_encode($_SESSION));
-
-   // For additional debugging, temporarily uncomment the line below:
-   // var_dump($_POST); exit;
 
    // Check if form was actually submitted
    if (!isset($_POST['form_submitted'])) {
@@ -54,19 +44,25 @@
          $errors[] = "Message is required";
       }
       
-      // If there are errors, redirect back with errors
-      if (!empty($errors)) {
-         $_SESSION['contact_errors'] = $errors;
-         $_SESSION['form_data'] = [
-            'username' => $username,
-            'email' => $email,
-            'subject' => $subject,
-            'category' => $category,
-            'message' => $message
-         ];
-         header('Location: ../contact.php');
-         exit;
-      }
+     $_SESSION['form_data'] = [
+      'username' => $username,
+      'email' => $email,
+      'subject' => $subject,
+      'category' => $category,
+      'message' => $message
+   ];
+
+      if (!isset($_SESSION['user_id'])) {
+         set_errors("You must be logged in to send a message.",'errors', '../contact.php');
+      exit;
+   }
+
+
+   if (!empty($errors)) {
+         set_errors($errors,'errors', '../contact.php');
+      exit;
+   }
+  
 
       //viryfiy the user
       try{
@@ -79,20 +75,11 @@
             header('Location: ../contact.php');
             exit;
          }elseif ($user['username'] !== $username || $user['email'] !== $email) {
-            $_SESSION['contact_errors'] = ["Invalid username or email"];
-            $_SESSION['form_data'] = [
-               'username' => $username,
-               'email' => $email,
-               'subject' => $subject,
-               'category' => $category,
-               'message' => $message
-            ];
-            header('Location: ../contact.php');
+            set_errors("Invalid username or email",'errors','../contact.php');
             exit;
          }
       }catch (PDOException $e) {
-         $_SESSION['contact_errors'] = ["Database error: " . $e->getMessage()];
-         header('Location: ../contact.php');
+         set_errors("Database error: " . $e->getMessage(),'errors','../contact.php');
          exit;
       }
 
@@ -113,21 +100,20 @@
          ]);
          
          if ($success) {
-            $_SESSION['contact_success'] = "Your message has been sent successfully!";
+            set_success("Your message has been sent successfully!",'success','../contact.php');
+            
          } else {
-            $_SESSION['contact_errors'] = ["Failed to send your message. Please try again."];
+            set_errors("Failed to send your message. Please try again.",'errors','../contact.php');
          }
-         
          header('Location: ../contact.php');
          exit;
       } catch (PDOException $e) {
-         $_SESSION['contact_errors'] = ["Database error: " . $e->getMessage()];
-         header('Location: ../contact.php');
+         set_errors("Database error: " . $e->getMessage(),'errors','../contact.php');
          exit;
       }
    } else {
       // If not a POST request, redirect back to contact page
-      header('Location: ../contact.php');
+      redirect('../contact.php');
       exit;
    }
    var_dump($_SESSION);

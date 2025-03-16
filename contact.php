@@ -8,19 +8,15 @@
 
     $page_title = 'Contact Us';
     require_once 'includes/header.php';
-    // Get messages from session
-    $contactErrors = $_SESSION['contact_errors'] ?? [];
-    $contactError = $_SESSION['contact_error'] ?? '';
-    $contactSuccess = $_SESSION['contact_success'] ?? '';
+    // Get messages from session - consistent variable naming
+    $errors = $_SESSION['errors'] ?? [];
+    $success = $_SESSION['success'] ?? [];
 
-    if (!empty($contactError)) {
-        $contactErrors[] = $contactError;
-    }
-
+    // Form data from session (if available)
     $formData = $_SESSION['form_data'] ?? [];
 
-
-    unset($_SESSION['contact_errors'], $_SESSION['contact_error'], $_SESSION['contact_success'], $_SESSION['form_data']);
+    // Clean up session after use
+    unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['form_data']);
 
 
     $isLoggedIn = isset($_SESSION['user_id']);
@@ -37,8 +33,7 @@
     <!-- disply errors -->
     <div class="container mt-3">
         <?php 
-            include 'includes/error_msg.php';
-            include 'includes/success_msg.php'; 
+            include 'includes/messages.php';
         ?>
     </div>
 

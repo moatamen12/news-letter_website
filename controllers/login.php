@@ -65,10 +65,6 @@
                 $errors[] = "Database error: " . $e->getMessage();
             }
         }
-
-
-
-        
         if (!empty($errors)) {
             session_start();
             $_SESSION['login_errors'] = $errors;
