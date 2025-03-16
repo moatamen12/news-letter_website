@@ -112,8 +112,7 @@ function validateMessage(message) {
     }
     return true;
 }
-
-// NEW: Profile validation function
+//Profile validation function
 function validateProfile(form) {
     clearError(form);
     let hasError = false;

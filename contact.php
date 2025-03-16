@@ -34,37 +34,14 @@
         </div>
     </div>
 
-    <!-- Success message -->
-    <?php if (!empty($contactSuccess)): ?>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <?= htmlspecialchars($contactSuccess) ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <!-- disply errors -->
+    <div class="container mt-3">
+        <?php 
+            include 'includes/error_msg.php';
+            include 'includes/success_msg.php'; 
+        ?>
     </div>
-    <?php endif; ?>
-    
-    <!-- Error messages -->
-    <?php if (!empty($contactErrors)): ?>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <ul class="mb-0">
-            <?php foreach ($contactErrors as $error): ?>
-                <li><?= htmlspecialchars($error) ?></li>
-            <?php endforeach; ?>
-        </ul>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    <?php endif; ?>
 
-    <!-- Validation errors -->
-    <?php if (!empty($contactErrors)): ?>
-    <div class="alert alert-danger">
-        <h5>Please fix the following errors:</h5>
-        <ul>
-            <?php foreach($contactErrors as $error): ?>
-                <li><?= htmlspecialchars($error) ?></li>
-            <?php endforeach; ?>
-        </ul>
-    </div>
-    <?php endif; ?>
 
     <!-- Login required message for non-logged in users -->
     <?php if (!$isLoggedIn): ?>

@@ -25,7 +25,8 @@
         $stmt -> execute([$user_id]);
         $profile = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $profile_picture = isset($profile['profile_photo']) && !empty($profile['profile_photo']) ? $profile['profile_photo'] : $userimg;
+        $profile_photo = isset($profile['profile_photo']) && !empty($profile['profile_photo']) ? $profile['profile_photo'] : $userimg;
+        // echo $profile_picture;
         $email = $profile['email'];
         $name = $profile['name'];
         $password_hash = $profile['password_hash'];

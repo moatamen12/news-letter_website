@@ -1,8 +1,30 @@
 <?php 
     require_once 'controllers/getProfile.php';
     $pageTitle = "Edit Profile";
+    
+    // Get any stored messages from session
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    
+    $contactErrors = isset($_SESSION['Profile_errors']) ? $_SESSION['Profile_errors'] : [];
+    $contactSuccess = isset($_SESSION['Profile_success']) ? $_SESSION['Profile_success'] : '';
+    
+    unset($_SESSION['Profile_errors']);
+    unset($_SESSION['Profile_success']);
+    
     require_once 'includes/header.php';
 ?>
+
+    <!-- Add message displays below the header -->
+    <div class="container mt-3">
+        <?php 
+            include 'includes/error_msg.php';
+            include 'includes/success_msg.php'; 
+        ?>
+    </div>
+
+
 
 
     <section class="container-fluid p-5">   
@@ -18,13 +40,19 @@
                     <div class=" my-3 border-bottom  border-secondary border-2 rounded"></div>
                 </div>
                 <div class="card-body p-4">
-                    <form action="controllers/profile_uploade.php" method="post" enctype="multipart/form-data" class="row g-3">
+                    <form action="controllers/profile_update.php" method="post" enctype="multipart/form-data" class="row g-3">
                         <!-- img -->
                         <div class="col-md-4">
                             <div class="d-flex align-items-start">
                                 <div class="avatar-upload me-3">
                                     <div class="avatar-preview">
-                                        <img id="profileImagePreview "  src="<?php echo htmlspecialchars($profile_picture); ?>" alt="Profile Photo" >
+                                        <img id="profileImagePreview" src="<?php     
+                                            if (strpos($profile_photo, 'http') === 0) {
+                                                    echo htmlspecialchars($profile_photo);
+                                                } else {
+                                                    echo htmlspecialchars(BASE_URL . $profile_photo);
+                                                } ?>
+                                                " alt="Profile Photo" >
                                     </div>
                                     <div class="avatar-edit">
                                         <input type="file" id="profileImageUpload" name="profileImage" accept=".png, .jpeg">

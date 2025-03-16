@@ -5,6 +5,7 @@
 /assets/images
 /config
 /UML-diagrames
+/uploads/
 # Environment files
 .env
 .env.local

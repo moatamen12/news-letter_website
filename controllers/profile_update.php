@@ -1,29 +1,19 @@
 <?php 
-    include 'functions.php';
     $pageTitle = "Edit Profile";
+    include 'functions.php';
+    require_once __DIR__ . '/profile_functions.php';
     require_once __DIR__ . '/../config/config.php';
-
-    $userimg = BASE_URL . USER_IMG;
     
     $user_id = $_SESSION['user_id'];
     $errors = [];
     // auther profile
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         if(isset($_POST['deleteProfileImage'])){
-            try{           
-                // Delete the profile image 
-                $stmt = $conn->prepare("UPDATE user_profiles SET profile_photo = :profile_photo WHERE user_id = :user_id");
-                $stmt->execute(['user_id'  =>  $user_id,
-                            'profile_photo' =>  $userimg]);
-                // Redirect back to profile page
-                redirect('../profile.php');               
-            }catch(PDOException $e){
-                $errors[] = "DATA ERROR PLEAS TRAY AGEN LATER'could not delet photo': " . $e->getMessage();
-            }
+            delete_photo($conn, $user_id, $userimg);
         }else if(isset($_POST['saveChanges'])){
             try{
                 if(isset($_FILES['profileImage']) && $_FILES['profileImage']['error'] == 0){
-                    $allowed_types= ['jmage/jpeg','image/png'];
+                    $allowed_types= ['image/jpeg','image/png'];
                     $max_size = 1024 * 1024 ;//1MB
 
                     $file_info = $_FILES['profileImage'];
@@ -37,14 +27,20 @@
                     }else if($file_size > $max_size){
                         $errors[] = "File size exceeds maximum allowed size('1MB')";
                     }else{
-                        $upload_dir = __DIR__ . '/../profiles/profiles/';
+                        $upload_dir = __DIR__ . '/../uploads/profiles/';
+                
+                        // Create directory if it doesn't exist
+                        if (!is_dir($upload_dir)) {
+                            mkdir($upload_dir, 0755, true);
+                        }
+
                         $file_extention = pathinfo($_FILES['profileImage']['name'], PATHINFO_EXTENSION);
                         $filename = 'profile_' . $user_id . '_' . time() . '.' . $file_extention;
                         $target_path = $upload_dir . $filename;
                     }
                     if(move_uploaded_file($file_tmp, $target_path)){
                         // Update database with new profile photo path
-                        $profile_photo_path = 'profiles/profiles/' . $filename;
+                        $profile_photo_path = 'uploads/profiles/' . $filename;
                         $stmt = $conn->prepare("UPDATE user_profiles SET profile_photo = :profile_photo WHERE user_id = :user_id");
                         $stmt->execute([
                             'user_id' => $user_id,
