@@ -2,7 +2,6 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
 function delete_photo($conn, $user_id,$userimg){
     $errors = [];
     $success = [];
@@ -100,11 +99,10 @@ function update_profile($conn, $user_id){
                     // set_errors("Error uploading file. Please try again.",'errors','../profile.php');
                 }
             }
+        }else {
+            $errors[] = "Please select an image to upload.";
+            // set_errors("Please select an image to upload.",'errors','../profile.php');
         }
-        // }else {
-        //     $errors[] = "Please select an image to upload.";
-        //     // set_errors("Please select an image to upload.",'errors','../profile.php');
-        // }
     } catch(PDOException $e){
         $errors[] = "DATABASE ERROR PLEASE TRY AGAIN LATER: " . $e->getMessage();
         // set_errors("DATABASE ERROR PLEASE TRY AGAIN LATER: " . $e->getMessage(),'errors','../profile.php');

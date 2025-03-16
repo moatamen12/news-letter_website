@@ -1,5 +1,6 @@
 <?php
-    require_once '../config/config.php';
+    require_once '../../config/config.php';
+    require_once '../functions.php';
 
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
@@ -54,7 +55,7 @@
                         // Set profile photo; fallback to default
                         $_SESSION['profile_photo'] = $user['profile_photo'] ?? 'assets/images/userImage.jpg';
         
-                        header('Location: ../index.php');
+                         redirect(BASE_URL.'index.php');
                         exit;
                     } else {
 
@@ -73,11 +74,11 @@
                 'email' => $email
             ];
             
-            header('Location: ../index.php');
+             redirect(BASE_URL.'index.php');
             exit;
         }
     }
-    header('Location: ../index.php');
+     redirect(BASE_URL.'index.php');
     exit;
 session_regenerate_id(true);
 ?>

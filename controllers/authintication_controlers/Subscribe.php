@@ -1,5 +1,6 @@
 <?php
-    require_once '../config/config.php';
+    include '../../config/config.php';
+    require_once '../functions.php';
 
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
@@ -28,7 +29,7 @@
                 $stmt = $conn->prepare("SELECT COUNT(*) FROM users WHERE email = :email");
                 $stmt->execute(['email' => $email]);
                 $count = $stmt->fetchColumn();
-                if ($count > 0){
+                if ($count > 0 ){
                     $errors[] = "user allready Exests";
                 }
             }catch(PDOException $e){
@@ -113,7 +114,7 @@
                 $_SESSION['success_message'] = "Registration successful! Your profile has been created.";
 
                 // Redirect to profile page
-                header('Location: ../index.php');
+                redirect(BASE_URL.'index.php');
                 exit;
                 
             } catch (PDOException $e) {
@@ -139,13 +140,13 @@
                 'email' => $email
             ];
             
-            header('Location: ../index.php');
+            redirect(BASE_URL.'index.php');
             exit;
         }
     }
 
     // If not POST request, redirect to homepage
-    header('Location: ../index.php');
+    redirect(BASE_URL.'index.php');
     exit;
 
 ?>

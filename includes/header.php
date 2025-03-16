@@ -1,6 +1,6 @@
 <?php
 // include_once __DIR__ .'/../controllers/getProfile.php';
-    // require_once 'C:\xampp\htdocs\newsLetter\config\config.php';
+    require_once 'C:\xampp\htdocs\newsLetter\config\config.php';
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
@@ -90,7 +90,7 @@
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
                             <li><a class="dropdown-item" href="/newsLetter/profile.php"><i class="fas fa-user-edit me-2"></i>Edit Profile</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/newsLetter/controllers/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                            <li><a class="dropdown-item" href="/newsLetter/controllers/authintication_controlers/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
                         </ul>
                     </div>
                 <?php else: ?>
@@ -131,7 +131,7 @@
                         <ul class="mb-0" id="errorList"></ul>
                     </div>
 
-                    <form action="controllers/Subscribe.php" method="POST" class="row g-3" id="subscribeForm">
+                    <form action=<?= BASE_CONT. "/authintication_controlers/Subscribe.php"?> method="POST" class="row g-3" id="subscribeForm">
                         <!--Full name -->
                         <div class="col-md-6">
                             <label for="Fname" class="form-label">Full Name <span class="text-danger">*</span></label>
@@ -212,7 +212,7 @@
                         <ul class="mb-0" id="errorList"></ul>
                     </div>
 
-                    <form action="controllers/login.php" method="POST" class="row g-3" id = "loginForm">
+                    <form action="<?= BASE_CONT. "/authintication_controlers/login.php"?>" method="POST" class="row g-3" id = "loginForm">
                     <!-- userName -->
                     <div class="col-md-12">
                         <label for="logusername" class="form-label">Username<span class="text-danger">*</span></label>

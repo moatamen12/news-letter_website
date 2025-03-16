@@ -332,44 +332,44 @@ document.addEventListener('DOMContentLoaded', function() {
             clearError(profileForm);
             let hasError = false;
             
-            // Validate file type on submit
-            const imgUpload = document.getElementById('profileImageUpload');
-            if (imgUpload && imgUpload.files.length > 0) {
-                const file = imgUpload.files[0];
-                if (!(file.type === 'image/jpeg' || file.type === 'image/png')) {
-                    showError('Invalid file type. Only JPEG or PNG files are allowed', imgUpload);
-                    hasError = true;
-                }
+            // // Validate file type on submit
+            // const imgUpload = document.getElementById('profileImageUpload');
+            // if (imgUpload && imgUpload.files.length > 0) {
+            //     const file = imgUpload.files[0];
+            //     if (!(file.type === 'image/jpeg' || file.type === 'image/png')) {
+            //         showError('Invalid file type. Only JPEG or PNG files are allowed', imgUpload);
+            //         hasError = true;
+            //     }
                 
-                // Check file size (max 1MB)
-                const maxSize = 1 * 1024 * 1024; // 1MB
-                if (file.size > maxSize) {
-                    showError('File size exceeds 1MB limit', imgUpload);
-                    hasError = true;
-                }
-            }
-            // validation bio
-            const bio = document.getElementById('bio');
-            if (bio && bio.value.length > 500) {
-                showError('Bio cannot exceed 500 characters', bio);
-                hasError = true;
-            }
+            //     // Check file size (max 1MB)
+            //     const maxSize = 1 * 1024 * 1024; // 1MB
+            //     if (file.size > maxSize) {
+            //         showError('File size exceeds 1MB limit', imgUpload);
+            //         hasError = true;
+            //     }
+            // }
+            // // validation bio
+            // const bio = document.getElementById('bio');
+            // if (bio && bio.value.length > 500) {
+            //     showError('Bio cannot exceed 500 characters', bio);
+            //     hasError = true;
+            // }
 
-            // validation of the fuul name
-            const FullName = document.getElementById('FullName');
-            if(FullName && !validateUsername(FullName)){
-                hasError = true;
-            }
+            // // validation of the fuul name
+            // const FullName = document.getElementById('FullName');
+            // if(FullName && !validateUsername(FullName)){
+            //     hasError = true;
+            // }
 
-            const usernameInput = document.getElementById('usernameInput');
-            if(usernameInput && !validateUsername(usernameInput)){
-                hasError = true;
-            }
-            // validation of the email
-            const emaileInput = document.getElementById('emaileInput');
-            if (emaileInput && !validateEmail(emaileInput)) {
-                hasError = true;
-            }
+            // const usernameInput = document.getElementById('usernameInput');
+            // if(usernameInput && !validateUsername(usernameInput)){
+            //     hasError = true;
+            // }
+            // // validation of the email
+            // const emaileInput = document.getElementById('emaileInput');
+            // if (emaileInput && !validateEmail(emaileInput)) {
+            //     hasError = true;
+            // }
 
             
             if (hasError) {
