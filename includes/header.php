@@ -49,7 +49,7 @@
     <!-- the navegation bar -->
     <nav class="navbar navbar-custom sticky-top navbar-expand-lg bg-body-tertiary shadow-sm px-2">
         <div class="container-fluid">
-            <a class="navbar-brand logo" href="index.php"><img src="assets/images/tech-expo-logo.png" alt="Tech Expo"></a>
+            <a class="navbar-brand logo" href="index.php"><img src=<?= LOGO_URL ?> alt="Tech Expo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

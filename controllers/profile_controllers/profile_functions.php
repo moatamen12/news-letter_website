@@ -25,8 +25,10 @@ function delete_photo($conn, $user_id,$userimg){
             } else {
                 $errors[] = "Image file does not exist on server";
             }
+            $_SESSION['profile_photo'] = $filePath;
         } else {
             // No custom profile photo to delete
+            $_SESSION['profile_photo'] = $userimg;
             $success[] = "Default profile photo restored";
         }
         
@@ -86,7 +88,7 @@ function update_profile($conn, $user_id){
                 // Only attempt to move the file if path is defined and validation passed
                 if(move_uploaded_file($file_tmp, $target_path)){
                     // Update database with new profile photo path
-                    $profile_photo_path = 'uploads/profiles/' . $filename;
+                    $profile_photo_path = __DIR__.'../..uploads/profiles' . $filename;
                     $stmt = $conn->prepare("UPDATE user_profiles SET profile_photo = :profile_photo WHERE user_id = :user_id");
                     $stmt->execute([
                         'user_id' => $user_id,
@@ -99,10 +101,11 @@ function update_profile($conn, $user_id){
                     // set_errors("Error uploading file. Please try again.",'errors','../profile.php');
                 }
             }
-        }else {
-            $errors[] = "Please select an image to upload.";
-            // set_errors("Please select an image to upload.",'errors','../profile.php');
         }
+        // else {
+        //     $errors[] = "Please select an image to upload.";
+            // set_errors("Please select an image to upload.",'errors','../profile.php');
+        // }
     } catch(PDOException $e){
         $errors[] = "DATABASE ERROR PLEASE TRY AGAIN LATER: " . $e->getMessage();
         // set_errors("DATABASE ERROR PLEASE TRY AGAIN LATER: " . $e->getMessage(),'errors','../profile.php');

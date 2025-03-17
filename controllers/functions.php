@@ -1,4 +1,5 @@
 <?php
+    require_once __DIR__ . '/../config/config.php';
 /**
  * Common functions for the newsletter application
  */
@@ -27,6 +28,23 @@ function is_logged_in() {
 
 /**
  * 
+ * @param PDO $conn Database connection
+ * @return boolean:string True if logged in, false otherwise
+ */
+function get_role($conn){
+    if (is_logged_in()){
+        $stmt = $conn->prepare("SELECT r.role_name FROM roles r 
+                                LEFT JOIN users u on u.role_id = r.role_id
+                                WHERE u.user_id = :user_id");
+        $stmt->execute(['user_id' => $_SESSION['user_id']]);
+        $role = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $role['role_name'] ?? false;
+    }
+    else return false;     
+}
+
+/**
+ * 
  * 
  * @param string $location The URL to redirect to
  * @return void
@@ -36,19 +54,18 @@ function redirect($location) {
     exit();
 }
 
-/**
- * 
- * 
- * @param int $role_id The role ID to check
- * @return boolean True if user has the role, false otherwise
- */
-function has_role($role_id) {
-    if (!is_logged_in()) {
-        return false;
-    }
-    
-    return $_SESSION['role_id'] == $role_id;
-}
+// /**
+//  * 
+//  * 
+//  * @param int $role_id The role ID to check
+//  * @return boolean True if user has the role, false otherwise
+//  */
+// function has_role($role_id) {
+//     if (!is_logged_in()) {
+//         return false;
+//     }
+//     return $_SESSION['role_id'] == $role_id;
+// }
 
 /**
  * Check if user is admin
@@ -56,7 +73,7 @@ function has_role($role_id) {
  * @return boolean True if user is admin, false otherwise
  */
 function is_admin() {
-    return has_role(3); // Role ID 3 is admin
+    return get_role(3); // Role ID 3 is admin
 }
 
 /**

@@ -1,7 +1,7 @@
 <?php 
-    include 'functions.php';
+    include  __DIR__ .'/../functions.php';
     $pageTitle = "Edit Profile";
-    require_once __DIR__ . '/../config/config.php';
+    require_once __DIR__ . '/../../config/config.php';
 
     //startinf session if not started
     if (session_status() === PHP_SESSION_NONE) {

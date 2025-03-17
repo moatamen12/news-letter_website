@@ -1,9 +1,8 @@
 <?php 
     $pageTitle = "Edit Profile";
-    include 'functions.php';
+    include __DIR__ .'/../functions.php';
     include __DIR__ . '/profile_functions.php';
-    include __DIR__ . '/delet_profile.php';
-    require_once __DIR__ . '/../config/config.php';
+    require_once __DIR__ . '/../../config/config.php';
     
     $user_id = $_SESSION['user_id'];
     $errors = [];
@@ -27,14 +26,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         
         // If there are errors, store them in session and redirect back
         if (!empty($errors)) {
-            set_errors($errors,'errors','../profile.php');
+            set_errors($errors,'errors',BASE_URL . 'profile.php');
             exit;
         }
         if (!empty($success)) {
-            set_success($success,'success','../profile.php');
+            set_success($success,'success',BASE_URL . 'profile.php');
             exit;
         }
-        header("Location: " . BASE_URL . "profile.php");
+        header('Location: ../../profile.php');
         exit;
     }
 ?>

@@ -20,6 +20,10 @@ body{
 
 
 /* header SECTION */
+.blur{
+    backdrop-filter: blur(5px);
+    height: 100%;
+}
 .navbar-custom {
     top: 0;
     width: 100%;
@@ -119,9 +123,7 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
 
 
 /* for the under line of the title    TODO:fined out why it is not working */ 
-.card-body > h4.card-title > a,
-.list-group-item .card-body h4.card-title > a,
-h3 > a.btn-link {
+.stretched-link {
     text-decoration: none;
     background-image: linear-gradient(to right, var(--under-line-color), var(--under-line-color));
     background-size: 0 2px;
@@ -132,9 +134,7 @@ h3 > a.btn-link {
     padding-bottom: 2px;
 }
 
-.card-body > h4.card-title > a:hover,
-.list-group-item .card-body h4.card-title > a:hover,
-h3 > a.btn-link:hover {
+.stretched-link:hover {
     background-size: 100% 2px;
 }
 

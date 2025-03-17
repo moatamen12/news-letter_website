@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-md-10">
                         <a href="#" class="badge bg-info mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Sports</a>
-                        <h3><a href="#" class="btn-link text-dark fw-bold">12 worst types of business accounts you follow on Twitter</a></h3>
+                        <h3><a href="#" class="stretched-link btn-link text-dark fw-bold">12 worst types of business accounts you follow on Twitter</a></h3>
                         <p>Given and shown creating curiously to more in are man were smaller by we instead the these sighed Avoid in the sufficient me real man longer of his how...</p>
                         <!-- Card info -->
                         <ul class="nav align-items-center">
@@ -49,46 +49,47 @@
         </div>
         
         <!-- side bare TODO:make it beter -->
-        <div class="col-md-3 order-md-2 order-3 ">
+        <!-- side bare TODO:make it better -->
+        <div>
+            
+        </div>
+        <div class="col-md-3 order-md-2 order-3">
             <div class="card-title">
-                <h4 class = "fw-bold">Trending topics</h4>
+                <h4 class="fw-bold">Trending topics</h4>
             </div>
-            <div class="card border mb-4 ">
-                <ul class="list-group list-group-flush text-center ">
-                    <li class="list-group-item my-2"> 
-                        <a class="btn"> Technology  </a>
+            <div class="card border mb-4 border-0">
+                <ul class="list-group list-group-flush text-center  border-0 shadow-sm">
+                    <li class="list-group-item my-2">
+                        <a class="btn btn-primary w-100 border-0">Technology</a>
                     </li>
-                    <li class="list-group-item my-2"> 
-                        <a class="btn">Gameing  </a>   
+                    <li class="list-group-item my-2">
+                        <a class="btn btn-outline-primary w-100">Gaming</a>
                     </li>
-                    <li class="list-group-item my-2"> 
-                        <a class="btn">Featured  </a>   
+                    <li class="list-group-item my-2">
+                        <a class="btn btn-outline-primary w-100">Featured</a>
                     </li>
-
-                    <li class="list-group-item my-2"> 
-                        <a class="btn">Popular  </a>   
+                    <li class="list-group-item my-2">
+                        <a class="btn btn-outline-primary w-100">Popular</a>
                     </li>
-
-                    <li class="list-group-item my-2"> 
-                        <a class="btn">AR/VR     </a>   
+                    <li class="list-group-item my-2">
+                        <a class="btn btn-outline-primary w-100">AR/VR</a>
                     </li>
-
-                    <li class="list-group-item my-2"> 
-                        <a class="btn">AI/LLM    </a>   
+                    <li class="list-group-item my-2">
+                        <a class="btn btn-outline-primary w-100">AI/LLM</a>
                     </li>
                 </ul>
             </div>
-            <div class="card border mb-4">
+            <div class="card border mb-4 shadow-sm border-0">
                 <h5 class="card-header">More Topics</h5>
                 <ul class="list-group list-group-flush text-center">
                     <li class="list-group-item my-2">
-                        <a class="btn">AI Ethics</a>
+                        <a class="btn btn-outline-primary w-100">AI Ethics</a>
                     </li>
                     <li class="list-group-item my-2">
-                        <a class="btn">Web3</a>
+                        <a class="btn btn-outline-primary w-100">Web3</a>
                     </li>
                     <li class="list-group-item my-2">
-                        <a class="btn">Quantum Computing</a>
+                        <a class="btn btn-outline-primary w-100">Quantum Computing</a>
                     </li>
                 </ul>
             </div>
