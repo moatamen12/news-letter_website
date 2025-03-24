@@ -53,7 +53,7 @@
                         $_SESSION['email'] = $user['email'];
                         $_SESSION['success_message'] = "Login successful. Welcome back!";
                         // Set profile photo; fallback to default
-                        $_SESSION['profile_photo'] = $user['profile_photo'] ?? 'assets/images/userImage.jpg';
+                        $_SESSION['profile_photo'] = $user['profile_photo'];
         
                          redirect(BASE_URL.'index.php');
                         exit;

@@ -10,6 +10,7 @@
     // redirect to index if not logged in
     if (!is_logged_in()) {
         redirect(BASE_URL .  'index.php');
+        exit;
     }
     $userimg = 'assets/images/default-use.jpg';
     
@@ -25,16 +26,19 @@
         $stmt -> execute([$user_id]);
         $profile = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $profile_photo = isset($profile['profile_photo']) && !empty($profile['profile_photo']) ? $profile['profile_photo'] : $userimg;
-        // echo $profile_picture;
-        $email = $profile['email'];
-        $name = $profile['name'];
-        $password_hash = $profile['password_hash'];
-        $role= $profile['role_name'];
-        $username = $profile['username'];
-        $bio = isset($profile['bio']) && !empty($profile['bio']) ? $profile['bio'] : 'Make your bio';
-        $work = isset($profile['work']) && !empty($profile['work']) ? $profile['work'] : 'Add your work';
-
+        if ($profile) {
+            $_SESSION['profile_photo'] = (isset($profile['profile_photo']) && !empty($profile['profile_photo'])) ? $profile['profile_photo'] : $userimg;
+            $_SESSION['email'] = $profile['email'];
+            $_SESSION['name'] = $profile['name'];
+            $_SESSION['password_hash'] = $profile['password_hash'];
+            $_SESSION['role'] = $profile['role_name'];
+            $_SESSION['username'] = $profile['username'];
+            $_SESSION['bio'] = (isset($profile['bio']) && !empty($profile['bio'])) ? $profile['bio'] : 'Make your bio';
+            $_SESSION['work'] = (isset($profile['work']) && !empty($profile['work'])) ? $profile['work'] : 'Add your work';
+        } else {
+            // If no profile found, set defaults
+            $_SESSION['profile_photo'] = $userimg;
+        }
 
         
     }catch(PDOException $e){

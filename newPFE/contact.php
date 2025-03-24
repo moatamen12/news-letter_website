@@ -1,4 +1,7 @@
 <?php 
+    $page_title = 'Contact Us';
+    require_once 'includes/header.php';
+
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
@@ -6,8 +9,7 @@
     // Temporary debug (remove when done)
     // var_dump($_SESSION);
 
-    $page_title = 'Contact Us';
-    require_once 'includes/header.php';
+
     // Get messages from session - consistent variable naming
     $errors = $_SESSION['errors'] ?? [];
     $success = $_SESSION['success'] ?? [];
@@ -55,7 +57,7 @@
             <div class="card border-0 rounded-3 shadow-sm">
                 <div class="card-body ">
                     <h3 class="mb-4 border-start border-4 border-info ps-3">Send us a message</h3>
-                    <form action="controllers/contact_msg.php" method="post" id="contactForm">
+                    <form action="controllers/contatc_controllers/contact_msg.php" method="post" id="contactForm">
                         <input type="hidden" name="form_submitted" value="1" />
                         <div class="row mb-3 g-3">
                             <div class="col-md-6 mb-3 mb-md-0">

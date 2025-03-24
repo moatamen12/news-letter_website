@@ -1,6 +1,6 @@
 <?php 
-   require_once '../config/config.php';
-   include_once 'functions.php';
+   require_once '../../config/config.php';
+   include_once '../functions.php';
    
    // Start session if not already started
    if (session_status() === PHP_SESSION_NONE) {
@@ -10,14 +10,14 @@
    // Check if form was actually submitted
    if (!isset($_POST['form_submitted'])) {
       $_SESSION['contact_error'] = "Form was not submitted properly.";
-      header('Location: ../contact.php');
+      redirect(BASE_URL . 'contact.php');
       exit;
    }
 
    // Check if user is logged in
    if (!isset($_SESSION['user_id'])) {
       $_SESSION['contact_error'] = "You must be logged in to send a message.";
-      header('Location: ../contact.php');
+      redirect(BASE_URL . 'contact.php');
       exit;
    }
 
@@ -53,13 +53,13 @@
    ];
 
       if (!isset($_SESSION['user_id'])) {
-         set_errors("You must be logged in to send a message.",'errors', '../contact.php');
+         set_errors("You must be logged in to send a message.",'errors', BASE_URL . 'contact.php');
       exit;
    }
 
 
    if (!empty($errors)) {
-         set_errors($errors,'errors', '../contact.php');
+         set_errors($errors,'errors', BASE_URL . 'contact.php');
       exit;
    }
   
@@ -72,14 +72,15 @@
          
          if (!$user) {
             $_SESSION['contact_error'] = "User not found";
-            header('Location: ../contact.php');
+            redirect(BASE_URL . 'contact.php');
             exit;
          }elseif ($user['username'] !== $username || $user['email'] !== $email) {
-            set_errors("Invalid username or email",'errors','../contact.php');
+            set_errors("Invalid username or email",'errors',BASE_URL . 'contact.php');
             exit;
          }
       }catch (PDOException $e) {
-         set_errors("Database error: " . $e->getMessage(),'errors','../contact.php');
+         set_errors("Database error: " . $e->getMessage(),'errors',BASE_URL . 'contact.php');
+         redirect(BASE_URL . 'contact.php');
          exit;
       }
 
@@ -100,20 +101,21 @@
          ]);
          
          if ($success) {
-            set_success("Your message has been sent successfully!",'success','../contact.php');
+            set_success("Your message has been sent successfully!",'success',BASE_URL . 'contact.php');
             
          } else {
-            set_errors("Failed to send your message. Please try again.",'errors','../contact.php');
+            set_errors("Failed to send your message. Please try again.",'errors',BASE_URL . 'contact.php');
          }
-         header('Location: ../contact.php');
+         redirect(BASE_URL . 'contact.php');
          exit;
       } catch (PDOException $e) {
-         set_errors("Database error: " . $e->getMessage(),'errors','../contact.php');
+         set_errors("Database error: " . $e->getMessage(),'errors',BASE_URL . 'contact.php');
+         redirect(BASE_URL . 'contact.php');
          exit;
       }
    } else {
       // If not a POST request, redirect back to contact page
-      redirect('../contact.php');
+      redirect(BASE_URL .'contact.php');
       exit;
    }
    var_dump($_SESSION);

@@ -1,4 +1,3 @@
-
 *{
     margin: 0;
     padding: 0;
@@ -8,6 +7,20 @@ body{
     background-color: var(--primary-bg) ;
     color: var(--primary-text);
 }
+.pagination .page-item .page-link{
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    /* border-color: var(--btn-color); */
+}
+
+/* for the devider */
+.section-divider {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+
 /* logo */
 .logo{
     display: inline-block;
@@ -18,11 +31,11 @@ body{
     }
 }
 
-
 /* header SECTION */
-.blur{
-    backdrop-filter: blur(5px);
-    height: 100%;
+.searchBtn{
+    border-radius: 0 !important;
+    border: none !important;
+    border-left: 2px solid var(--primary-text) !important;
 }
 .navbar-custom {
     top: 0;
@@ -50,7 +63,7 @@ body{
     color: var(--accent-color);
 }
 
-.btn-subscribe , .btn-subscribe-outline:hover {
+.btn-subscribe:hover , .btn-subscribe-outline:hover {
     background-color: var(--btn-hover) !important;
     border-color: var(--btn-hover) !important;
     color: var(--accent-color);
@@ -65,11 +78,11 @@ body{
 background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E <path stroke='rgba(255, 255, 255, 1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important; /* white lines */
 }
         
-.navbar-nav .dropdown:hover .dropdown-menu { /* to make the dropsown by hover */
+/* .navbar-nav .dropdown:hover .dropdown-menu { /* to make the dropsown by hover 
     display: block;
-    /* margin-top: 100;  */
+    /* margin-top: 100;  
 
-}
+} */
 .navbar-nav .dropdown-menu .dropdown-item:hover{
     color: var(--btn-color) !important;
 }
@@ -113,16 +126,16 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
 
 
 /*** for the entroduction section ***/
-.form-control { /* to chang the border color */
+.form-control { 
     border-color: var(--btn-color) !important;
 }
 .form-control:focus { /* for the houver efect  */
     border-color: var(--btn-hover) !important;
-    box-shadow: 0 0 0 0.2rem rgba(93, 167, 162, 0.25); /* Adjust shadow color if needed */
+    box-shadow: 0 0 0 0.2rem rgba(93, 167, 162, 0.25);
 }
 
 
-/* for the under line of the title    TODO:fined out why it is not working */ 
+/* for the under line of the title    */ 
 .stretched-link {
     text-decoration: none;
     background-image: linear-gradient(to right, var(--under-line-color), var(--under-line-color));
@@ -139,107 +152,29 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
 }
 
 
-/* for the articals page */
-.article-card-img {
-    max-height: auto;
-    width: 100%;
-    object-fit: cover;
-}
-
 
 /* for the login/signup */
-.modal-bg{
-    background-color: var(--secoundary-bg);
+modal-bg{
+    background-color: var(--primary-bg);
 }
-button.btn.btn-bg{
-    background-color: var(--primary-bg) !important;    /* Use teal background */
+button.btn.btn-bg{  /* for the google sub */
+    background-color: var(--primary-bg) !important;    
     border-color: var(--btn-color) !important;
     border-left: none !important;
     color: var(--primary-text) !important;
 }
 
 
-/* for the highlights */
-.fixed-size-img{
-    width:200px;
-    height:200px;
-    object-fit:cover;
-}
 
-
-/* Profile image upload */
-.avatar-upload {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-}
-
-.avatar-preview {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.avatar-preview img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.avatar-edit {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-}
-
-.avatar-edit input {
-    display: none;
-}
-
-.avatar-edit label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    background: #0d6efd;
-    border: 1px solid transparent;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.avatar-edit label:hover {
-    background: #0b5ed7;
-}
-
-/* for the articals imges */
-.article-card-img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    object-position: center;
-}
-
-/* For the main large image */
-.col-md-12 .article-card-img {
-    height: 400px;
-}
 
 /* PAGE COLOR THEME */
 :root {
-    --primary-bg: #ffffff;
-    --secoundary-bg: #e8eefc;
-    --primary-text: #181b1f;
+    --primary-bg: #fefeff;
+    /* --secoundary-bg: #e8eefc; */
+    --div-clr:#090000a1;
+    --primary-text: #363737;
     --btn-color: #2bb2a9; 
-    --btn-hover: #59aca6;
+    --btn-hover: #5fcac3;
     --accent-color: #e2ebf4;    
     --secondary-color: #577B8D; 
     --highlight-color: #34643c;

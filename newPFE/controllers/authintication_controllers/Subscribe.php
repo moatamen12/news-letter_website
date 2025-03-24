@@ -110,7 +110,7 @@
                 $_SESSION['role_id'] = 1; // Default role is reader (1)
                 $_SESSION['success_message'] = "Registration successful! Your profile has been created.";
                 // Set the default profile photo explicitly
-                $_SESSION['profile_photo'] = 'assets/images/userImage.jpg';
+                $_SESSION['profile_photo'] = NULL;
                 $_SESSION['success_message'] = "Registration successful! Your profile has been created.";
 
                 // Redirect to profile page

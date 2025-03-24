@@ -30,7 +30,7 @@ try {
 // Set timezone
 date_default_timezone_set('UTC');
 // Define constants
-define('BASE_URL', 'http://localhost/newsLetter/'); //the base url of the project
+define('BASE_URL', 'http://localhost/newsLetter/newPFE/'); //the base url of the project
 define('BASE_config', 'http://localhost/newsLetter/config'); //the base url of the config
 define('BASE_INC', BASE_URL .'includes');           //the base url of the includes
 define('BASE_CONT', BASE_URL .'controllers');       //the base url of the controllers

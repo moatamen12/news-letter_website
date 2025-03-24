@@ -1,5 +1,5 @@
 <!-- footer-->
-<footer class="bg-dark bg-opacity-90 text-light py-2 mt-auto mt-5 border">
+<footer class="bg-light bg-opacity-90  py-2 mt-auto mt-5 border">
 
         <div class="container">
             <div class="row">
@@ -29,6 +29,30 @@
                         <li><i class="fas fa-map-marker-alt me-2"></i> Tech Street, Digital City</li>
                     </ul>
                 </div>
+
+                <div class="col-mde-4 mb-3">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+                        <a href="#" class="btn btn-subscribe btn-lg px-4 py-2" data-bs-toggle="modal" data-bs-target="#subscribeModal">
+                            <i class="fas fa-envelope-open me-1"></i> Subscribe Now
+                        </a>
+                        <a href="articals.php" class="btn btn-subscribe-outline btn-lg px-4 py-2">
+                            <i class="fas fa-pen me-1"></i> Start Writing
+                        </a>
+                    </div>
+                </div>
+
+<!-- 
+                <div class="col-md-4 mb-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.php" class="text-color text-decoration-none">Home</a></li>
+                        <li><a href="articles.php" class="text-color text-decoration-none">Articles</a></li>
+                        <li><a href="contact.php" class="text-color text-decoration-none">Contact</a></li>
+                        <li><a href="about_us.php" class="text-color text-decoration-none">Subscribe</a></li>
+                    </ul>
+                </div> -->
+
+
             </div>
         </div>
 
@@ -37,7 +61,7 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script> <!--for the tiny -->
+    <!-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script> for the tiny -->
     <!-- Debug info with error handling -->
     <script>
         console.log('PHP error data:', <?php echo isset($allErrors) ? json_encode($allErrors) : '{}' ?>);

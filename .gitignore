@@ -1,11 +1,20 @@
 # Dependencies
-/node_modules
-/vendor
-/assets/articals
-/assets/images
-/config
-/UML-diagrames
-/uploads/
+newPFE/node_modules
+newPFE/vendor
+newPFE/assets/articals
+newPFE/assets/images
+newPFE/config
+newPFE/uploads/
+
+
+PFE/node_modules
+PFE/vendor
+PFE/assets/articals
+PFE/assets/images
+PFE/config
+PFE/UML-diagrames
+PFE/uploads/
+
 # Environment files
 .env
 .env.local
