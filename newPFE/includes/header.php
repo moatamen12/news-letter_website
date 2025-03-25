@@ -89,7 +89,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= BASE_URL . 'about_us.php'; ?>">About Us</a>
+                            <a class="nav-link" href="<?= BASE_URL . 'about_us.php'; ?>">About</a>
                         </li>
 
                         <li class="nav-item">
@@ -104,7 +104,7 @@
                                     class="rounded-circle" style="width:40px; height:40px; object-fit:cover;">                                   <!-- show the profile photo -->
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">   <!-- dropdown menu for more user options-->
-                                <li><a class="dropdown-item" href="/newsLetter/profile.php"><i class="fas fa-user-edit me-2"></i>Edit Profile</a></li>
+                                <li><a class="dropdown-item" href="<?= BASE_URL . 'profile.php'; ?>"><i class="fas fa-user-edit me-2"></i>Edit Profile</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="<?= BASE_CONT . '/authintication_controllers/logout.php'?>"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
                             </ul>
@@ -118,23 +118,6 @@
                 </div>
             </div>
         </nav>
-
-        <!-- Search Modal -->
-        <!-- <div id="topSearchBar" class="top-search-container">
-            <div class="container py-2">
-                <form action="search.php" method="GET" class="d-flex">
-                    <input type="text" name="q" class="form-control form-control-lg flex-grow-1" placeholder="Search articles, topics, authors...">
-                    <button type="submit" class="btn btn-subscribe ms-2">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    <button type="button" id="closeSearchBar" class="btn btn-light ms-2">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </form>
-            </div>
-        </div> -->
-
-
 
         <!-- Subscribe Modal  -->
         <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel">

@@ -5,7 +5,8 @@ newPFE/assets/articals
 newPFE/assets/images
 newPFE/config
 newPFE/uploads/
-
+vendor/
+newPFE/tinymce/
 
 PFE/node_modules
 PFE/vendor

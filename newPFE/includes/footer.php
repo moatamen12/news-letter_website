@@ -41,16 +41,7 @@
                     </div>
                 </div>
 
-<!-- 
-                <div class="col-md-4 mb-3">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="index.php" class="text-color text-decoration-none">Home</a></li>
-                        <li><a href="articles.php" class="text-color text-decoration-none">Articles</a></li>
-                        <li><a href="contact.php" class="text-color text-decoration-none">Contact</a></li>
-                        <li><a href="about_us.php" class="text-color text-decoration-none">Subscribe</a></li>
-                    </ul>
-                </div> -->
+
 
 
             </div>
@@ -73,10 +64,9 @@
     </script>
     
     <!-- Script imports -->
-    <!-- <script src="assets/js/search_container.js"></script>
-    <script src="assets/js/helpers_fun.js"        type="module"></script>
-    <script src="assets/js/validation_forms.js"   type="module"></script>
-    <script src="assets/js/validation_contact.js" type="module" ></script> -->
-    <script src="assets/js/profile.js"               type="module"></script>
+
+    <script src="assets/js/forms handlers.js"               type="module"></script>
+    <!-- <script src="C:\xampp\htdocs\newsLetter\newPFE\tinymce\tinymce\tinymce.min.js" referrerpolicy="origin"></script> -->
+
     </body>    
 </html>

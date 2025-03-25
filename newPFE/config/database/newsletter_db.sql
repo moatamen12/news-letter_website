@@ -5,7 +5,7 @@ CREATE TABLE roles (
 );
 
 -- Insert default roles (reader, contributor, admin)
-INSERT INTO roles (role_name) VALUES ('reader'), ('contributor'), ('admin');
+INSERT INTO roles (role_name) VALUES ('reader'), ('author'), ('admin');
 
 -- creating a table for request statuses     
 CREATE TABLE request_statuses (
@@ -45,8 +45,22 @@ CREATE TABLE user_profiles (
     UNIQUE (user_id), --inforse one to one relationship (one user has one profile)
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
+-- user messages(contact)
+CREATE TABLE contact_messages (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  username VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  subject VARCHAR(255),
+  message_category ENUM('general', 'complaint', 'Suggestion','Technical Support') NOT NULL DEFAULT 'general',
+  message TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
 
--- creating the role_requests table
+-- ADD TO DATA BASE LATER--
+
+-- creating the role_requests table // chang this //
 CREATE TABLE role_requests (
     request_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
@@ -86,18 +100,7 @@ CREATE TABLE role_permissions (
 );
 
 
--- user messages(contact)
-CREATE TABLE contact_messages (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  user_id INT NOT NULL,
-  username VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL,
-  subject VARCHAR(255),
-  message_category ENUM('general', 'complaint', 'Suggestion','Technical Support') NOT NULL DEFAULT 'general',
-  message TEXT NOT NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (user_id) REFERENCES users(user_id)
-);
+
 -- creating the articles table
 CREATE TABLE articles ( 
     article_id INT AUTO_INCREMENT PRIMARY KEY, 
@@ -108,8 +111,7 @@ CREATE TABLE articles (
     statu ENUM('draft', 'published') NOT NULL DEFAULT 'draft',  
     featured_image VARCHAR(255) DEFAULT NULL, -- uploading an optionale image for the article
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
-    
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,    
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE     
 );
 
