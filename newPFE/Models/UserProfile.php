@@ -28,7 +28,14 @@
                 $stmt -> bindParam(':user_id', $userId);
                 $stmt -> execute();
                 $result = $stmt -> fetch(PDO::FETCH_ASSOC);
-                return $result;
+                return $result = [
+                    "name" => (isset($result['name']) && !empty($result['name'])) ? $result['name'] : 'User@name',
+                    "username" => (isset($result['username']) && !empty($result['username'])) ? $result['username'] : 'User@username',
+                    "email" => (isset($result['email']) && !empty($result['email'])) ? $result['email'] : 'User@email',
+                    "profile_img" => (isset($result['profile_photo']) && !empty($result['profile_photo'])) ? $result['profile_photo'] : BASE_URL . "assets/images/default-use.jpg",
+                    "role" => (isset($result['role_name']) && !empty($result['role_name'])) ? $result['role_name'] : 'User@role',
+                ];
+
             }catch(PDOException $e){
                 error_log('Role fetch error: ' . $e->getMessage());
             }
@@ -48,12 +55,12 @@
                 $stmt -> bindParam(':user_id', $userId);
                 $stmt -> execute();
                 $profile = $stmt->fetch(PDO::FETCH_ASSOC);
-                return $role = $profile['role_name'];
+                // return $role = $profile['role_name'];
         
                 
                 if ($profile) {
                     // set them in a opject
-                    return  $profile_info = [
+                    return  $profile = [
                             "profile_img" => (isset($profile['profile_photo']) && !empty($profile['profile_photo'])) ? $profile['profile_photo'] : $userimg,
                             "email" => (isset($profile['email']) && !empty($profile['email'])) ? $profile['email'] : 'User@email',
                             "name" => (isset($profile['name']) && !empty($profile['name'])) ? $profile['name'] : 'User@name',
@@ -77,13 +84,21 @@
                         "email" => "No email provided",
                         "profile_img" => $userimg,
                         "bio" => "",
-                        "work" => ""
+                        "work" => "",
+                        "website" => 'https://yourwebsite.com',
+                        "facebook" => 'https://facebook.com/profile',
+                        "twitter" => 'https://twitter.com/profile',
+                        "instagram" => 'https://instagram.com/profile',
                     ];
                     
                 }  
             }catch(PDOException $e){
                 error_log('Profile fetch error: ' . $e->getMessage());
             }
+        }
+
+        public function getActivity($userId){
+            
         }
     }
 ?>

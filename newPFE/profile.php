@@ -1,5 +1,5 @@
 <?php 
-    $pageTitle = "Profile";
+    $page_title = "Profile";
     require_once __DIR__ . '/controllers/profile_controllers/getProfile.php';
 
     //  Get any stored messages from session
@@ -34,14 +34,21 @@
 
 
 
+    <!--
+        // 1 => reader
+        // 2 => auther
+        // 3 => admin 
+    -->
+
 
 <?php 
     if ($role === 'author') {
         include __DIR__ . "/profiles/auther_profile.php"; // Auther PROFILE
     } else if($role === 'reader') {
         include __DIR__ . "/profiles/reader_profile.php"; // Reader PROFILE
+    } else {
+        redirect(BASE_URL . 'indx.php');
     }
-    include __DIR__ . "/profiles/reader_profile.php";
 ?>
 
 
