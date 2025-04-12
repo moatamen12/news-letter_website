@@ -32,10 +32,10 @@
 
                 <div class="col-mde-4 mb-3">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
-                        <a href="#" class="btn btn-subscribe btn-lg px-4 py-2" data-bs-toggle="modal" data-bs-target="#subscribeModal">
+                        <a href="#" class="btn btn-subscribe btn-sm px-4 py-2 rounded-3" data-bs-toggle="modal" data-bs-target="#subscribeModal">
                             <i class="fas fa-envelope-open me-1"></i> Subscribe Now
                         </a>
-                        <a href="articals.php" class="btn btn-subscribe-outline btn-lg px-4 py-2">
+                        <a href="articals.php" class="btn btn-subscribe-outline btn-sm rounded-3 px-4 py-2">
                             <i class="fas fa-pen me-1"></i> Start Writing
                         </a>
                     </div>

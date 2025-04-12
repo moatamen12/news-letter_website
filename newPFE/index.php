@@ -1,52 +1,28 @@
 <?php 
     require_once 'includes/header.php';
 ?>
+
     <!-- Hero Section -->
-    <section class="py-5 ">
+    <section class="py-5 bg-gradient-primary animate-fadein hero-bg">
         <div class="container">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <!-- Improved Typography -->
-                    <!-- <span class="badge bg-primary-subtle text-primary mb-3 px-3 py-2 rounded-pill">Newsletter Platform</span> -->
-                    <h1 class="display-3 fw-bold mb-3">Tech. Product. Science, <br>All in Your Inbox! <i class="fas fa-paper-plane text-primary"></i></h1>
+            <div class="row align-items-center justify-content-center min-vh-60">
+                <div class="col-lg-8 text-center text-white">
+                    <h1 class="display-3 fw-bold mb-4">
+                        Tech. Product. Science, <br>All in Your Inbox! 
+                        <i class="fas fa-paper-plane ms-2"></i>
+                    </h1>
                     
-                    <!-- Fixed grammar and capitalization -->
-                    <p class="lead mb-4 px-md-5">Get to know the latest news through newsletters by passionate writers in what interests you.</p>
+                    <p class="lead mb-4 px-md-5 fs-5 opacity-90">
+                        Curated tech insights and breakthrough discoveries delivered weekly by passionate experts in your field.
+                    </p>
                     
-                    <!-- Search bar above buttons
-                    <div class="col-lg-8 mx-auto mb-4">
-                        <form action="search.php" method="GET" class="d-flex">
-                            <input type="text" class="form-control form-control-lg me-2" placeholder="Search topics..." name="q" aria-label="Search">
-                            <button class="btn btn-subscribe" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
-                    </div> -->
-                    
-                    <!-- Improved button layout -->
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
-                        <a href="#" class="btn btn-subscribe btn-lg px-4 py-2" data-bs-toggle="modal" data-bs-target="#subscribeModal">
-                            <i class="fas fa-envelope-open me-1"></i> Subscribe Now
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center my-4">
+                        <a class="btn btn-subscribe btn-lg px-4 py-3 rounded-pill" href="#" data-bs-toggle="modal" data-bs-target="#LoginModal">
+                            <i class="fas fa-envelope-open me-2"></i> Subscribe Now
                         </a>
-                        <a href="articals.php" class="btn btn-subscribe-outline btn-lg px-4 py-2">
-                            <i class="fas fa-pen me-1"></i> Start Writing
+                        <a class="btn btn-subscribe-outline btn-lg px-4 py-3 rounded-pill" href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal">
+                            <i class="fas fa-pen me-2"></i> Start Writing
                         </a>
-                    </div>
-                    
-                    <!-- Stats counters -->
-                    <div class="row justify-content-center mt-5 text-center">
-                        <div class="col-md-4">
-                            <h3 class="fw-bold">500+</h3>
-                            <p class="text-muted">Articles</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h3 class="fw-bold">10k+</h3>
-                            <p class="text-muted">Subscribers</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h3 class="fw-bold">50+</h3>
-                            <p class="text-muted">Expert Writers</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -54,38 +30,290 @@
     </section>
 
 
-    <!-- devider -->
-    <div class="section-divider">
-        <hr class="border-0 border-3 border-bottom  border-dark-subtle rounded">
-    </div>
-
-    <!-- filepath: c:\xampp\htdocs\newsLetter\newPFE\index.php -->
-    <section>
-        <div class="px-4 my-5">
-            <div class = "my-4">
-                <h2 class=" fw-bold">Latest Articles</h2>
-                <footer class="text-muted mb-4">Cutting-edge tech insights and innovations to keep you informed in our fast-footeraced digital world.</p>
-            </div>
-            
-            <!-- Featured Article -->
-            <div class="card mb-5 border-0 shadow-sm">
-                <div class="row g-0">
-                    <div class="col-md-6">
-                        <img src="assets/images/01.jpg" class="img-fluid rounded-start h-100 object-fit-cover" alt="Featured Article">
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card-body p-4">
-                            <!-- <span class="badge bg-primary mb-2">Featured</span> -->
-                            <h2 class="card-title fw-bold stretched-link">The Future of Artificial Intelligence in 2025</h2>
-                            <p class="card-text mt-4 fs-5">An in-depth look at how AI is transforming industries and our daily lives. From healthcare to transportation, discover the cutting-edge developments shaping our future.</p>
-                            
-                            <div class="mt-5 d-flex align-items-center justify-content-between">
-                                <span class="ms-3">by <a href="#" class=" text-reset btn-link">Samuel</a></span>
-                                <p class="card-text"><small class="text-muted">Published on March 18, 2025</small></p>
-                            </div>
+    <!-- Today's top highlights   -->
+    <section class="intro-bg position-relative animate-fadein p-4"> 
+        <div class="container">
+            <div class="row my-5">
+                <!-- Card -->
+                <div class="col-md-6 justify-content-start border-0 ">   
+                    <div class="card bg-transparent border-0">
+                        <!-- Card img -->
+                        <div class="position-relative">
+                            <img class="card-img img-fluid border-rounded" src="assets/images/background.webp" alt="Card image">
+                        </div>
+                        <div class="card-body px-0 pt-3 align-items-start">
+                            <h4 class="card-title"><a href="#" class="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a></h4>
+                            <p class="card-text">He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay assistance joy. Unaffected at ye of compliment alteration to</p>
+                            <!-- Card info -->
+                            <ul class="nav d-flex align-items-center">
+                            <li class="nav-item  ">
+                                    <div class="nav-link">
+                                        <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span> <!--TODO: MAke IT-->
+                                    </div>
+                                </li>
+                                <li class="nav-item">Jan 22, 2021</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
+
+                <div class="col-md-6">
+                    <div class="list-group h-100">
+                        <div class="list-group-item p-0 border-0">
+                            <div class="card mb-4 border-0 p-0 mb-5">
+                                <div class="card-body " style="height: 150px;"> 
+                                    <div class="d-flex align-items-start h-100">
+                                        <!-- Image Container -->
+                                        <div class="flex-shrink-0 h-100">
+                                            <img class="img-fluid rounded" src="assets/images/introduction-background.png" alt="Card image" style="height: 100%; width: auto; object-fit: cover;">
+                                        </div>
+                                        <!-- Content Container -->
+                                        <div class="flex-grow-1 ms-3">
+                                            <h4 class="card-title">
+                                                <a href="#" class="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a>
+                                            </h4>
+                                            <!-- Card info -->
+                                            <ul class="nav d-flex align-items-center">
+                                                <li class="nav-item">
+                                                    <div class="nav-link">
+                                                        <span>by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
+                                                    </div>
+                                                </li>
+                                                <li class="nav-item ms-3">Jan 22, 2021</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="list-group-item p-0 border-0">
+                            <div class="card mb-4 border-0 p-0 mb-5">
+                                <div class="card-body " style="height: 150px;"> <!-- set a desired height -->
+                                    <div class="d-flex align-items-start h-100">
+                                        <!-- Image Container -->
+                                        <div class="flex-shrink-0 h-100">
+                                            <img class="img-fluid rounded" src="assets/images/BACKGROUND.jpeg" alt="Card image" style="height: 100%; width: auto; object-fit: cover;">
+                                        </div>
+                                        <!-- Content Container -->
+                                        <div class="flex-grow-1 ms-3">
+                                            <h4 class="card-title">
+                                                <a href="#" class="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a>
+                                            </h4>
+                                            <!-- Card info -->
+                                            <ul class="nav d-flex align-items-center">
+                                                <li class="nav-item">
+                                                    <div class="nav-link">
+                                                        <span>by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
+                                                    </div>
+                                                </li>
+                                                <li class="nav-item ms-3">Jan 22, 2021</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="list-group-item p-0 border-0">
+                            <div class="card mb-4 border-0 p-0 mb-5">
+                                <div class="card-body " style="height: 150px;"> <!-- set a desired height -->
+                                    <div class="d-flex align-items-start h-100">
+                                        <!-- Image Container -->
+                                        <div class="flex-shrink-0 h-100">
+                                            <img class="img-fluid rounded" src="assets/images/Designer.jpeg" alt="Card image" style="height: 100%; width: auto; object-fit: cover;">
+                                        </div>
+                                        <!-- Content Container -->
+                                        <div class="flex-grow-1 ms-3">
+                                            <h4 class="card-title">
+                                                <a href="#" class="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a>
+                                            </h4>
+                                            <!-- Card info -->
+                                            <ul class="nav d-flex align-items-center">
+                                                <li class="nav-item">
+                                                    <div class="nav-link">
+                                                        <span>by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
+                                                    </div>
+                                                </li>
+                                                <li class="nav-item ms-3">Jan 22, 2021</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="list-group-item p-0 border-0">
+                            <div class="card mb-4 border-0 p-0">
+                                <div class="card-body " style="height: 150px;"> <!-- set a desired height -->
+                                    <div class="d-flex align-items-start h-100">
+                                        <!-- Image Container -->
+                                        <div class="flex-shrink-0 h-100">
+                                            <img class="img-fluid rounded" src="assets/images/background.webp" alt="Card image" style="height: 100%; width: auto; object-fit: cover;">
+                                        </div>
+                                        <!-- Content Container -->
+                                        <div class="flex-grow-1 ms-3">
+                                            <h4 class="card-title">
+                                                <a href="#" class="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a>
+                                            </h4>
+                                            <!-- Card info -->
+                                            <ul class="nav d-flex align-items-center">
+                                                <li class="nav-item">
+                                                    <div class="nav-link">
+                                                        <span>by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
+                                                    </div>
+                                                </li>
+                                                <li class="nav-item ms-3">Jan 22, 2021</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div> 
+    </section>
+    
+    <div class="section-divider"></div><!-- devider --> 
+
+    <!-- Top Articals this week -->
+    <section class="p-4 container ">
+        <div class = "my-4">
+            <h2 class=" fw-bold">Our Top-Rated Writers</h2>
+            <footer class="text-muted mb-4">Meet the experts driving our content, recognized for their insightful contributions and engaging writing style.</p>
+        </div>
+        <div class="row row-cols-md-4 row-cols-sm-1">
+            <div class="col w-25">
+                <div class="card border-0 articall-card-hover ">
+                    <!-- Card img -->
+                    <div class="position-relative">
+                        <img class="card-img img-fluid" src="assets/images/01.jpg" alt="Card image">
+                    </div>
+
+                    <div class="card-body px-0 pt-3">
+                        <h4 class="card-title"><a href="#" class="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a></h4>
+                        <!-- Card info -->
+                        <ul class="nav align-items-center d-none d-sm-inline-block">
+                            <li class="nav-item">
+                            <div class="nav-link">
+                                <div class="d-flex align-items-center position-relative">
+                                    <div>
+                                        <img class="rounded-circle" src="assets/images/avatar/01.jpg" alt="avatar" style="width: 2rem; height: 2rem;"> <!-- Replaced avatar classes with inline style for size -->
+                                    </div>
+                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
+                                </div>
+                            </div>
+                            </li>
+                            <li class="nav-item">Jan 22, 2021</li>
+                            <li class="nav-item"><a href="#" class="btn-link"><i class="me-1"></i> 5</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col">
+                <div class="card border-0 articall-card-hover ">
+                    <!-- Card img -->
+                    <div class="position-relative">
+                        <img class="card-img img-fluid" src="assets/images/01.jpg" alt="Card image">
+                    </div>
+
+                    <div class="card-body px-0 pt-3">
+                        <h4 class="card-title"><a href="#" class="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a></h4>
+                        <p class="card-text">He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay assistance joy. Unaffected at ye of compliment alteration to</p>
+                        <!-- Card info -->
+                        <ul class="nav align-items-center d-none d-sm-inline-block">
+                            <li class="nav-item">
+                            <div class="nav-link">
+                                <div class="d-flex align-items-center position-relative">
+                                    <div>
+                                        <img class="rounded-circle" src="assets/images/avatar/01.jpg" alt="avatar" style="width: 2rem; height: 2rem;"> <!-- Replaced avatar classes with inline style for size -->
+                                    </div>
+                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
+                                </div>
+                            </div>
+                            </li>
+                            <li class="nav-item">Jan 22, 2021</li>
+                            <li class="nav-item"><a href="#" class="btn-link"><i class="me-1"></i> 5</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card border-0 articall-card-hover ">
+                    <!-- Card img -->
+                    <div class="position-relative">
+                        <img class="card-img img-fluid" src="assets/images/01.jpg" alt="Card image">
+                    </div>
+
+                    <div class="card-body px-0 pt-3">
+                        <h4 class="card-title"><a href="#" class="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a></h4>
+                        <p class="card-text">He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay assistance joy. Unaffected at ye of compliment alteration to</p>
+                        <!-- Card info -->
+                        <ul class="nav align-items-center d-none d-sm-inline-block">
+                            <li class="nav-item">
+                            <div class="nav-link">
+                                <div class="d-flex align-items-center position-relative">
+                                    <div>
+                                        <img class="rounded-circle" src="assets/images/avatar/01.jpg" alt="avatar" style="width: 2rem; height: 2rem;"> <!-- Replaced avatar classes with inline style for size -->
+                                    </div>
+                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
+                                </div>
+                            </div>
+                            </li>
+                            <li class="nav-item">Jan 22, 2021</li>
+                            <li class="nav-item"><a href="#" class="btn-link"><i class="me-1"></i> 5</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card border-0 articall-card-hover ">
+                    <!-- Card img -->
+                    <div class="position-relative">
+                        <img class="card-img img-fluid" src="assets/images/01.jpg" alt="Card image">
+                    </div>
+
+                    <div class="card-body px-0 pt-3">
+                        <h4 class="card-title"><a href="#" class="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a></h4>
+                        <p class="card-text">He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay assistance joy. Unaffected at ye of compliment alteration to</p>
+                        <!-- Card info -->
+                        <ul class="nav align-items-center d-none d-sm-inline-block">
+                            <li class="nav-item">
+                            <div class="nav-link">
+                                <div class="d-flex align-items-center position-relative">
+                                    <div>
+                                        <img class="rounded-circle" src="assets/images/avatar/01.jpg" alt="avatar" style="width: 2rem; height: 2rem;"> <!-- Replaced avatar classes with inline style for size -->
+                                    </div>
+                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
+                                </div>
+                            </div>
+                            </li>
+                            <li class="nav-item">Jan 22, 2021</li>
+                            <li class="nav-item"><a href="#" class="btn-link"><i class="me-1"></i> 5</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div><!-- devider --> 
+
+    <!-- Latest Articles -->
+    <section class="p-4 container">
+        <div class=" my-5">
+            <div class = "my-4">
+                <h2 class=" fw-bold">Latest Articles</h2>
+                <footer class="text-muted mb-4">ur Latist Cutting-edge tech insights and innovations to keep you informed in our fast-footeraced digital world.</p>
             </div>
             
             <div class="row">
@@ -96,7 +324,7 @@
                     </div>
                     <div class="row row-cols-1 row-cols-md-3 g-4">
                         <div class="col">
-                            <div class="card h-100 border-0 ">
+                            <div class="card h-100 border-0 articall-card-hover">
                                 <img src="assets\images\01.jpg" class="card-img-top rounded " alt="artical/jpg">
                                 <div class="card-body">
                                     <h5 class="card-title stretched-link">Card title</h5>
@@ -197,10 +425,57 @@
         </div>
     </section>
 
-   
+    <div class="section-divider"></div><!-- devider -->
+
+    <!-- Our Top rated writers -->
+    <section class="p-4 container">
+        <div class = "my-4">
+            <h2 class=" fw-bold">Our Top-Rated Writers</h2>
+            <footer class="text-muted mb-4">Meet the experts driving our content, recognized for their insightful contributions and engaging writing style.</p>
+        </div>
+
+        <div class="row row-cols-md-3 row-cols-sm-1">
+
+            <div class="col">
+                <a href="#" class="text-decoration-none"> <!-- link to the user profile page -->
+                    <div class="card border-0 rounded-5 articall-card-hover ">
+                        <div class="card-head ">
+                            <img src="assets/images/default-use.jpg" class="card-img-top img-thumbnail rounded-circle mx-auto d-block mb-3 w-75" alt="user-photo" >
+                        </div>
+
+                        <div class="card-body">
+                            <p class="fw-bold text-center">the user name</p>
+                            <ul class="d-flex align-items-center justify-content-center text-center "> <!-- the user socilas -->
+                                <li class="me-1"> dd </li>
+                                <li class="me-1"> dd </li>
+                                <li class="me-1"> dd </li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="col">
+                <div class="card">
+                    <div class="card-head rounded-circle">
+                        <img src="assets/images/default-use.jpg" class="card-img-top" alt="user-photo">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col">
+                <div class="card">
+                    <div class="card-head rounded-circle">
+                        <img src="assets/images/default-use.jpg" class="card-img-top" alt="user-photo">
+                    </div>
+                </div>
+            </div>
+
+        </div>      
+    </section>
+
 <?php 
     require_once __DIR__ . '/includes/footer.php';
 ?>
-
-
-

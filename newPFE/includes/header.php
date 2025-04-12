@@ -43,13 +43,14 @@
 
 ?>
 
-<!doctype html>
+<!Doctype html>
 <html lang="en">
-
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title><?php echo isset($page_title)? $page_title . ' -Tech Expo': 'Tech Expo';?></title>    
+
+        <title><?php echo isset($page_title)? $page_title . ' -Tech Expo': 'Tech Expo';?></title> 
+
         <script src="https://kit.fontawesome.com/fc7e8d802d.js" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="assets/css/style.css">    
@@ -59,11 +60,12 @@
         <link rel="icon" type="image/png" sizes="32x32" href="<?= BASE_URL ?>assets/images/favicon/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="<?= BASE_URL ?>assets/images/favicon/favicon-16x16.png" >
         <link rel="manifest"                            href="<?= BASE_URL ?>site.webmanifest"> <!-- mainfest file including basec info about the site and icons -->
+    
     </head>
 
     <body class="d-flex flex-column min-vh-100 "> <!--to take 100% of the view port-->
         <!-- the navegation bar -->
-        <nav class="navbar navbar-custom sticky-top navbar-expand-lg bg-body-tertiary shadow-sm px-2">
+        <nav class="navbar navbar-custom sticky-top navbar-expand-lg border-bottom shadow-sm px-2">
             <div class="container-fluid">
                 <a class="navbar-brand logo" href="index.php"><img src=<?= LOGO_URL ?> alt="Tech Expo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -110,7 +112,8 @@
                             </ul>
                         </div>
                     <?php else: ?> <!-- if the user is not logged in show the subscribe btn-->
-                        <a class="btn btn-subscribe" href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal">Subscribe</a>
+                        <a class="btn btn-subscribe rounded-3" href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal">Subscribe</a>
+                        <a class="btn btn-outline-secondary ms-2 rounded-3" href="#" data-bs-toggle="modal" data-bs-target="#LoginModal">Sign In</a>
                     <?php endif; ?>
                     <button class="searchBtn btn ms-2" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
                         <i class="fas fa-search"></i>

@@ -42,8 +42,17 @@
 
 
 <?php 
+
+    $action = $_GET['action'] ?? '';
+    
     if ($role === 'author') {
-        include __DIR__ . "/profiles/auther_profile.php"; // Auther PROFILE
+        if ($action === 'new_post') {
+            // Show the new post form
+            include __DIR__ . "/profiles/auther_profile_views/posts/new_post.php";
+        } else {
+            // Show the regular author profile
+            include __DIR__ . "/profiles/auther_profile.php";
+        }
     } else if($role === 'reader') {
         include __DIR__ . "/profiles/reader_profile.php"; // Reader PROFILE
     } else {

@@ -1,5 +1,4 @@
 <!-- used in the artical card viewing -->
-
 <div class="card rounded-0 border-0 border-bottom border-dark-subtle p-4 my-5">
     <div class="row g-3">
         <div class="col-lg-5">

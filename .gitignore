@@ -7,6 +7,7 @@ newPFE/config
 newPFE/uploads/
 vendor/
 newPFE/tinymce/
+newPFE/TEST
 
 PFE/node_modules
 PFE/vendor
