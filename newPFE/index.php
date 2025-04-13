@@ -17,10 +17,10 @@
                     </p>
                     
                     <div class="d-grid gap-2 d-md-flex justify-content-md-center my-4">
-                        <a class="btn btn-subscribe btn-lg px-4 py-3 rounded-pill" href="#" data-bs-toggle="modal" data-bs-target="#LoginModal">
+                        <a class="btn btn-subscribe btn-lg px-4 py-3 rounded-pill Zbtn" href="#" data-bs-toggle="modal" data-bs-target="#LoginModal">
                             <i class="fas fa-envelope-open me-2"></i> Subscribe Now
                         </a>
-                        <a class="btn btn-subscribe-outline btn-lg px-4 py-3 rounded-pill" href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal">
+                        <a class="btn btn-subscribe-outline btn-lg px-4 py-3 rounded-pill Zbtn" href="#" data-bs-toggle="modal" data-bs-target="#writerOnboardingModal">
                             <i class="fas fa-pen me-2"></i> Start Writing
                         </a>
                     </div>
@@ -42,7 +42,7 @@
                             <img class="card-img img-fluid border-rounded" src="assets/images/background.webp" alt="Card image">
                         </div>
                         <div class="card-body px-0 pt-3 align-items-start">
-                            <h4 class="card-title"><a href="#" class="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a></h4>
+                            <h4 class="card-title stretched-link"><a href="#" class="btn-link text-reset fw-bold stretched-link">12 worst types of business accounts you follow on Twitter</a></h4>
                             <p class="card-text">He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay assistance joy. Unaffected at ye of compliment alteration to</p>
                             <!-- Card info -->
                             <ul class="nav d-flex align-items-center">
@@ -183,146 +183,42 @@
 
     <!-- Top Articals this week -->
     <section class="p-4 container ">
-        <div class = "my-4">
-            <h2 class=" fw-bold">Our Top-Rated Writers</h2>
-            <footer class="text-muted mb-4">Meet the experts driving our content, recognized for their insightful contributions and engaging writing style.</p>
+        <div class="d-flex align-items-center justify-content-between ">
+            <div class = "my-4">
+                <h2 class=" fw-bold">Top Articles This Week</h2> <!-- Changed title -->
+                <footer class="text-muted mb-4">Explore the most read and highly-rated articles from the past week, curated for you.</p> <!-- Changed description -->
+            </div>
+            <?php include __DIR__.'/includes/see_more.php'?> 
         </div>
-        <div class="row row-cols-md-4 row-cols-sm-1">
-            <div class="col w-25">
-                <div class="card border-0 articall-card-hover ">
-                    <!-- Card img -->
-                    <div class="position-relative">
-                        <img class="card-img img-fluid" src="assets/images/01.jpg" alt="Card image">
-                    </div>
 
-                    <div class="card-body px-0 pt-3">
-                        <h4 class="card-title"><a href="#" class="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a></h4>
-                        <!-- Card info -->
-                        <ul class="nav align-items-center d-none d-sm-inline-block">
-                            <li class="nav-item">
-                            <div class="nav-link">
-                                <div class="d-flex align-items-center position-relative">
-                                    <div>
-                                        <img class="rounded-circle" src="assets/images/avatar/01.jpg" alt="avatar" style="width: 2rem; height: 2rem;"> <!-- Replaced avatar classes with inline style for size -->
-                                    </div>
-                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
-                                </div>
-                            </div>
-                            </li>
-                            <li class="nav-item">Jan 22, 2021</li>
-                            <li class="nav-item"><a href="#" class="btn-link"><i class="me-1"></i> 5</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col">
-                <div class="card border-0 articall-card-hover ">
-                    <!-- Card img -->
-                    <div class="position-relative">
-                        <img class="card-img img-fluid" src="assets/images/01.jpg" alt="Card image">
-                    </div>
-
-                    <div class="card-body px-0 pt-3">
-                        <h4 class="card-title"><a href="#" class="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a></h4>
-                        <p class="card-text">He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay assistance joy. Unaffected at ye of compliment alteration to</p>
-                        <!-- Card info -->
-                        <ul class="nav align-items-center d-none d-sm-inline-block">
-                            <li class="nav-item">
-                            <div class="nav-link">
-                                <div class="d-flex align-items-center position-relative">
-                                    <div>
-                                        <img class="rounded-circle" src="assets/images/avatar/01.jpg" alt="avatar" style="width: 2rem; height: 2rem;"> <!-- Replaced avatar classes with inline style for size -->
-                                    </div>
-                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
-                                </div>
-                            </div>
-                            </li>
-                            <li class="nav-item">Jan 22, 2021</li>
-                            <li class="nav-item"><a href="#" class="btn-link"><i class="me-1"></i> 5</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card border-0 articall-card-hover ">
-                    <!-- Card img -->
-                    <div class="position-relative">
-                        <img class="card-img img-fluid" src="assets/images/01.jpg" alt="Card image">
-                    </div>
-
-                    <div class="card-body px-0 pt-3">
-                        <h4 class="card-title"><a href="#" class="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a></h4>
-                        <p class="card-text">He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay assistance joy. Unaffected at ye of compliment alteration to</p>
-                        <!-- Card info -->
-                        <ul class="nav align-items-center d-none d-sm-inline-block">
-                            <li class="nav-item">
-                            <div class="nav-link">
-                                <div class="d-flex align-items-center position-relative">
-                                    <div>
-                                        <img class="rounded-circle" src="assets/images/avatar/01.jpg" alt="avatar" style="width: 2rem; height: 2rem;"> <!-- Replaced avatar classes with inline style for size -->
-                                    </div>
-                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
-                                </div>
-                            </div>
-                            </li>
-                            <li class="nav-item">Jan 22, 2021</li>
-                            <li class="nav-item"><a href="#" class="btn-link"><i class="me-1"></i> 5</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card border-0 articall-card-hover ">
-                    <!-- Card img -->
-                    <div class="position-relative">
-                        <img class="card-img img-fluid" src="assets/images/01.jpg" alt="Card image">
-                    </div>
-
-                    <div class="card-body px-0 pt-3">
-                        <h4 class="card-title"><a href="#" class="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a></h4>
-                        <p class="card-text">He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay assistance joy. Unaffected at ye of compliment alteration to</p>
-                        <!-- Card info -->
-                        <ul class="nav align-items-center d-none d-sm-inline-block">
-                            <li class="nav-item">
-                            <div class="nav-link">
-                                <div class="d-flex align-items-center position-relative">
-                                    <div>
-                                        <img class="rounded-circle" src="assets/images/avatar/01.jpg" alt="avatar" style="width: 2rem; height: 2rem;"> <!-- Replaced avatar classes with inline style for size -->
-                                    </div>
-                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
-                                </div>
-                            </div>
-                            </li>
-                            <li class="nav-item">Jan 22, 2021</li>
-                            <li class="nav-item"><a href="#" class="btn-link"><i class="me-1"></i> 5</a></li>
-                        </ul>
-                    </div>
-                </div>
+        <div class="row row-cols-1 row-cols-md-4 g-4"> 
+            <div class="col"> 
+                <?php include 'includes/vertical_card.php'?>
             </div>
         </div>
+        
     </section>
 
     <div class="section-divider"></div><!-- devider --> 
 
     <!-- Latest Articles -->
     <section class="p-4 container">
-        <div class=" my-5">
-            <div class = "my-4">
-                <h2 class=" fw-bold">Latest Articles</h2>
-                <footer class="text-muted mb-4">ur Latist Cutting-edge tech insights and innovations to keep you informed in our fast-footeraced digital world.</p>
+        <div class="my-5">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class ="my-4">
+                    <h2 class=" fw-bold">Latest Articles</h2>
+                    <footer class="text-muted mb-4">ur Latist Cutting-edge tech insights and innovations to keep you informed in our fast-footeraced digital world.</p>
+                </div>  
+                <?php include __DIR__.'/includes/see_more.php'?>
             </div>
-            
+
             <div class="row">
                 <!-- LEFT SIDE: Cards Grid -->
                 <div class="col-md-9">   
                     <div class="mb-3">
                         <?php include __DIR__ . '\includes\sub_header.php'?>
                     </div>
-                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="row row-cols-sm-1 row-cols-md-2 g-4">
                         <div class="col">
                             <div class="card h-100 border-0 articall-card-hover">
                                 <img src="assets\images\01.jpg" class="card-img-top rounded " alt="artical/jpg">
@@ -337,14 +233,8 @@
                             </div>  
                         </div>
                         
-                        
                         <div class="col">
-                            <div class="card h-100">
-                                <img src="assets\images\01.jpg" class="card-img-top" alt="artical/jpg">
-                                <div class="card-body">
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                            </div>
+                            <?php include 'includes/vertical_card.php';?>
                         </div>
                         
                         
@@ -421,7 +311,6 @@
                     </div>
                 </div>
             </div>
-            <?php include __DIR__.'/includes/see_more.php'?>
         </div>
     </section>
 

@@ -109,7 +109,7 @@ function displayServerErrors() {
     if (window.serverData && window.serverData.errors && window.serverData.errors.length > 0) {
         try {
             // If modal not found (not loaded)
-            const modal = document.getElementById('subscribeModal');
+            const modal = document.getElementById('SubscribeModal');
             if (!modal) {
                 console.error('Modal element not found');
                 return;
@@ -179,25 +179,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    const subscribeForm = document.getElementById('subscribeForm');
+    const subscribeForm = document.getElementById('SubscribeForm');
     if (subscribeForm) {
         subscribeForm.addEventListener('submit', function(event) {
             clearError(subscribeForm);
 
-            const Fname = document.getElementById('Fname');
-            const username = document.getElementById('username');
-            const email = document.getElementById('modalInputEmail');
-            const password = document.getElementById('modalInputPassword');
+            const username = document.getElementById('SubUsername');
+            const email = document.getElementById('SubEmail');
+            const password = document.getElementById('SupPassword');
             const confPassword = document.getElementById('confPassword');
             
             let hasError = false;
 
             // Full name validation
-            if (Fname && !Fname.value.trim()) {
-                showError('Full Name is required', Fname);
+            if (username && !username.value.trim()) {
+                showError('Full Name is required', username);
                 hasError = true;
-            } else if (Fname && Fname.value.length < 5) { 
-                showError('Full Name must be at least 5 characters', Fname);
+            } else if (username && username.value.length < 5) { 
+                showError('Full Name must be at least 5 characters', username);
                 hasError = true;
             }
 
@@ -238,40 +237,35 @@ document.addEventListener('DOMContentLoaded', function() {
     if (loginForm) {
         loginForm.addEventListener('submit', function(event) {
             clearError(loginForm);
-            
-            const username = document.getElementById('logusername');
-            const email = document.getElementById('logEmail');
+    
+            // Corrected ID to match HTML
+            const identifierInput = document.getElementById('logUsernameEmail');
+            // Removed unused email variable
+            // const email = document.getElementById('logEmail');
             const password = document.getElementById('logPassword');
-            
+    
             let hasLoginError = false;
-            
-            // Validate username
-            if (username && !validateUsername(username)) {
+    
+            // Validate the identifier field (check if empty)
+            if (identifierInput && !identifierInput.value.trim()) {
+                showError('Username or Email is required', identifierInput);
                 hasLoginError = true;
             }
-            
-            // Validate email
-            if (email && !validateEmail(email)) {
-                hasLoginError = true;
-            }
-            
+    
+            // Removed validation for non-existent 'email' element
+    
             // Validate password
-            if (password && !validatePassword(password)) {
+            if (password && !validatePassword(password)) { // Assuming validatePassword checks for empty
                 hasLoginError = true;
             }
-            
+    
             // Prevent form submission if there are errors
             if (hasLoginError) {
                 event.preventDefault();
-                // Scroll to first error
-                const firstError = document.querySelector('.error-message');
-                if (firstError) {
-                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
+                // ... rest of error handling ...
             }
         });
     }
-
     // Contact form validation
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {   

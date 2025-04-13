@@ -11,6 +11,7 @@ body{
 
 .btn{
     color: var(--primary-text) ;
+    cursor:pointer;
 }
 
 
@@ -105,38 +106,23 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
     background: linear-gradient(135deg, var(--btn-color) 0%, var(--secondary-color) 100%);
     position: relative;
     z-index: 0;
-    padding-bottom: 10px;
+    padding-bottom: 100px;
     margin-bottom: 70px;
     overflow: visible;
 
-}
-
-/* Create the half-circle cutout at the bottom */
-.hero-bg::after {
-    content: "";
-    position: absolute;
-    bottom: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 100px;
-    background-color: var(--primary-bg);
-    border-radius: 50%;
-    z-index: 2;
 }
 
 /* Add side curves to blend with the half-circle */
 .hero-bg::before {
     content: "";
     position: absolute;
-    bottom: 0;
+    bottom: -50px;
     left: 0;
     right: 0;
     height: 50px;
-    background-color: var(--primary-bg);
-    border-top-left-radius: 50% 100%;
-    border-top-right-radius: 50% 100%;
-    
+    background: linear-gradient(140deg, var(--btn-color) 0%, var(--secondary-color) 100%);
+    border-bottom-left-radius: 50% 100%;
+    border-bottom-right-radius: 50% 100%;
     z-index: 1;
 }
 
@@ -151,7 +137,7 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
 
 /* to make the Today's top highlights  have a back gruond*/
 .intro-bg {
-    margin-top: -200px; /* Keep the overlap with hero */
+    margin-top: -150px; /* Keep the overlap with hero */
     position: relative;
     z-index: 1;
     background-color: transparent;
@@ -166,6 +152,18 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+}
+
+
+/* Style the progress bar in the writer modal */
+#writerOnboardingModal .progress-bar {
+    background: linear-gradient(135deg, var(--btn-color) 0%, var(--secondary-color) 100%);
+    transition: width 0.6s ease; /* Add transition for smooth width changes */
+}
+
+/* Optional: Style the progress container background */
+#writerOnboardingModal .progress {
+    background-color: #e9ecef; /* Light grey background for the track */
 }
 
 
@@ -242,6 +240,7 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
 .articall-card-hover:hover {
     transform: translateY(-5px); /* Lift the card slightly */
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Enhance the shadow */
+    border-radius: 5px;
 }
 
 /* for the login/signup */

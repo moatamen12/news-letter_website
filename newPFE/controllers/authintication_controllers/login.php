@@ -5,80 +5,100 @@
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
+    ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+    // Redirect if not a POST request
+    if($_SERVER['REQUEST_METHOD'] !== 'POST'){
+        redirect(BASE_URL.'index.php');
+        exit;
+    }
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $username = trim($_POST['logusername'] ?? '');
-        $email = trim($_POST['logEmail'] ?? '');
+        $identifier = trim($_POST['logUsernameEmail'] ?? '');
+        // $email = trim($_POST['logEmail'] ?? '');
         $password = $_POST['logPassword'] ?? '';
 
         $errors = [];
+        $loginData = ['identifier' => $identifier];
 
-        if (empty($email)) {
-            $errors[] = "Email is required";
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = "Invalid email format";
-        }
+        if (empty($identifier)) {
+            $errors[] = "Username or Email is required";
+        } 
+        // elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        //     $errors[] = "Invalid email format";
+        // }
         
         if (empty($password)) {
             $errors[] = "Password is required";
         }
-        
+          
         if (empty($errors)) {
-            try {
+            try {       
                 // Check if user exists with this email
-                $stmt = $conn->prepare("
-                        SELECT u.*, up.profile_photo 
-                        FROM users u 
-                        LEFT JOIN user_profiles up ON u.user_id = up.user_id 
-                        WHERE u.email = :email AND u.username = :username
-                    ");
-                $stmt->execute(['email' => $email, 'username' => $username]);
+                // Determine if identifier is an email
+                $isEmail = filter_var($identifier, FILTER_VALIDATE_EMAIL) !== false;
+
+                // Prepare the appropriate SQL query
+                if ($isEmail) {
+                    $stmt = $conn->prepare("SELECT * FROM users WHERE email = :identifier");
+                } else {
+                    $stmt = $conn->prepare("SELECT * FROM users WHERE username = :identifier");
+                }
+
+                $stmt->execute(['identifier' => $identifier]);
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
             
                 if (!$user) {
                     // User not found
-                    $errors[] = "Invalid email or username";
+                    $errors[] = "Invalid username/email or password";
                 } else {
                     // Verify password
                     if (password_verify($password, $user['password_hash'])) {
-                        // update last login timestamp
-                        $updateStmt = $conn->prepare("UPDATE users SET last_login = NOW() WHERE user_id = :user_id");
-                        $updateStmt->execute(['user_id' => $user['user_id']]);
-                        
-                        // Login successful
-                        session_start();
+                        // Regenerate session ID for security
+                        session_regenerate_id(true);
+
+                        // Store user data in session
                         $_SESSION['user_id'] = $user['user_id'];
                         $_SESSION['username'] = $user['username'];
                         $_SESSION['role_id'] = $user['role_id'];
-                        $_SESSION['email'] = $user['email'];
-                        $_SESSION['success_message'] = "Login successful. Welcome back!";
-                        // Set profile photo; fallback to default
-                        $_SESSION['profile_photo'] = $user['profile_photo'];
-        
-                         redirect(BASE_URL.'index.php');
-                        exit;
-                    } else {
+                        $_SESSION['email'] = $user['email']; // Store email as well
+                        $_SESSION['success_message'] = "Login successful. Welcome back, " . htmlspecialchars($user['username']) . "!";
 
-                        $errors[] = "Invalid  password";
+                        // Update last login timestamp (optional but good practice)
+                        try {
+                            $updateStmt = $conn->prepare("UPDATE users SET last_login = NOW() WHERE user_id = :user_id");
+                            $updateStmt->execute(['user_id' => $user['user_id']]);
+                        } catch (PDOException $e) {
+                            // Log error, but don't prevent login
+                            error_log("Failed to update last_login for user_id " . $user['user_id'] . ": " . $e->getMessage());
+                        }
+
+                        // Redirect to index page after successful login
+                        redirect(BASE_URL.'index.php');
+                        exit;
+
+                    } else {
+                        // Password does not match
+                        $errors[] = "Invalid username/email or password"; // Keep error generic
                     }
                 }
             } catch (PDOException $e) {
-                $errors[] = "Database error: " . $e->getMessage();
+                $errors[] = "Database error. Please try again later."; // User-friendly error
+                // Log the detailed error for developers
+                error_log("Login attempt - POST data: " . print_r($_POST, true));
             }
         }
+
+
         if (!empty($errors)) {
-            session_start();
             $_SESSION['login_errors'] = $errors;
-            $_SESSION['login_data'] = [
-                'username' => $username,
-                'email' => $email
-            ];
+            $_SESSION['login_data'] = $loginData;
             
-             redirect(BASE_URL.'index.php');
+            redirect(BASE_URL.'index.php');
             exit;
         }
     }
      redirect(BASE_URL.'index.php');
     exit;
-session_regenerate_id(true);
 ?>

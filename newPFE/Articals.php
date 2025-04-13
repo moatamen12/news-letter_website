@@ -16,10 +16,15 @@
             <div class="col-md-12 px-4">
             <?php 
                 for ($i=0; $i < 10; $i++) { 
-                    include __DIR__.'/includes/articals_card.php';
+            ?>
+                <div class="rounded-0 border-0 border-bottom border-dark-subtle my-1">
+                    <div class="articall-card-hover">
+                        <?php include __DIR__.'/includes/horizontal_card.php'; ?>
+                    </div>
+                </div>
+            <?php        
                 }
             ?>
-                <!-- include __DIR__.'/includes/articals_card.php'?> -->
             </div>
         </div>
     </section>

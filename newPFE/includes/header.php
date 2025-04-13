@@ -112,8 +112,8 @@
                             </ul>
                         </div>
                     <?php else: ?> <!-- if the user is not logged in show the subscribe btn-->
-                        <a class="btn btn-subscribe rounded-3" href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal">Subscribe</a>
-                        <a class="btn btn-outline-secondary ms-2 rounded-3" href="#" data-bs-toggle="modal" data-bs-target="#LoginModal">Sign In</a>
+                        <a class="btn btn-subscribe rounded-3" href="#" data-bs-toggle="modal" data-bs-target="#SubscribeModal" >Subscribe</a>
+                        <a class="btn btn-outline-secondary ms-2 rounded-3" href="#" data-bs-toggle="modal" data-bs-target="#LoginModal" >Sign In</a>
                     <?php endif; ?>
                     <button class="searchBtn btn ms-2" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
                         <i class="fas fa-search"></i>
@@ -122,49 +122,51 @@
             </div>
         </nav>
 
-        <!-- Subscribe Modal  -->
-        <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel">
+        
+
+        <!-- Subscribe Model -->
+        <div class="modal fade" id="SubscribeModal" tabindex="-1" aria-labelledby="SubscribeModal">
             <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content border-0  modal-bg">
-                    <h3 class="modal-title p-4" id="subscribeModalLabel">SUBSCRIBE</h3>
+                <div class="modal-content border-0 modal-bg">
+                    
+                    <h3 class="modal-title p-4 " id="SubscribeModalLabel">Subscribe to Stay Updated</h3>
                     <div class="modal-body">
+
                         <!-- errors container -->
                         <div id="serverErrorContainer" class="alert alert-danger d-none mb-3">
                             <ul class="mb-0" id="errorList"></ul>
                         </div>
 
-                        <form action=<?= BASE_CONT. "/authintication_controllers/Subscribe.php"?> method="POST" class="row g-3" id="subscribeForm">
-                            <!--Full name -->
+                        <form action="<?= BASE_CONT. "/authintication_controllers/Subscribe.php"?>" method="POST" class="row g-3" id = "SubscribeForm">
+                            <!-- Name -->
                             <div class="col-md-6">
-                                <label for="Fname" class="form-label">Full Name <span class="text-danger">*</span></label>
-                                <input name="FullName" type="text" class="form-control " id="Fname" placeholder="Your Full Name" aria-required="true" required>
+                                <label for="Subname" class="form-label">Full Name<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="Subname" placeholder="Your Full name" aria-required="true" name="Subname">
                             </div>
 
-                            <!-- User anme -->
+                            <!-- userName -->
                             <div class="col-md-6">
-                                <label for="username" class="form-label">User Name <span class="text-danger">*</span></label>
-                                <input name="username" type="text" class="form-control" id="username" placeholder="Creat A Username" aria-required="true">
+                                <label for="SubUsername" class="form-label">Username<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="SubUsername" placeholder="Your Username" aria-required="true" name="SubUsername">
                             </div>
 
                             <!-- email -->
                             <div class="col-md-12">
-                                <label for="modalInputEmail" class="form-label">Email <span class="text-danger">*</span></label>
-                                <input type="email" class="form-control" id="modalInputEmail" placeholder="Your Email" aria-required="true" name="email">
+                                <label for="SubEmail" class="form-label">Email<span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="SubEmail" placeholder="Your Email" aria-required="true" name="SubEmail">
                             </div>
+
 
                             <!-- password -->
                             <div class="col-md-12">
-                                <label for="modalInputPassword" class="form-label">Password <span class="text-danger">*</span></label>
+                                <label for="SupPassword" class="form-label">Password<span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <input type="password" class="form-control" id="modalInputPassword" placeholder="create a Password" aria-required="true" name="password">
+                                    <input type="password" class="form-control" id="SupPassword" placeholder="create a Password" aria-required="true" name= "SupPassword">
                                     <!-- visability togle -->
                                     <button class="btn btn-bg" type="button">
                                         <i class="fas fa-eye" id="eye"></i>
                                     </button>
-                                </div>
-                                <div id="passwordHelpBlock" class="form-text">
-                                    8-20 characters, contain letters, numbers and special characters.
-                                </div>
+                                </div>    
                             </div>
 
                             <!-- conferm password -->
@@ -180,72 +182,8 @@
                             </div>
                                     
                             <div class="col-12 text-center d-flex justify-content-between align-items-center">
-                                <button type="submit" class="btn btn-primary btn-subscribe text-center">Subscribe</button>
-                                <p class="text-body-secondary">Have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#LoginModal" data-bs-dismiss="modal">log in</a></p>
-                            </div>
-
-                            <!-- Separator -->
-                            <div class="col-12">
-                                <div class="d-flex align-items-center">
-                                    <div class="flex-grow-1"><hr class="m-0"></div>
-                                    <span class="px-2">OR</span>
-                                    <div class="flex-grow-1"><hr class="m-0"></div>
-                                </div>
-                            </div>
-
-                            <!-- google subscribe -->
-                            <div class="col-12 d-flex justify-content-between">
-                                <button type="submit" class="btn text-center btn-primary border-primary "> 
-                                <i class="fa-brands fa-google"></i> Subscribe with Google</button>
-                                <p class="text-body-secondary"><small> Sign up with google for quick accesss </small></p>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- login Model -->
-        <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="loginModalLabel">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content border-0 modal-bg">
-                    <h3 class="modal-title p-4 " id="subscribeModalLabel">Log in to your account</h3>
-                    <div class="modal-body">
-
-                        <!-- errors container -->
-                        <div id="serverErrorContainer" class="alert alert-danger d-none mb-3">
-                            <ul class="mb-0" id="errorList"></ul>
-                        </div>
-
-                        <form action="<?= BASE_CONT. "/authintication_controllers/login.php"?>" method="POST" class="row g-3" id = "loginForm">
-                        <!-- userName -->
-                        <div class="col-md-12">
-                            <label for="logusername" class="form-label">Username<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="logusername" placeholder="Your Username" aria-required="true" name="logusername">
-                        </div>
-                            <!-- email -->
-                            <div class="col-md-12">
-                                <label for="logEmail" class="form-label">Email<span class="text-danger">*</span></label>
-                                <input type="email" class="form-control" id="logEmail" placeholder="Your Email" aria-required="true" name="logEmail">
-                            </div>
-
-
-                            <!-- password -->
-                            <div class="col-md-12">
-                                <label for="logPassword" class="form-label">Password<span class="text-danger">*</span></label>
-                                <div class="input-group">
-                                    <input type="password" class="form-control" id="logPassword" placeholder="create a Password" aria-required="true" name= "logPassword">
-                                    <!-- visability togle -->
-                                    <button class="btn btn-bg" type="button">
-                                        <i class="fas fa-eye" id="eye"></i>
-                                    </button>
-                                </div>    
-                            </div>
-                                    
-                            <div class="col-12 text-center d-flex justify-content-between align-items-center">
-                                <button type="submit" class="btn btn-primary btn-subscribe text-center">Login</button>
-                                <p class="text-body-secondary">Don't have an account?<a href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal" data-bs-dismiss="modal">Sign up</a></p>
-
+                                <button type="submit" class="btn btn-primary btn-subscribe text-center">Subscribe </button>
+                                <p class="text-body-secondary">Don't have an account?<a href="#" data-bs-toggle="modal" data-bs-target="#LoginModal" data-bs-dismiss="modal">Login</a></p>
                             </div>
 
                             <!-- Separator -->
@@ -259,8 +197,65 @@
 
                             <!-- google subscribe -->
                             <div class="col-12 d-flex justify-content-between">
-                                <button type="submit" class="btn  text-center btn-primary border-primary"> 
+                                <button type="submit" class="btn  text-center text-white btn-primary border-primary"> 
                                 <i class="fa-brands fa-google"></i> Subscribe with Google</button>
+                                <p class="text-body-secondary text-center "> <small>Subscribe with google for quick access</small></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- login model -->
+        <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="LoginModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content border-0 modal-bg">          
+                    <h3 class="modal-title p-4 " id="SubscribeModalLabel">Login to Your Account</h3>
+                    <div class="modal-body">
+
+                        <!-- errors container
+                        <div id="loginServerErrorContainer" class="alert alert-danger d-none mb-3">
+                            <ul class="mb-0" id="loginErrorList"></ul>
+                        </div> -->
+
+                        <form action="<?= BASE_CONT. "/authintication_controllers/login.php"?>" method="POST" class="row g-3" id = "loginForm">
+                            <!-- userName -->
+                            <div class="col-md-12">
+                                <label for="logUsernameEmail" class="form-label">Username or Email<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="logUsernameEmail" placeholder="Your Username/Email" aria-required="true" name="logUsernameEmail">
+                            </div>
+
+                            <!-- password -->
+                            <div class="col-md-12">
+                                <label for="logPassword" class="form-label">Password<span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="logPassword" placeholder="Enter Your Password" aria-required="true" name="logPassword">
+                                    <!-- visibility toggle -->
+                                    <button class="btn btn-bg" type="button">
+                                        <i class="fas fa-eye" id="eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                                                            
+                            <div class="col-12 text-center d-flex justify-content-between align-items-center">
+                                <button type="submit" class="btn btn-primary btn-subscribe text-center">Login</button>
+                                <p class="text-body-secondary">Don't have an account?<a href="#" data-bs-toggle="modal" data-bs-target="#SubscribeModal" data-bs-dismiss="modal">Sign up</a></p>
+                            </div>
+
+                            <!-- Separator -->
+                            <div class="col-12">
+                                <div class="d-flex align-items-center ">
+                                    <div class="flex-grow-1"><hr class="m-0"></div>
+                                    <span class="px-2">OR</span>
+                                    <div class="flex-grow-1"><hr class="m-0"></div>
+                                </div>
+                            </div>
+
+                            <!-- google subscribe -->
+                            <div class="col-12 d-flex justify-content-between">
+                                <button type="submit" class="btn  text-center text-white btn-primary border-primary"> 
+                                <i class="fa-brands fa-google"></i> Login with Google</button>
                                 <p class="text-body-secondary text-center "> <small>Login with google for quick access</small></p>
                             </div>
                         </form>
@@ -269,11 +264,155 @@
             </div>
         </div>
 
+        <!-- For Writers Modal -->
+        <div class="modal fade" id="writerOnboardingModal" tabindex="-1" aria-labelledby="writerOnboardingModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content border-0 modal-bg">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title" id="writerOnboardingModalLabel">Become a Writer - Step <span id="writerStepNumber">1</span> of 3</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-5">
+                        <!-- Progress Bar -->
+                        <div class="progress mb-4" style="height: 5px;">
+                            <div class="progress-bar" role="progressbar" style="width: 33%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" id="writerProgressBar"></div>
+                        </div>
+
+                        <!-- Server Errors Container -->
+                        <div id="writerServerErrorContainer" class="alert alert-danger d-none mb-3">
+                            <ul class="mb-0" id="writerErrorList"></ul>
+                        </div>
+
+                        <form action="<?= BASE_CONT . "/writer_controllers/onboarding.php" ?>" method="POST" id="writerOnboardingForm" enctype="multipart/form-data"> <!-- Added enctype for file upload -->
+
+                            <!-- Step 1: Email -->
+                            <div class="writer-step" id="writerStep1">
+                                <h6 class="mb-3 fw-bold">Enter Your Email</h6> <!-- Changed Title -->
+                                <div class="row">
+                                    <!-- Email -->
+                                    <div class="col-md-12 mb-3">
+                                        <label for="writerEmail" class="form-label">Email Address<span class="text-danger">*</span></label>
+                                        <input type="email" class="form-control" id="writerEmail" name="writerEmail" placeholder="you@example.com" required>
+                                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                                    </div>  
+                                    
+                                    <!-- password -->
+                                    <div class="col-md-12">
+                                        <label for="WPassword" class="form-label">Password<span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" id="WPassword" placeholder="create a Password" aria-required="true" name= "WPassword">
+                                            <!-- visability togle -->
+                                            <button class="btn btn-bg" type="button">
+                                                <i class="fas fa-eye" id="eye"></i>
+                                            </button>
+                                        </div>    
+                                    </div>
+
+                                    <!-- conferm password -->
+                                    <div class="col-md-12">
+                                        <label for="WconfPassword" class="form-label"> confirm Password <span class="text-danger">*</span> </label>
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" id="WconfPassword" placeholder="Confirm it  Password" aria-required="true" name="WconfPassword">
+                                            <!-- visability togle -->
+                                            <button class="btn btn-bg" type="button">
+                                                <i class="fas fa-eye" id="eye"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-end mt-4">
+                                    <button type="button" class="btn btn-primary writer-next-btn">Next <i class="fas fa-arrow-right ms-1"></i></button>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Profile Setup -->
+                            <div class="writer-step d-none" id="writerStep2">
+                                <h6 class="mb-3 fw-bold">Set up your profile</h6> <!-- Changed Title -->
+
+                                <!-- Profile Photo Upload -->
+                                <div class="mb-4 text-center">
+                                    <label for="writerProfilePhoto" class="form-label">Profile Photo</label>
+                                    <div class="mx-auto mb-2" style="width: 100px; height: 100px; border: 1px dashed #ccc; border-radius: 50%; background-color: #f8f9fa; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                                        <img id="photoPreview" src="#" alt="Preview" style="width: 100%; height: 100%; object-fit: cover; display: none;" />
+                                        <i id="photoPlaceholder" class="fas fa-user fa-2x text-muted"></i>
+                                    </div>
+                                    <input type="file" class="form-control form-control-sm w-auto mx-auto" id="writerProfilePhoto" name="writerProfilePhoto" accept="image/png, image/jpeg, image/gif">
+                                    <div class="form-text">Optional. Max 2MB. JPG, PNG, GIF.</div>
+                                </div>
+
+                                <div class="row g-3">
+                                    <!-- Full Name -->
+                                    <div class="col-12">
+                                        <label for="writerName" class="form-label">Full Name<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="writerName" name="writerName" placeholder="Your Full Name" required>
+                                        <div class="invalid-feedback">Please enter your name.</div>
+                                    </div>
+
+                                    <!-- Username -->
+                                    <div class="col-12">
+                                         <label for="writerUsername" class="form-label">Username<span class="text-danger">*</span></label>
+                                         <input type="text" class="form-control" id="writerUsername" name="writerUsername" placeholder="Choose a unique username" required>
+                                         <div class="invalid-feedback">Please enter a username.</div>
+                                    </div>
+
+                                    <!-- Bio -->
+                                    <div class="col-12">
+                                        <label for="writerBio" class="form-label">Short Bio</label>
+                                        <textarea class="form-control" id="writerBio" name="writerBio" rows="3" placeholder="A brief description about you and your writing interests..."></textarea>
+                                    </div>
+
+                                    <!-- Social Media Links -->
+                                    <div class="col-12">
+                                        <label class="form-label">Social Media Links</label>
+                                        <div id="socialLinksContainer">
+                                            <!-- Initial Social Link Row -->
+                                            <div class="input-group mb-2 social-link-row">
+                                                <select class="form-select flex-grow-0" style="width: auto;" name="socialPlatform[]">
+                                                    <option value="twitter" selected>Twitter</option>
+                                                    <option value="linkedin">LinkedIn</option>
+                                                    <option value="github">GitHub</option>
+                                                    <option value="website">Website</option>
+                                                    <option value="other">Other</option>
+                                                </select>
+                                                <input type="url" class="form-control" name="socialUrl[]" placeholder="https://...">
+                                                <button class="btn btn-outline-danger remove-social-link-btn" type="button" style="display: none;"><i class="fas fa-times"></i></button>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary mt-1" id="addSocialLinkBtn"><i class="fas fa-plus me-1"></i> Add Social Link</button>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button type="button" class="btn btn-outline-secondary writer-prev-btn"><i class="fas fa-arrow-left me-1"></i> Previous</button>
+                                    <button type="button" class="btn btn-primary writer-next-btn">Next <i class="fas fa-arrow-right ms-1"></i></button>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: URL -->
+                            <div class="writer-step d-none" id="writerStep3">
+                                <h6 class="mb-3 fw-bold">Add Your Website (Optional)</h6> <!-- Changed Title -->
+                                <div class="mb-3">
+                                    <label for="writerUrl" class="form-label">Personal Website/Portfolio URL</label>
+                                    <input type="url" class="form-control" id="writerUrl" name="writerUrl" placeholder="https://yourwebsite.com">
+                                    <div class="form-text">Link to your blog, portfolio, or personal site.</div>
+                                </div>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button type="button" class="btn btn-outline-secondary writer-prev-btn"><i class="fas fa-arrow-left me-1"></i> Previous</button>
+                                    <button type="submit" class="btn btn-success"><i class="fas fa-check me-1"></i> Submit Application</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+
         <!-- search section  -->
         <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel">
-            <div class="modal-dialog modal-dialog-centered" ><!--style="min-width: 1000px;" -->
+            <div class="modal-dialog modal-dialog-centered" >
                 <div class="modal-content border-0 modal-bg">
-                    <!-- <h3 class="modal-title p-4 " id="subscribeModalLabel">Log in to your account</h3> -->
                     <div class="modal-body">
                         
                         <!-- errors container -->

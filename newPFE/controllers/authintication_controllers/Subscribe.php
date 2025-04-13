@@ -8,10 +8,10 @@
 
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $Fname = trim($_POST['FullName'] ?? '');
-        $username = trim($_POST['username'] ?? '');
-        $email = trim($_POST['email'] ?? '');
-        $password = $_POST['password'] ?? '';
+        $Fname = trim($_POST['Subname'] ?? '');
+        $username = trim($_POST['SubUsername'] ?? '');
+        $email = trim($_POST['SubEmail'] ?? '');
+        $password = $_POST['SupPassword'] ?? '';
         $confPassword = $_POST['confPassword'] ?? '';
 
         // Server-side validation
@@ -92,13 +92,6 @@
                 
                 // Get the newly created user ID
                 $user_id = $conn->lastInsertId();
-                
-                // Create default profile for the new user
-                $stmt = $conn->prepare("
-                    INSERT INTO user_profiles (user_id)
-                    VALUES (:user_id)
-                ");
-                $stmt->execute(['user_id' => $user_id]);
                 
                 // Commit the transaction
                 $conn->commit();
