@@ -265,101 +265,164 @@
         </div>
 
         <!-- For Writers Modal -->
-        <div class="modal fade" id="writerOnboardingModal" tabindex="-1" aria-labelledby="writerOnboardingModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content border-0 modal-bg">
-                    <div class="modal-header border-0">
-                        <h5 class="modal-title" id="writerOnboardingModalLabel">Become a Writer - Step <span id="writerStepNumber">1</span> of 3</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal fade writer-modal" id="writerOnboardingModal" tabindex="-1" aria-labelledby="writerOnboardingModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-fullscreen-md-down">
+                <div class="modal-content border-0 shadow-lg">
+                    <!-- Modal Header with Gradient -->
+                    <div class="modal-header bg-gradient-primary text-white border-0 p-4">
+                        <div class="modal-title-container">
+                            <h5 class="modal-title fs-4 fw-bold" id="writerOnboardingModalLabel">
+                                <i class="fas fa-pen-fancy me-2"></i>Become a Writer
+                            </h5>
+                            <p class="mb-0 text-white-50">Join our community of tech enthusiasts and share your knowledge</p>
+                        </div>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body p-5">
-                        <!-- Progress Bar -->
-                        <div class="progress mb-4" style="height: 5px;">
-                            <div class="progress-bar" role="progressbar" style="width: 33%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" id="writerProgressBar"></div>
+                    
+                    <div class="modal-body p-4 p-lg-5">
+                        <!-- Step Indicators -->
+                        <div class="position-relative mb-5">
+                            <div class="progress" style="height: 4px;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 33%;" 
+                                    aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" id="writerProgressBar"></div>
+                            </div>
+                            <div class="position-absolute top-0 start-0 translate-middle">
+                                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" 
+                                    style="width: 40px; height: 40px;" id="step1Indicator"><i class="fas fa-envelope"></i></div>
+                                <span class="step-label d-block text-center mt-2 small fw-bold">Account</span>
+                            </div>
+                            <div class="position-absolute top-0 start-50 translate-middle">
+                                <div class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center" 
+                                    style="width: 40px; height: 40px;" id="step2Indicator"><i class="fas fa-user"></i></div>
+                                <span class="step-label d-block text-center mt-2 small fw-bold">Profile</span>
+                            </div>
+                            <div class="position-absolute top-0 end-0 translate-middle">
+                                <div class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center" 
+                                    style="width: 40px; height: 40px;" id="step3Indicator"><i class="fas fa-check"></i></div>
+                                <span class="step-label d-block text-center mt-2 small fw-bold">Finish</span>
+                            </div>
                         </div>
 
                         <!-- Server Errors Container -->
-                        <div id="writerServerErrorContainer" class="alert alert-danger d-none mb-3">
-                            <ul class="mb-0" id="writerErrorList"></ul>
+                        <div id="writerServerErrorContainer" class="alert alert-danger d-none mb-4">
+                            <h6 class="alert-heading fw-bold"><i class="fas fa-exclamation-triangle me-2"></i>Please fix the following errors:</h6>
+                            <ul class="list-unstyled mb-0 small" id="writerErrorList"></ul>
                         </div>
 
-                        <form action="<?= BASE_CONT . "/writer_controllers/onboarding.php" ?>" method="POST" id="writerOnboardingForm" enctype="multipart/form-data"> <!-- Added enctype for file upload -->
+                        <form action="<?= BASE_CONT . "/authintication_controllers/writer_sup.php" ?>" method="POST" id="writerOnboardingForm" enctype="multipart/form-data">
 
-                            <!-- Step 1: Email -->
+                            <!-- Step 1: Account Details -->
                             <div class="writer-step" id="writerStep1">
-                                <h6 class="mb-3 fw-bold">Enter Your Email</h6> <!-- Changed Title -->
-                                <div class="row">
+                                <h6 class="mb-4 fw-bold text-primary fs-5"><i class="fas fa-envelope-open me-2"></i>Create Your Account</h6>
+                                <div class="row g-3">
                                     <!-- Email -->
                                     <div class="col-md-12 mb-3">
                                         <label for="writerEmail" class="form-label">Email Address<span class="text-danger">*</span></label>
-                                        <input type="email" class="form-control" id="writerEmail" name="writerEmail" placeholder="you@example.com" required>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i class="fas fa-envelope"></i></span>
+                                            <input type="email" class="form-control" id="writerEmail" name="writerEmail" 
+                                                placeholder="you@example.com" required>
+                                        </div>
                                         <div class="invalid-feedback">Please enter a valid email address.</div>
                                     </div>  
                                     
-                                    <!-- password -->
-                                    <div class="col-md-12">
+                                    <!-- Password -->
+                                    <div class="col-md-12 mb-3">
                                         <label for="WPassword" class="form-label">Password<span class="text-danger">*</span></label>
                                         <div class="input-group">
-                                            <input type="password" class="form-control" id="WPassword" placeholder="create a Password" aria-required="true" name= "WPassword">
-                                            <!-- visability togle -->
-                                            <button class="btn btn-bg" type="button">
-                                                <i class="fas fa-eye" id="eye"></i>
-                                            </button>
-                                        </div>    
-                                    </div>
-
-                                    <!-- conferm password -->
-                                    <div class="col-md-12">
-                                        <label for="WconfPassword" class="form-label"> confirm Password <span class="text-danger">*</span> </label>
-                                        <div class="input-group">
-                                            <input type="password" class="form-control" id="WconfPassword" placeholder="Confirm it  Password" aria-required="true" name="WconfPassword">
-                                            <!-- visability togle -->
-                                            <button class="btn btn-bg" type="button">
-                                                <i class="fas fa-eye" id="eye"></i>
+                                            <span class="input-group-text bg-light"><i class="fas fa-lock">*</i></span>
+                                            <input type="password" class="form-control" id="WPassword" 
+                                                placeholder="Create a secure password" aria-required="true" name="WPassword" required>
+                                            <button class="btn btn-outline-secondary password-toggle" type="button">
+                                                <i class="fas fa-eye"></i>
                                             </button>
                                         </div>
+                                        <div class="password-strength mt-1">
+                                            <div class="progress" style="height: 4px;">
+                                                <div class="progress-bar" role="progressbar" style="width: 0%" id="passwordStrength"></div>
+                                            </div>
+                                            <small class="form-text text-muted">Use 8+ characters with a mix of letters, numbers & symbols</small>
+                                        </div>
+                                    </div>
+
+                                    <!-- Confirm Password -->
+                                    <div class="col-md-12">
+                                        <label for="WconfPassword" class="form-label">Confirm Password<span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i class="fas fa-lock">*</i></span>
+                                            <input type="password" class="form-control" id="WconfPassword" 
+                                                placeholder="Confirm your password" aria-required="true" name="WconfPassword" required>
+                                            <button class="btn btn-outline-secondary password-toggle" type="button">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </div>
+                                        <div class="invalid-feedback">Passwords do not match.</div>
                                     </div>
                                 </div>
 
-                                <div class="d-flex justify-content-end mt-4">
-                                    <button type="button" class="btn btn-primary writer-next-btn">Next <i class="fas fa-arrow-right ms-1"></i></button>
+                                <div class="d-grid gap-2 mt-4">
+                                    <button type="button" class="btn btn-subscribe-outline writer-next-btn py-2">
+                                        Continue to Profile <i class="fas fa-arrow-right ms-1"></i>
+                                    </button>
                                 </div>
                             </div>
 
                             <!-- Step 2: Profile Setup -->
                             <div class="writer-step d-none" id="writerStep2">
-                                <h6 class="mb-3 fw-bold">Set up your profile</h6> <!-- Changed Title -->
+                                <h6 class="mb-4 fw-bold text-primary fs-5"><i class="fas fa-user-edit me-2"></i>Create Your Profile</h6>
 
                                 <!-- Profile Photo Upload -->
-                                <div class="mb-4 text-center">
-                                    <label for="writerProfilePhoto" class="form-label">Profile Photo</label>
-                                    <div class="mx-auto mb-2" style="width: 100px; height: 100px; border: 1px dashed #ccc; border-radius: 50%; background-color: #f8f9fa; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                                        <img id="photoPreview" src="#" alt="Preview" style="width: 100%; height: 100%; object-fit: cover; display: none;" />
-                                        <i id="photoPlaceholder" class="fas fa-user fa-2x text-muted"></i>
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold mb-2">Profile Photo</label>
+                                    <div class="photo-upload-container position-relative mx-auto" style="width: 150px; height: 150px; cursor: pointer;">
+                                        <div class="rounded-circle border border-2 border-primary bg-light h-100 w-100 overflow-hidden d-flex align-items-center justify-content-center">
+                                            <img id="photoPreview" src="#" alt="Profile Preview" class="h-100 w-100 object-cover" style="display: none;" />
+                                            <div id="photoPlaceholder" class="text-center">
+                                                <i class="fas fa-user-circle fa-5x text-secondary mb-2"></i>
+                                                <div class="photo-upload-overlay position-absolute top-0 start-0 h-100 w-100 d-flex flex-column align-items-center justify-content-center bg-primary bg-opacity-75 text-white opacity-0 transition">
+                                                    <i class="fas fa-camera fa-2x mb-2"></i>
+                                                    <span>Add Photo</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="file" class="position-absolute top-0 start-0 h-100 w-100 opacity-0" 
+                                            id="writerProfilePhoto" name="writerProfilePhoto" accept="image/png, image/jpeg, image/gif">
                                     </div>
-                                    <input type="file" class="form-control form-control-sm w-auto mx-auto" id="writerProfilePhoto" name="writerProfilePhoto" accept="image/png, image/jpeg, image/gif">
-                                    <div class="form-text">Optional. Max 2MB. JPG, PNG, GIF.</div>
+                                    <div class="text-center mt-2">
+                                        <small class="text-muted d-block">Optional. Max 2MB (JPG, PNG)</small>
+                                        <button type="button" class="btn btn-sm btn-outline-danger mt-1 d-none" id="removePhotoBtn">
+                                            <i class="fas fa-times me-1"></i>Remove Photo
+                                        </button>
+                                    </div>
                                 </div>
 
                                 <div class="row g-3">
                                     <!-- Full Name -->
-                                    <div class="col-12">
+                                    <div class="col-md-6">
                                         <label for="writerName" class="form-label">Full Name<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="writerName" name="writerName" placeholder="Your Full Name" required>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i class="fas fa-user"></i></span>
+                                            <input type="text" class="form-control" id="writerName" name="writerName" placeholder="Your Full Name" required>
+                                        </div>
                                         <div class="invalid-feedback">Please enter your name.</div>
                                     </div>
 
                                     <!-- Username -->
-                                    <div class="col-12">
-                                         <label for="writerUsername" class="form-label">Username<span class="text-danger">*</span></label>
-                                         <input type="text" class="form-control" id="writerUsername" name="writerUsername" placeholder="Choose a unique username" required>
-                                         <div class="invalid-feedback">Please enter a username.</div>
+                                    <div class="col-md-6">
+                                        <label for="writerUsername" class="form-label">Username<span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light">@</span>
+                                            <input type="text" class="form-control" id="writerUsername" name="writerUsername" placeholder="Choose a username" required>
+                                        </div>
+                                        <div class="invalid-feedback">Please choose a username.</div>
                                     </div>
 
                                     <!-- Bio -->
                                     <div class="col-12">
-                                        <label for="writerBio" class="form-label">Short Bio</label>
-                                        <textarea class="form-control" id="writerBio" name="writerBio" rows="3" placeholder="A brief description about you and your writing interests..."></textarea>
+                                        <label for="writerBio" class="form-label">Bio</label>
+                                        <textarea class="form-control" id="writerBio" name="writerBio" rows="3" 
+                                            placeholder="Tell readers a bit about yourself and your expertise..."></textarea>
+                                        <div class="form-text text-end"><span id="bioCharCount">0</span>/160 characters</div>
                                     </div>
 
                                     <!-- Social Media Links -->
@@ -368,37 +431,79 @@
                                         <div id="socialLinksContainer">
                                             <!-- Initial Social Link Row -->
                                             <div class="input-group mb-2 social-link-row">
-                                                <select class="form-select flex-grow-0" style="width: auto;" name="socialPlatform[]">
-                                                    <option value="twitter" selected>Twitter</option>
+                                                <span class="input-group-text bg-light"><i class="fas fa-link"></i></span>
+                                                <select class="form-select flex-grow-0 w-auto" name="socialPlatform[]">
+                                                    <option value="">Select Platform</option>
+                                                    <option value="twitter">Twitter</option>
                                                     <option value="linkedin">LinkedIn</option>
                                                     <option value="github">GitHub</option>
                                                     <option value="website">Website</option>
                                                     <option value="other">Other</option>
                                                 </select>
                                                 <input type="url" class="form-control" name="socialUrl[]" placeholder="https://...">
-                                                <button class="btn btn-outline-danger remove-social-link-btn" type="button" style="display: none;"><i class="fas fa-times"></i></button>
+                                                <button class="btn btn-outline-danger remove-social-link-btn" type="button" style="display: none;">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
                                             </div>
                                         </div>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary mt-1" id="addSocialLinkBtn"><i class="fas fa-plus me-1"></i> Add Social Link</button>
+                                        <div class="text-end">
+                                            <button type="button" class="btn btn-sm btn-outline-primary mt-1" id="addSocialLinkBtn">
+                                                <i class="fas fa-plus me-1"></i> Add Another Link
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between mt-4">
-                                    <button type="button" class="btn btn-outline-secondary writer-prev-btn"><i class="fas fa-arrow-left me-1"></i> Previous</button>
-                                    <button type="button" class="btn btn-primary writer-next-btn">Next <i class="fas fa-arrow-right ms-1"></i></button>
+                                    <button type="button" class="btn btn-outline-secondary writer-prev-btn">
+                                        <i class="fas fa-arrow-left me-1"></i> Back
+                                    </button>
+                                    <button type="button" class="btn btn-subscribe-outline writer-next-btn">
+                                        Continue <i class="fas fa-arrow-right ms-1"></i>
+                                    </button>
                                 </div>
                             </div>
 
-                            <!-- Step 3: URL -->
+                            <!-- Step 3: Final Details -->
                             <div class="writer-step d-none" id="writerStep3">
-                                <h6 class="mb-3 fw-bold">Add Your Website (Optional)</h6> <!-- Changed Title -->
-                                <div class="mb-3">
-                                    <label for="writerUrl" class="form-label">Personal Website/Portfolio URL</label>
-                                    <input type="url" class="form-control" id="writerUrl" name="writerUrl" placeholder="https://yourwebsite.com">
-                                    <div class="form-text">Link to your blog, portfolio, or personal site.</div>
+                                <h6 class="mb-4 fw-bold text-primary fs-5"><i class="fas fa-check-circle me-2"></i>Complete Your Application</h6>
+                                
+                                <div class="mb-4">
+                                    <label for="writerUrl" class="form-label">Personal Website/Portfolio</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="fas fa-globe"></i></span>
+                                        <input type="url" class="form-control" id="writerUrl" name="writerUrl" placeholder="https://yourwebsite.com">
+                                    </div>
+                                    <div class="form-text">Share your portfolio or blog (optional)</div>
                                 </div>
+
+                                <!-- <div class="mb-4">
+                                    <label for="writerInterests" class="form-label">Writing Interests</label>
+                                    <select class="form-select" id="writerInterests" name="writerInterests[]" multiple>
+                                        <option value="technology">Technology</option>
+                                        <option value="programming">Programming</option>
+                                        <option value="design">Design</option>
+                                        <option value="business">Business</option>
+                                        <option value="ai">Artificial Intelligence</option>
+                                        <option value="cybersecurity">Cybersecurity</option>
+                                    </select>
+                                    <div class="form-text">Select topics you're interested in writing about</div>
+                                </div> -->
+                                
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" id="writerTerms" name="writerTerms" required>
+                                    <label class="form-check-label" for="writerTerms">
+                                        I agree to the <a href="#" class="text-decoration-none">Writer Terms of Service</a> and <a href="#" class="text-decoration-none">Content Guidelines</a>.
+                                    </label>
+                                    <div class="invalid-feedback">You must agree before submitting.</div>
+                                </div>
+
                                 <div class="d-flex justify-content-between mt-4">
-                                    <button type="button" class="btn btn-outline-secondary writer-prev-btn"><i class="fas fa-arrow-left me-1"></i> Previous</button>
-                                    <button type="submit" class="btn btn-success"><i class="fas fa-check me-1"></i> Submit Application</button>
+                                    <button type="button" class="btn btn-outline-secondary writer-prev-btn">
+                                        <i class="fas fa-arrow-left me-1"></i> Back
+                                    </button>
+                                    <button type="submit" class="btn btn-subscribe">
+                                        <i class="fas fa-check-circle me-1"></i> Complete Application
+                                    </button>
                                 </div>
                             </div>
                         </form>
