@@ -1,0 +1,61 @@
+@startuml Users
+
+' Roles table
+class Role {
+  +role_id: INT
+  +role_name: VARCHAR(50)
+}
+
+' Request Statuses table
+class RequestStatus {
+  +status_id: INT
+  +status_name: VARCHAR(50)
+}
+
+' Users table
+class User {
+  +user_id: INT
+  +name: VARCHAR(100)
+  +email: VARCHAR(100)
+  +password_hash: VARCHAR(255)
+  +username: VARCHAR(50)
+  +role_id: INT
+  +created_at: TIMESTAMP
+  +last_login: TIMESTAMP
+}
+
+' User Profiles table
+class UserProfile {
+  +profile_id: INT
+  +user_id: INT
+  +profile_picture: VARCHAR(255)
+  +bio: TEXT
+  +position: VARCHAR(100)
+  +company: VARCHAR(100)
+  +website: VARCHAR(255)
+  +facebook: VARCHAR(255)
+  +twitter: VARCHAR(255)
+  +instagram: VARCHAR(255)
+  +linkedin: VARCHAR(255)
+  +updated_at: TIMESTAMP
+}
+
+' Role Requests table
+class RoleRequest {
+  +request_id: INT
+  +user_id: INT
+  +requested_role_id: INT
+  +request_reason: TEXT
+  +status_id: INT
+  +created_at: TIMESTAMP
+  +updated_at: TIMESTAMP
+}
+
+' Relationships
+User "1" -- "1" UserProfile : has
+User "0..*" -- "1" Role : assigned >
+User "0..*" -- "1" RoleRequest : makes >
+Role "1" <-- "0..*" RoleRequest : requested role
+RequestStatus "1" <-- "0..*" RoleRequest : status
+
+@enduml

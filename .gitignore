@@ -1,0 +1,53 @@
+# Dependencies
+newPFE/node_modules
+newPFE/vendor
+newPFE/assets/articals
+newPFE/assets/images
+newPFE/config
+newPFE/uploads/
+vendor/
+newPFE/tinymce/
+newPFE/TEST
+
+PFE/node_modules
+PFE/vendor
+PFE/assets/articals
+PFE/assets/images
+PFE/config
+PFE/UML-diagrames
+PFE/uploads/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Operating System files
+.DS_Store
+Thumbs.db
+test.php
+test1.php
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Build output
+/dist
+/build
+/public/hot
+
+# Temporary files
+*.swp
+*.swo
+*~
+

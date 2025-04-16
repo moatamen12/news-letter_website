@@ -1,0 +1,510 @@
+@import url('auther_profile.css');
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: var(--primary-bg) ;
+    color: var(--primary-text);
+}
+
+.btn-{
+    color: var(--accent-color) ;
+    cursor:pointer;
+}
+
+
+.pagination .page-item .page-link{
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    /* border-color: var(--btn-color); */
+}
+
+/* for the devider */
+.section-divider {
+    width: 80%;
+    margin: 40px auto;
+    border-top: 2px solid var(--btn-color);
+    opacity: 0.3;
+}
+
+
+
+
+/* header SECTION */
+
+/* logo */
+.logo{
+    display: inline-block;
+    img{
+        max-height: 50px;
+        width: auto;
+        display:block;
+    }
+}
+
+.searchBtn{
+    border-radius: 0 !important;
+    border: none !important;
+    border-left: 2px solid var(--primary-text) !important;
+}
+
+.navbar-custom {
+    top: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 1000;
+    background-color: var(--primary-bg) !important;
+    margin-bottom: 0;
+}
+
+.navbar-custom .nav-link:hover{
+    color: var(--btn-color) !important;
+}
+
+.navbar-custom .navbar-brand {
+    color: var(--btn-color) !important;
+}
+.btn-subscribe-outline{
+    border-color: var(--btn-color) !important;
+    color: var(--primary-text);
+}
+
+.btn-subscribe {
+    background-color: var(--btn-color) !important;
+    border-color: var(--btn-color) !important;
+    color: var(--accent-color);
+}
+
+.btn-subscribe:hover , .btn-subscribe-outline:hover {
+    background-color: var(--btn-hover) !important;
+    border-color: var(--btn-hover) !important;
+    color: var(--accent-color);
+}
+
+
+.navbar-custom .navbar-toggler {
+    border-color: var(--btn-hover) !important; 
+}
+  
+.navbar-custom .navbar-toggler-icon {
+background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E <path stroke='rgba(255, 255, 255, 1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important; /* white lines */
+}
+        
+/* .navbar-nav .dropdown:hover .dropdown-menu { /* to make the dropsown by hover 
+    display: block;
+    /* margin-top: 100;  
+
+} */
+.navbar-nav .dropdown-menu .dropdown-item:hover{
+    color: var(--btn-color) !important;
+}
+
+/* for the hero section */
+.hero-bg{
+    background: linear-gradient(135deg, var(--btn-color) 0%, var(--secondary-color) 100%);
+    position: relative;
+    z-index: 0;
+    padding-bottom: 100px;
+    margin-bottom: 70px;
+    overflow: visible;
+
+}
+
+/* Add side curves to blend with the half-circle */
+.hero-bg::before {
+    content: "";
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: linear-gradient(140deg, var(--btn-color) 0%, var(--secondary-color) 100%);
+    border-bottom-left-radius: 50% 100%;
+    border-bottom-right-radius: 50% 100%;
+    z-index: 1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadein {
+    animation: fadeIn 0.9s ease-out;
+}
+
+/* to make the Today's top highlights  have a back gruond*/
+.intro-bg {
+    margin-top: -150px; /* Keep the overlap with hero */
+    position: relative;
+    z-index: 1;
+    background-color: transparent;
+}
+
+
+
+/* for the top writers */
+.bg-top-writers {
+    background-color:#cce8e4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+
+/* Style the progress bar in the writer modal */
+#writerOnboardingModal .progress-bar {
+    background: linear-gradient(135deg, var(--btn-color) 0%, var(--secondary-color) 100%);
+    transition: width 0.6s ease; /* Add transition for smooth width changes */
+}
+
+/* Optional: Style the progress container background */
+#writerOnboardingModal .progress {
+    background-color: #e9ecef; /* Light grey background for the track */
+}
+
+
+
+
+/* for the search area */
+.top-search-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 80%;
+    margin-left:8%; 
+    margin-right:8%; 
+    background-color: var(--primary-bg);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1050; /* Higher than navbar */
+    padding: 1rem 0;
+    border-radius: 5px;
+}
+
+.top-search-container.show {
+    transform: translateY(0);
+}
+
+.search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1040;
+    display: none;
+}
+
+.search-overlay.show {
+    display: block;
+}
+
+
+/*** for the entroduction section ***/
+.form-control { 
+    border-color: var(--btn-color) !important;
+}
+.form-control:focus { /* for the houver efect  */
+    border-color: var(--btn-hover) !important;
+    box-shadow: 0 0 0 0.2rem rgba(93, 167, 162, 0.25);
+}
+
+
+/* for the under line of the title    */ 
+.stretched-link {
+    text-decoration: none;
+    background-image: linear-gradient(to right, var(--under-line-color), var(--under-line-color));
+    background-size: 0 2px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s ease;
+    display: inline;
+    padding-bottom: 2px;
+}
+
+.stretched-link:hover {
+    background-size: 100% 2px;
+}
+/* for the hovering effect  */
+.articall-card-hover{
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+.articall-card-hover:hover {
+    transform: translateY(-5px); /* Lift the card slightly */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Enhance the shadow */
+    border-radius: 5px;
+}
+
+/* for the login/signup */
+modal-bg{
+    background-color: var(--primary-bg);
+}
+button.btn.btn-bg{  /* for the google sub */
+    background-color: var(--primary-bg) !important;    
+    border-color: var(--btn-color) !important;
+    border-left: none !important;
+    color: var(--primary-text) !important;
+}
+
+/* Profile image upload */
+.avatar-upload {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.avatar-preview {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-edit {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.avatar-edit input {
+    display: none;
+}
+
+.avatar-edit label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #0d6efd;
+    border: 1px solid transparent;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.avatar-edit label:hover {
+    background: #0b5ed7;
+}
+
+/* for the articals imges */
+.article-card-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* For the main large image */
+.col-md-12 .article-card-img {
+    height: 400px;
+}
+
+.over_hid{
+   display: block;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Writer Modal Styles */
+.bg-gradient-primary {
+    background: linear-gradient(140deg, var(--btn-color) 0%, var(--secondary-color) 100%);
+}
+
+/* Make the modal full-focus */
+.writer-modal {
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.writer-modal .modal-dialog {
+    max-width: 800px;
+}
+
+.writer-modal .modal-content {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.writer-modal .modal-header {
+    padding: 1.5rem;
+}
+
+/* Photo upload styling */
+.photo-upload-container {
+    transition: all 0.2s ease-in-out;
+}
+
+.photo-upload-container:hover {
+    transform: scale(1.02);
+}
+
+.photo-upload-container:hover .photo-upload-overlay {
+    opacity: 1;
+}
+
+.photo-upload-overlay {
+    transition: opacity 0.3s ease;
+}
+
+/* Step transitions */
+.writer-step {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Progress indicator */
+#step1Indicator, #step2Indicator, #step3Indicator {
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.15);
+}
+
+.step-active {
+    background-color: #0d6efd !important;
+    box-shadow: 0 0 0 5px rgba(13, 110, 253, 0.25) !important;
+}
+
+.step-complete {
+    background-color: #198754 !important;
+}
+
+/* Password strength indicator */
+.password-strength .progress-bar {
+    transition: width 0.3s ease;
+}
+
+.strength-weak {
+    background-color: #dc3545 !important;
+}
+
+.strength-medium {
+    background-color: #ffc107 !important;
+}
+
+.strength-strong {
+    background-color: #198754 !important;
+}
+
+/* Form elements styling */
+.writer-modal .form-control:focus,
+.writer-modal .form-select:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.writer-modal .input-group-text {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+
+
+
+
+/* Enhanced validation styling */
+.writer-modal .is-invalid {
+    border-color: #dc3545 !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat !important;
+    background-position: right calc(0.375em + 0.1875rem) center !important;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) !important;
+}
+
+.writer-modal .invalid-feedback {
+    display: block;
+    color: #dc3545;
+    font-size: 0.875em;
+    margin-top: 0.25rem;
+}
+
+/* Password match indicator */
+.password-match-indicator {
+    display: flex;
+    align-items: center;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+}
+
+.password-match-indicator.match {
+    color: #198754;
+}
+
+.password-match-indicator.mismatch {
+    color: #dc3545;
+}
+
+.password-match-indicator i {
+    margin-right: 0.25rem;
+}
+
+
+
+
+
+/* PAGE COLOR THEME */
+:root {
+    --primary-bg: #fffefe;
+    /* --secoundary-bg: #eff5f3; */
+
+    --div-clr:#090000a1;
+
+    --primary-text: #363737;
+    --tab-txt:#6c757d;
+
+    --btn-color: #2bb2a9; 
+    --btn-hover: #5fcac3;
+    --secondary-btns: #e1dddd ;
+
+    --accent-color: #e2ebf4;    
+    --secondary-color: #577B8D; 
+    --highlight-color: #34643c;
+    --under-line-color: black;
+}
+
