@@ -1,6 +1,7 @@
 <?php 
     $page_title = "Profile";
-    require_once __DIR__ . '/controllers/profile_controllers/getProfile.php';
+    // require_once __DIR__ . '/controllers/profile_controllers/getProfile.php';
+    
 
     //  Get any stored messages from session
     if (session_status() === PHP_SESSION_NONE) {

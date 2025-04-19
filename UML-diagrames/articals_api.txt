@@ -1,0 +1,16 @@
+newsletter/newPFE/
+├── api/
+│   ├── articles/
+│   │   ├── index.php      # API router
+│   │   ├── create.php     # Create article
+│   │   ├── read.php       # Get single article 
+│   │   ├── list.php       # List all articles
+│   │   ├── update.php     # Update article
+│   │   ├── delete.php     # Delete article
+│   │   └── search.php     # Search articles
+│   └── config/
+│       └── headers.php    # Common headers
+├── models/
+│   └── Article.php        # Article model
+└── config/
+    └── Database.php       # Database connection

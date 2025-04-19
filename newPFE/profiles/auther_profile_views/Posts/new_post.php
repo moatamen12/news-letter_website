@@ -1,5 +1,6 @@
 <?php 
     $page_tatile= "New Post";
+    include_once  'C:\xampp\htdocs\newsletter\newPFE\includes\header.php'; // Include the headers for CORS and JSON response
 ?>
 
 

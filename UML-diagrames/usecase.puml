@@ -1,0 +1,88 @@
+@startuml Tech_Newsletter_Use_Case
+left to right direction
+skinparam actorStyle awesome
+
+' Actors
+:Anonymous User: as Anonymous
+:Reader: as Reader
+:Writer: as Writer
+:Administrator: as Admin
+
+' Inheritance
+Reader -|> Anonymous
+Writer -|> Reader
+Admin -|> Writer
+
+' Use cases - Public Features
+rectangle "Public Features" {
+  usecase "View Articles" as ViewArticles
+  usecase "View About Page" as ViewAbout
+  usecase "View Contact Page" as ViewContact
+  usecase "Search Content" as SearchContent
+  usecase "View Writer Profiles" as ViewWriterProfiles
+  usecase "Register/Subscribe" as Register
+  usecase "Login" as Login
+}
+
+' Use cases - Reader Features
+rectangle "Reader Features" {
+  usecase "Manage Profile" as ManageProfile
+  usecase "Comment on Articles" as CommentArticles
+  usecase "Like Articles" as LikeArticles
+  usecase "Submit Feedback" as SubmitFeedback
+  usecase "Follow Topics" as FollowTopics
+  usecase "View Personalized Content" as ViewPersonalized
+}
+
+' Use cases - Writer Features
+rectangle "Writer Features" {
+  usecase "Create Articles" as CreateArticles
+  usecase "Edit Own Articles" as EditArticles
+  usecase "Delete Own Articles" as DeleteArticles
+  usecase "View Article Analytics" as ViewAnalytics
+  usecase "Manage Writer Profile" as ManageWriterProfile
+}
+
+' Use cases - Admin Features
+rectangle "Admin Features" {
+  usecase "Manage Users" as ManageUsers
+  usecase "Approve/Reject Articles" as ApproveArticles
+  usecase "Manage Categories" as ManageCategories
+  usecase "View Site Analytics" as SiteAnalytics
+  usecase "Handle Contact Messages" as HandleMessages
+  usecase "Update Site Content" as UpdateSiteContent
+}
+
+' Anonymous User relationships
+Anonymous --> ViewArticles
+Anonymous --> ViewAbout
+Anonymous --> ViewContact
+Anonymous --> SearchContent
+Anonymous --> ViewWriterProfiles
+Anonymous --> Register
+Anonymous --> Login
+
+' Reader relationships - direct
+Reader --> ManageProfile
+Reader --> CommentArticles
+Reader --> LikeArticles
+Reader --> SubmitFeedback
+Reader --> FollowTopics
+Reader --> ViewPersonalized
+
+' Writer relationships - direct
+Writer --> CreateArticles
+Writer --> EditArticles
+Writer --> DeleteArticles
+Writer --> ViewAnalytics
+Writer --> ManageWriterProfile
+
+' Admin relationships - direct
+Admin --> ManageUsers
+Admin --> ApproveArticles
+Admin --> ManageCategories
+Admin --> SiteAnalytics
+Admin --> HandleMessages
+Admin --> UpdateSiteContent
+
+@enduml

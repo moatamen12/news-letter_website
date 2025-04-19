@@ -52,22 +52,28 @@
         <title><?php echo isset($page_title)? $page_title . ' -Tech Expo': 'Tech Expo';?></title> 
 
         <script src="https://kit.fontawesome.com/fc7e8d802d.js" crossorigin="anonymous"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+              integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="assets/css/style.css">    
         
         <!-- favicon -->
-        <link rel="apple-touch-icon" sizes="180x180"    href="<?= BASE_URL ?>assets/images/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="<?= BASE_URL ?>assets/images/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="<?= BASE_URL ?>assets/images/favicon/favicon-16x16.png" >
-        <link rel="manifest"                            href="<?= BASE_URL ?>site.webmanifest"> <!-- mainfest file including basec info about the site and icons -->
-    
+        <link rel="apple-touch-icon"          sizes="180x180" href="<?= BASE_URL ?>assets/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png"     sizes="96x96"   href="<?= BASE_URL ?>assets/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png"     sizes="any"     href="<?= BASE_URL ?>assets/favicon/favicon.ico">
+        <link rel="icon" type="image/svg+xml"                 href="<?= BASE_URL ?>assets/favicon/favicon.svg">
+        <link rel="manifest"                                  href="<?= BASE_URL ?>assets/favicon/site.webmanifest">       
     </head>
 
     <body class="d-flex flex-column min-vh-100 "> <!--to take 100% of the view port-->
         <!-- the navegation bar -->
         <nav class="navbar navbar-custom sticky-top navbar-expand-lg border-bottom shadow-sm px-2">
             <div class="container-fluid">
-                <a class="navbar-brand logo" href="index.php"><img src=<?= LOGO_URL ?> alt="Tech Expo"></a>
+                <!-- LOGO -->
+                <a class="navbar-brand logo" href="index.php">
+                    <img src="<?= BASE_URL ?>assets/favicon/favicon.svg" alt="Tech Expo" width="40" height="40" class="d-inline-block align-top">
+                    <!-- <span>Tech Expo</span> -->
+                </a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -103,7 +109,7 @@
                         <div class="dropdown">
                             <a href="#" class="d-flex align-items-center" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="<?= htmlspecialchars($photoPath); ?>" alt="Profile"  
-                                    class="rounded-circle" style="width:40px; height:40px; object-fit:cover;">                                   <!-- show the profile photo -->
+                                    class="rounded-circle" style="width:40px; height:40px; object-fit:cover;"> <!-- show the profile photo -->
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">   <!-- dropdown menu for more user options-->
                                 <li><a class="dropdown-item" href="<?= BASE_URL . 'profile.php'; ?>"><i class="fas fa-user-edit me-2"></i>Edit Profile</a></li>

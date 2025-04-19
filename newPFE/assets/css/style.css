@@ -132,7 +132,7 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
 }
 
 .animate-fadein {
-    animation: fadeIn 0.9s ease-out;
+    animation: fadeIn 0.6s ease-out;
 }
 
 /* to make the Today's top highlights  have a back gruond*/
@@ -507,4 +507,3 @@ button.btn.btn-bg{  /* for the google sub */
     --highlight-color: #34643c;
     --under-line-color: black;
 }
-

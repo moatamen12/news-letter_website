@@ -46,7 +46,7 @@
                             <p class="card-text">He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay assistance joy. Unaffected at ye of compliment alteration to</p>
                             <!-- Card info -->
                             <ul class="nav d-flex align-items-center">
-                            <li class="nav-item  ">
+                                <li class="nav-item  ">
                                     <div class="nav-link">
                                         <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span> <!--TODO: MAke IT-->
                                     </div>
@@ -329,7 +329,7 @@
                 <a href="#" class="text-decoration-none"> <!-- link to the user profile page -->
                     <div class="card border-0 rounded-5 articall-card-hover ">
                         <div class="card-head ">
-                            <img src="assets/images/default-use.jpg" class="card-img-top img-thumbnail rounded-circle mx-auto d-block mb-3 w-75" alt="user-photo" >
+                            <img src="<?= USER_IMG ?>" class="card-img-top img-thumbnail rounded-circle mx-auto d-block mb-3 w-75" alt="user-photo" >
                         </div>
 
                         <div class="card-body">
@@ -344,11 +344,10 @@
                 </a>
             </div>
 
-
             <div class="col">
                 <div class="card">
                     <div class="card-head rounded-circle">
-                        <img src="assets/images/default-use.jpg" class="card-img-top" alt="user-photo">
+                        <img src="assets/images/default_profile.jpg" class="card-img-top" alt="user-photo">
                     </div>
                 </div>
             </div>
@@ -357,7 +356,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-head rounded-circle">
-                        <img src="assets/images/default-use.jpg" class="card-img-top" alt="user-photo">
+                        <img src="assets/images/default_profile.jpg" class="card-img-top" alt="user-photo">
                     </div>
                 </div>
             </div>

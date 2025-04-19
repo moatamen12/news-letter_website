@@ -1,0 +1,29 @@
+Anonymous User
+
+Can view public content (articles, about page, contact)
+Can register/subscribe
+Can search content
+Can view writer profiles
+Reader (Registered User)
+
+Inherits all Anonymous User capabilities
+Can manage their profile
+Can interact with articles (comments, likes)
+Can follow topics/categories
+Can access personalized content
+Can submit feedback/contact support
+Writer (Author)
+
+Inherits all Reader capabilities
+Can create, edit, delete their own articles
+Has access to analytics for their articles
+Can maintain a writer profile with bio and social links
+Administrator
+
+Has all Writer capabilities
+Can manage all users
+Can approve/reject articles
+Can manage categories and tags
+Can access site-wide analytics
+Can handle contact messages
+Can update site content

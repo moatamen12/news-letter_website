@@ -2,7 +2,7 @@
 newPFE/node_modules
 newPFE/vendor
 newPFE/assets/articals
-newPFE/assets/images
+# newPFE/assets/images
 newPFE/config
 newPFE/uploads/
 vendor/
