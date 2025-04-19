@@ -1,10 +1,10 @@
 <?php 
     require_once('../config/headers.php');
     require_once('../../config/config.php');
-    require_once('../Models/Articals.php'); // Fix typo: Moddels → Models
+    require_once('../Models/Articles.php'); // Fix typo: Moddels → Models
 
 
-    $article = new Articals($conn);
+    $article = new Articles($conn);
 
     // Get search parameters
     $searchTerm = isset($_GET['q']) ? $_GET['q'] : '';  // General search term

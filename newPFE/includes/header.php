@@ -89,10 +89,10 @@
                                 Articles
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="articlesDropdown"> -->
-                                <!-- <a class="nav-link active" aria-current="page"  href="Articals.php">Followed</a>class="dropdown-item" -->
+                                <!-- <a class="nav-link active" aria-current="page"  href="Articles.php">Followed</a>class="dropdown-item" -->
                         </li>
                         <li class="nav-item"><!--class="nav-item dropdown" -->
-                                <a class="nav-link active" aria-current="page" href="<?= BASE_URL . 'articals.php'; ?>">Articles</a><!--class="dropdown-item" -->
+                                <a class="nav-link active" aria-current="page" href="<?= BASE_URL . 'articles.php'; ?>">Articles</a><!--class="dropdown-item" -->
                             <!-- </ul> -->
                         </li>
 

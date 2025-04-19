@@ -42,6 +42,8 @@ CREATE TABLE user_profiles (
     twitter VARCHAR(255),
     instagram VARCHAR(255),
     linkedin VARCHAR(255),
+    folowers_count INT DEFAULT 0;
+    num_articals INT DEFAULT 0;
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     UNIQUE (user_id), 
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE

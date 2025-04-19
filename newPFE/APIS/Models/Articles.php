@@ -1,11 +1,11 @@
 <?php
-class Articals {
+class Articles {
     private $conn; //the connection to the database
     private $table = 'articles'; //the tables in the database
 
     public $id;
     public $author_id;
-    public $catiegory_id;
+    public $category_id;
 
     public $title;
     public $content;
@@ -53,25 +53,27 @@ class Articals {
         return $stmt;
     }
 
-    //get an article by id
-    public function getArticleById($id){
+    // Get a single article by ID
+    public function getSingleArticle() {
         $query = "SELECT 
-                    a.article_id, u.username as author_name, c.name as category_name,
+                    a.article_id, a.author_id, u.username as author_name, 
+                    a.category_id, c.name as category_name,
                     a.title, a.content, a.summary,
                     a.featured_image_url,
                     a.like_count, a.comment_count, a.view_count,
                     a.statu, a.created_at, a.updated_at
-                  FROM " . $this->table . " a 
-                  LEFT JOIN users u ON a.author_id = u.user_id 
+                  FROM " . $this->table . " a
+                  LEFT JOIN users u ON a.author_id = u.user_id
                   LEFT JOIN categories c ON a.category_id = c.category_id
-                  WHERE a.article_id = :id AND a.statu = 'published'";
-
+                  WHERE a.article_id = :id
+                  LIMIT 1";
+                  
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id',$id, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $this->id);
         $stmt->execute();
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
+        
         if($row) {
             // Populate properties
             $this->author_id = $row['author_id'];
@@ -83,7 +85,7 @@ class Articals {
             $this->like_count = $row['like_count'];
             $this->comment_count = $row['comment_count'];
             $this->view_count = $row['view_count'];
-            $this->status = $row['status'];
+            $this->status = $row['statu'];
             $this->created_at = $row['created_at'];
             $this->updated_at = $row['updated_at'];
             
@@ -300,6 +302,15 @@ class Articals {
         }
         
         return false;
+    }
+
+    //count articles
+    public function countArticles() {
+        $query = "SELECT COUNT(*) as total FROM " . $this->table . " WHERE statu = 'published'";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row['total'];
     }
 }
 ?>

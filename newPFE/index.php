@@ -181,7 +181,7 @@
     
     <div class="section-divider"></div><!-- devider --> 
 
-    <!-- Top Articals this week -->
+    <!-- Top Articles this week -->
     <section class="p-4 container ">
         <div class="d-flex align-items-center justify-content-between ">
             <div class = "my-4">

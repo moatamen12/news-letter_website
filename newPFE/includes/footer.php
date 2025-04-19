@@ -35,7 +35,7 @@
                         <a href="#" class="btn btn-subscribe btn-sm px-4 py-2 rounded-3" data-bs-toggle="modal" data-bs-target="#subscribeModal">
                             <i class="fas fa-envelope-open me-1"></i> Subscribe Now
                         </a>
-                        <a href="articals.php" class="btn btn-subscribe-outline btn-sm rounded-3 px-4 py-2">
+                        <a href="articles.php" class="btn btn-subscribe-outline btn-sm rounded-3 px-4 py-2">
                             <i class="fas fa-pen me-1"></i> Start Writing
                         </a>
                     </div>

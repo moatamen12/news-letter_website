@@ -27,3 +27,19 @@ Can manage categories and tags
 Can access site-wide analytics
 Can handle contact messages
 Can update site content
+
+
+
+
+SELECT 
+a.article_id, a.author_id, u.username as author_name, 
+a.category_id, c.name as category_name,
+a.title, a.content, a.summary,
+a.featured_image_url,
+a.like_count, a.comment_count, a.view_count,
+a.statu, a.created_at, a.updated_at
+FROM articles a
+LEFT JOIN users u ON a.author_id = u.user_id
+LEFT JOIN categories c ON a.category_id = c.category_id
+WHERE a.article_id = 1
+LIMIT 1
