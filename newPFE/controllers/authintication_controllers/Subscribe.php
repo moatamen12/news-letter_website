@@ -8,11 +8,11 @@
 
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $Fname = trim($_POST['Subname'] ?? '');
+        // $Fname = trim($_POST['Subname'] ?? '');
         $username = trim($_POST['SubUsername'] ?? '');
         $email = trim($_POST['SubEmail'] ?? '');
         $password = $_POST['SupPassword'] ?? '';
-        $confPassword = $_POST['confPassword'] ?? '';
+        $confPassword = $_POST['SubConfPassword'] ?? '';
 
         // Server-side validation
         $errors = [];
@@ -77,8 +77,8 @@
                 
                 // Prepare statement for user insertion
                 $stmt = $conn->prepare("
-                    INSERT INTO users (name, email, username, password_hash, role_id, created_at)
-                    VALUES (:name, :email, :username, :password_hash, 1, NOW())
+                    INSERT INTO users (name, email, username, password_hash, role, created_at)
+                    VALUES (:name, :email, :username, :password_hash, 'reader', NOW())
                 ");
 
 
@@ -141,5 +141,4 @@
     // If not POST request, redirect to homepage
     redirect(BASE_URL.'index.php');
     exit;
-
 ?>

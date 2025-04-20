@@ -3,6 +3,11 @@
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
+// Allow specific HTTP methods
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+
+
+
 // Additional headers for methods that send data
 if ($_SERVER['REQUEST_METHOD'] === 'POST' || $_SERVER['REQUEST_METHOD'] === 'PUT' || $_SERVER['REQUEST_METHOD'] === 'DELETE') {
     header('Access-Control-Allow-Methods: POST, PUT, DELETE');

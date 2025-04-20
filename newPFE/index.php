@@ -17,7 +17,7 @@
                     </p>
                     
                     <div class="d-grid gap-2 d-md-flex justify-content-md-center my-4">
-                        <a class="btn btn-subscribe btn-lg px-4 py-3 rounded-pill Zbtn" href="#" data-bs-toggle="modal" data-bs-target="#LoginModal">
+                        <a class="btn btn-subscribe btn-lg px-4 py-3 rounded-pill Zbtn" href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal">
                             <i class="fas fa-envelope-open me-2"></i> Subscribe Now
                         </a>
                         <a class="btn btn-subscribe-outline btn-lg px-4 py-3 rounded-pill Zbtn" href="#" data-bs-toggle="modal" data-bs-target="#writerOnboardingModal">

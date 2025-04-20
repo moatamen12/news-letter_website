@@ -14,7 +14,7 @@
 
     // Include database and model
     require_once('../../config/config.php');
-    require_once('../Models/Articals.php');
+    require_once('../Models/Articles.php');
 
 
 
@@ -32,7 +32,7 @@
     }
 
     // Instantiate article object
-    $article = new Articals($db);
+    $article = new Articles($db);
 
     // Set ID 
     $article->id = $data->id;

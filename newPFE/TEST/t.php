@@ -1,6 +1,7 @@
 <?php 
-$page_tatile= "New Post";
-require "includes/header.php"; ?>
+  $page_tatile= "New Post";
+  // require "../newPFE/includes/header.php"; 
+?>
  <script src="tinymce/tinymce/tinymce.min.js" referrerpolicy="origin"></script>  <!--tinymce script -->
 
 <div class="container p-4">
@@ -62,5 +63,3 @@ require "includes/header.php"; ?>
 </script>
 
 
-
-<?php require "includes/footer.php"; ?>
